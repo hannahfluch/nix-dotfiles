@@ -1,10 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # systemd bootloader
   boot.loader.systemd-boot.enable = true;
@@ -12,8 +11,8 @@
   # networking
   networking.hostName = "chicken";
   # Pick only one of the below networking options.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-
+  networking.networkmanager.enable =
+    true; # Easiest to use and most distros use this by default.
 
   # time zone
   time.timeZone = "Europe/Vienna";
@@ -33,8 +32,8 @@
   # services.pulseaudio.enable = true;
   # OR
   services.pipewire = {
-     enable = true;
-     pulse.enable = true;
+    enable = true;
+    pulse.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -50,11 +49,7 @@
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs; [
-    vim 
-    git
-    wget
-  ];
+  environment.systemPackages = with pkgs; [ vim git wget ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
