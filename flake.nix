@@ -10,9 +10,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence.url = "github:nix-community/impermanence";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = { self, nixpkgs, disko, impermanence, ... }@inputs: {
+  outputs = { self, nixpkgs, disko, impermanence, home-manager, ... }@inputs: {
     # Please replace my-nixos with your hostname
     nixosConfigurations.chicken = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -20,9 +25,18 @@
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
         ./configuration.nix
+        ./hosts/lenovo-v15-g3-iap.nix
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.hannah = ./home-manager/home.nix;
+        }
+
         disko.nixosModules.disko
         ./disko/disko-config.nix
-        ./hosts/lenovo-v15-g3-iap.nix
+
         impermanence.nixosModules.impermanence
         ./impermanence.nix
 
