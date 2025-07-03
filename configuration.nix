@@ -47,6 +47,15 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [ vim git wget ];
 
+  # Display Manager
+  services.displayManager.ly = {
+    enable = true;
+    settings = {
+      load = true;
+      save = true;
+    };
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
