@@ -9,9 +9,10 @@
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    impermanence.url = "github:nix-community/impermanence";
   };
 
-  outputs = { self, nixpkgs, disko, ... }@inputs: {
+  outputs = { self, nixpkgs, disko, impermanence, ... }@inputs: {
     # Please replace my-nixos with your hostname
     nixosConfigurations.chicken = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -21,7 +22,42 @@
         ./configuration.nix
         disko.nixosModules.disko
         ./disko/disko-config.nix
+        ./hosts/lenovo-v15-g3-iap.nix
+        impermanence.nixosModules.impermanence
+        ./impermanence.nix
+
+        ./persist/persist.nix
+        ./persist/conf.nix
       ];
+    };
+    nixosConfiguration.hatcher = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ({ pkgs, modulesPath, ... }: {
+          imports =
+            [ (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix") ];
+          networking.wireless.enable = false;
+          isoImage.squashfsCompression = "zstd";
+
+          isoImage.contents = [{
+            source = self;
+            target = "/source";
+          }];
+
+          isoImage.storeContents =
+            [ self.nixosConfigurations.chicken.config.system.build.toplevel ];
+
+          environment.systemPackages = [
+            disko.packages.x86_64-linux.disko-install
+
+            (pkgs.writeShellScriptBin "install-with-disko"
+              (builtins.readFile ./scripts/install-with-disko.sh))
+          ];
+        })
+        ./hatcher.nix
+        ./hosts/lenovo-v15-g3-iap.nix
+      ];
+
     };
   };
 }
