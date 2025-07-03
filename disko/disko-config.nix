@@ -1,4 +1,11 @@
-{
+let
+  reasonable_subvolume = name: extraOptions: {
+    ${name} = {
+      mountpoint = name;
+      mountOptions = [ "noatime" ] ++ extraOptions;
+    };
+  };
+in {
   disko.devices = {
     disk = {
       main = {
@@ -52,7 +59,16 @@
                     mountpoint = "/.swapvol";
                     swap.swapfile.size = "8G";
                   };
-                };
+                } // (reasonable_subvolume "/persistent" [ ])
+                  // (reasonable_subvolume "/persistent/data"
+                    [ "compress=zstd" ])
+                  // (reasonable_subvolume "/persistent/old_roots"
+                    [ "compress=zstd:15" ])
+                  // (reasonable_subvolume "/persistent/logs"
+                    [ "compress=zstd:15" ])
+                  // (reasonable_subvolume "/persistent/caches" [ ])
+                  // (reasonable_subvolume "/nix" [ "compress=zstd" ]);
+
               };
             };
           };
