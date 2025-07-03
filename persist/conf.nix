@@ -20,6 +20,9 @@
     ".gnupg/"
     ".ssh/"
     ".local/share/keyrings/"
+
+    # Ly state
+    "/etc/ly"
   ];
 
   persist.location.caches.contents = [ "/var/cache/" ".cache/" ];
