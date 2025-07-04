@@ -1,13 +1,12 @@
-{ config, pkgs, ... }:
+{ config, pkgs, ... }: {
 
-{
-
-  imports = [ ./kitty.nix ./hyprland.nix ];
+  imports = [ ./kitty.nix ./hyprland.nix ./helix.nix ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "hannah";
   home.homeDirectory = "/home/hannah";
+  home.packages = [ (import ./rust-toolchain.nix pkgs) ];
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
