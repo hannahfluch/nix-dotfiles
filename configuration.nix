@@ -47,6 +47,9 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [ vim git wget ];
 
+  # Fonts
+  fonts.packages = with pkgs; [ nerd-fonts.commit-mono ];
+
   # Display Manager
   services.displayManager.ly = {
     enable = true;
@@ -55,6 +58,21 @@
       save = true;
     };
   };
+
+  # Qemu setup
+  virtualisation = let
+    options = {
+      virtualisation.memorySize = 8192;
+      virtualisation.graphics = true;
+      virtualisation.cores = 6;
+    };
+  in {
+    vmVariant = options;
+    vmVariantWithDisko = options;
+  };
+
+  # System-wide installation to make it recogizable by the display manager
+  programs.hyprland.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
