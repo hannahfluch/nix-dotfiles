@@ -23,9 +23,15 @@
 
     # Ly state
     "/etc/ly"
+
   ];
 
-  persist.location.caches.contents = [ "/var/cache/" ".cache/" ];
+  persist.location.caches.contents = [
+    "/var/cache/"
+    ".cache/"
+    # Hyprland
+    ".local/share/hyprland/lastVersion"
+  ];
 
   persist.location.logs.contents = [ "/var/log/" ];
 }
