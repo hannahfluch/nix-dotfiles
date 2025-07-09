@@ -42,7 +42,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { pkgs = pkgs; };
-            home-manager.users.hannah = ./home-manager;
+            home-manager.users.hannah = ./home-manager/default.nix;
           }
 
           disko.nixosModules.disko

@@ -47,9 +47,6 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [ vim git wget ];
 
-  # Fonts
-  fonts.packages = with pkgs; [ nerd-fonts.commit-mono ];
-
   # Display Manager
   services.displayManager.ly = {
     enable = true;
