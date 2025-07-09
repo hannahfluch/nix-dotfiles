@@ -8,7 +8,7 @@
     enable = true;
     settings = {
       "$mod" = "SUPER";
-      bind = [ "$mod, Q, exec, kitty" ] ++ (
+      bind = [ "$mod, Q, exec, alacritty" "$mod, X, killactive" ] ++ (
         # workspaces
         # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
         builtins.concatLists (builtins.genList (i:
