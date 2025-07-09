@@ -10,7 +10,7 @@
     settings = {
       "$mod" = "SUPER";
       bind =
-        ["$mod, Q, exec, alacritty" "$mod, X, killactive"]
+        ["$mod, Q, exec, alacritty" "$mod, X, killactive" "$mod, F, exec, hyprctl dispatch fullscreen" "$mod, W, exec, wofi"]
         ++ (
           # workspaces
           # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
