@@ -1,7 +1,9 @@
-{ config, pkgs, ... }: {
-
-  imports =
-    [ ./alacritty.nix ./hyprland ./helix.nix ./fish.nix ./starship.nix ];
+{
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [./terminal ./hyprland];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -9,7 +11,7 @@
     username = "hannah";
     homeDirectory = "/home/${username}";
 
-    packages = [ (import ./rust-toolchain.nix pkgs) pkgs.meslo-lgs-nf ];
+    packages = [(import ./rust-toolchain.nix pkgs) pkgs.meslo-lgs-nf];
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
