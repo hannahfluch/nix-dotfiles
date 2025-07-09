@@ -1,8 +1,13 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   programs.alacritty = {
     enable = true;
     settings = {
-      terminal = { shell = lib.getExe pkgs.fish; };
+      terminal = {shell = lib.getExe pkgs.fish;};
 
       window = {
         dynamic_padding = true;
@@ -15,5 +20,4 @@
       };
     };
   };
-
 }

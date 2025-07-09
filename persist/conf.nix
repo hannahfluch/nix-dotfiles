@@ -23,7 +23,6 @@
 
     # Ly state
     "/etc/ly"
-
   ];
 
   persist.location.caches.contents = [
@@ -33,5 +32,5 @@
     ".local/share/hyprland/lastVersion"
   ];
 
-  persist.location.logs.contents = [ "/var/log/" ];
+  persist.location.logs.contents = ["/var/log/"];
 }
