@@ -16,7 +16,7 @@
     # NixOS config
     "nixcfg/"
 
-    # Keys (TODO: Fix permissions)
+    # Keys
     ".gnupg/"
     ".ssh/"
     ".local/share/keyrings/"
@@ -26,9 +26,30 @@
 
     # Fish history
     ".local/share/fish/fish_history"
+
+    # JetBrains IDEs
+    ".local/share/JetBrains"
+
+    # zed
+    ".local/share/zed/"
+
+    # PacketTracer
+    ".local/share/'Cisco Packet Tracer'"
   ];
 
-  persist.location.caches.contents = [ "/var/cache/" ".cache/" ];
+  persist.location.caches.contents = [
+    "/var/cache/"
+    ".cache/"
 
-  persist.location.logs.contents = [ "/var/log/" ];
+    # zed
+    ".local/share/zed/node/cache/"
+  ];
+
+  persist.location.logs.contents = [
+    "/var/log/"
+
+    # zed
+    ".local/share/zed/node/cache/_logs/"
+    ".local/share/zed/logs/"
+  ];
 }

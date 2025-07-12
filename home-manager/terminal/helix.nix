@@ -16,6 +16,8 @@
       nodePackages.typescript-language-server
       nodePackages.prettier
 
+      jdt-language-server
+
       taplo
 
       clang-tools

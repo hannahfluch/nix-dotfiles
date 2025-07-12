@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, lib, pkgs, ... }: {
   imports = [ ./terminal ./hyprland ./wofi.nix ];
 
   # Home Manager needs a bit of information about you and the
@@ -7,10 +7,59 @@
     username = "hannah";
     homeDirectory = "/home/${username}";
 
-    packages = [
+    packages = with pkgs; [
+      # rust
       (import ./rust-toolchain.nix pkgs)
-      pkgs.meslo-lgs-nf
-      pkgs.wl-clipboard
+
+      # python
+      (python3.withPackages
+        (pythonPackages: with pythonPackages; [ virtualenv requests ]))
+      ruff
+      uv
+
+      # js
+      nodejs-slim
+      bun
+
+      # c-sharp
+      dotnet-sdk
+      dotnet-ef
+
+      # c
+      libgcc
+
+      # java
+      zulu8
+      zulu17
+      zulu24
+
+      # editors
+      zed-editor
+      jetbrains.datagrip
+      jetbrains.idea-ultimate
+
+      # fonts
+      meslo-lgs-nf
+
+      # cli essentails
+      wl-clipboard
+      fd
+      ripgrep
+      fastfetch
+      tokei
+      tldr
+      screen
+      docker
+
+      # apps
+      libreoffice
+      geogebra6
+      baobab
+      warp
+      gimp
+      obsidian
+      teams-for-linux
+      packetTracer
     ];
 
     # This value determines the Home Manager release that your
