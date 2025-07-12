@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [./terminal ./hyprland ./wofi.nix];
 
   # Home Manager needs a bit of information about you and the
@@ -11,7 +7,11 @@
     username = "hannah";
     homeDirectory = "/home/${username}";
 
-    packages = [(import ./rust-toolchain.nix pkgs) pkgs.meslo-lgs-nf];
+    packages = [
+      (import ./rust-toolchain.nix pkgs)
+      pkgs.meslo-lgs-nf
+      pkgs.wl-clipboard
+    ];
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
