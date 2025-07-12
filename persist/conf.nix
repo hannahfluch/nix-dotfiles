@@ -21,15 +21,16 @@
     ".ssh/"
     ".local/share/keyrings/"
 
-    # Ly state
-    "/etc/ly"
+    # Hyprland version
+    ".local/share/hyprland/lastVersion"
+
+    # Fish history
+    ".local/share/fish/fish_history"
   ];
 
   persist.location.caches.contents = [
     "/var/cache/"
     ".cache/"
-    # Hyprland
-    ".local/share/hyprland/lastVersion"
   ];
 
   persist.location.logs.contents = ["/var/log/"];
