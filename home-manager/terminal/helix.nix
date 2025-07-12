@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   programs.helix = {
     enable = true;
     defaultEditor = true;
