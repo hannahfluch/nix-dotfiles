@@ -1,53 +1,51 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
-  imports = [./hyprcursor.nix];
+{ lib, pkgs, ... }: {
+  imports = [ ./hyprcursor.nix ];
 
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
     settings = {
       exec-once = [
-        "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --watch ${lib.getExe pkgs.cliphist} store"
+        "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --watch ${
+          lib.getExe pkgs.cliphist
+        } store"
       ];
       # keybinds
       "$mod" = "SUPER";
-      bind =
-        [
-          "$mod, Q, exec, ${lib.getExe pkgs.alacritty}"
-          "$mod, X, forcekillactive"
-          "$mod, F, exec, fullscreen"
-          "$mod, W, exec, ${lib.getExe pkgs.wofi}"
-          "$mod, M, exec, uwsm stop"
-          "$mod, Space, togglefloating"
-          "$mod SHIFT, Space, centerwindow"
-          "$mod, F, fullscreen"
-          # todo: switch to cliphist-wofi-img
-          "$mod, V, exec, ${lib.getExe pkgs.cliphist} list | ${lib.getExe pkgs.wofi} --dmenu | ${lib.getExe pkgs.cliphist} decode | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}"
-          "$mod, left, movefocus, l"
-          "$mod, right, movefocus, r"
-          "$mod, up, movefocus, u"
-          "$mod, down, movefocus, d"
+      bind = [
+        "$mod, Q, exec, ${lib.getExe pkgs.alacritty}"
+        "$mod, X, forcekillactive"
+        "$mod, F, exec, fullscreen"
+        "$mod, W, exec, ${lib.getExe pkgs.wofi}"
+        "$mod, M, exec, uwsm stop"
+        "$mod, Space, togglefloating"
+        "$mod SHIFT, Space, centerwindow"
+        "$mod, F, fullscreen"
+        # todo: switch to cliphist-wofi-img
+        "$mod, V, exec, ${lib.getExe pkgs.cliphist} list | ${
+          lib.getExe pkgs.wofi
+        } --dmenu | ${lib.getExe pkgs.cliphist} decode | ${
+          lib.getExe' pkgs.wl-clipboard "wl-copy"
+        }"
+        "$mod, left, movefocus, l"
+        "$mod, right, movefocus, r"
+        "$mod, up, movefocus, u"
+        "$mod, down, movefocus, d"
 
-          "$mod, mouse_down, workspace, e+1"
-          "$mod, mouse_up, workspace, e-1"
+        "$mod, mouse_down, workspace, e+1"
+        "$mod, mouse_up, workspace, e-1"
 
-          "$mod, S, togglespecialworkspace, magic"
-          "$mod SHIFT, S, movetoworkspace, special:magic"
-        ]
-        ++ (
-          # workspaces
-          # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-          builtins.concatLists (builtins.genList (i: let
-              ws = i + 1;
-            in [
-              "$mod, code:1${toString i}, workspace, ${toString ws}"
-              "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-            ])
-            9)
-        );
+        "$mod, S, togglespecialworkspace, magic"
+        "$mod SHIFT, S, movetoworkspace, special:magic"
+      ] ++ (
+        # workspaces
+        # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+        builtins.concatLists (builtins.genList (i:
+          let ws = i + 1;
+          in [
+            "$mod, code:1${toString i}, workspace, ${toString ws}"
+            "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+          ]) 9));
       binde = let
         amixer = lib.getExe' pkgs.alsa-utils "amixer";
         brightnessctl = lib.getExe pkgs.brightnessctl;
@@ -60,15 +58,12 @@
         ", XF86MonBrightnessUp,   execr, ${brightnessctl} s 10%+"
         ", XF86MonBrightnessDown, execr, ${brightnessctl} s 10%-"
       ];
-      bindm = [
-        "$mod, mouse:272, movewindow"
-        "$mod, mouse:273, resizewindow"
-      ];
+      bindm = [ "$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow" ];
 
       # input
       input = {
         kb_layout = "de";
-        touchpad = {natural_scroll = true;};
+        touchpad = { natural_scroll = true; };
         follow_mouse = 1;
       };
 
@@ -114,7 +109,7 @@
       ];
 
       # animations
-      layerrule = ["noanim, gtk4-layer-shell"];
+      layerrule = [ "noanim, gtk4-layer-shell" ];
       windowrulev2 = [
         "noanim, class:^(wofi)$"
         "noanim, class:^(waybar)$"
@@ -143,5 +138,5 @@
   };
 
   # hyprland portal is added automatically, gtk for file-chooser
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 }
