@@ -66,7 +66,7 @@
           ./persist/conf.nix
         ];
       };
-      nixosConfiguration.hatcher = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.hatcher = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ({ pkgs, modulesPath, ... }: {
