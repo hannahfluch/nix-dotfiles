@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ pkgs, ... }: {
   # systemd bootloader
   boot.loader.systemd-boot.enable = true;
 
@@ -38,7 +38,7 @@
     isNormalUser = true;
     initialPassword = "chicken";
     extraGroups = [ "wheel" "video" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [ ];
+    packages = [ ];
   };
 
   # List packages installed in system profile.

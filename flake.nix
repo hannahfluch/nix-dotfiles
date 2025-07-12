@@ -20,8 +20,7 @@
     };
   };
 
-  outputs =
-    { self, nixpkgs, disko, impermanence, home-manager, fenix, ... }@inputs:
+  outputs = { self, nixpkgs, disko, impermanence, home-manager, fenix, ... }:
     let
       system = "x86_64-linux";
       overlays = [ fenix.overlays.default ];
