@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{ config, lib, pkgs, ... }: {
   # systemd bootloader
   boot.loader.systemd-boot.enable = true;
 
@@ -42,13 +37,13 @@
   users.users.hannah = {
     isNormalUser = true;
     initialPassword = "chicken";
-    extraGroups = ["wheel" "video"]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [];
+    extraGroups = [ "wheel" "video" ]; # Enable ‘sudo’ for the user.
+    packages = with pkgs; [ ];
   };
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs; [vim git wget];
+  environment.systemPackages = with pkgs; [ vim git wget ];
   environment.variables.EDITOR = "vim";
 
   # Some programs need SUID wrappers, can be configured further or are

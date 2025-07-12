@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{ config, lib, pkgs, ... }: {
   # systemd bootloader
   boot.loader.systemd-boot.enable = true;
 
@@ -42,20 +37,22 @@
   users.users.hannah = {
     isNormalUser = true;
     initialPassword = "lol";
-    extraGroups = ["wheel" "video"]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [];
+    extraGroups = [ "wheel" "video" ]; # Enable ‘sudo’ for the user.
+    packages = with pkgs; [ ];
   };
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs; [vim git wget];
+  environment.systemPackages = with pkgs; [ vim git wget ];
 
   # Display Manager
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${lib.getExe pkgs.greetd.tuigreet} --time --remember --remember-session";
+        command = "${
+            lib.getExe pkgs.greetd.tuigreet
+          } --time --remember --remember-session";
         user = "greeter";
       };
     };

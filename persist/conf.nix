@@ -28,10 +28,7 @@
     ".local/share/fish/fish_history"
   ];
 
-  persist.location.caches.contents = [
-    "/var/cache/"
-    ".cache/"
-  ];
+  persist.location.caches.contents = [ "/var/cache/" ".cache/" ];
 
-  persist.location.logs.contents = ["/var/log/"];
+  persist.location.logs.contents = [ "/var/log/" ];
 }
