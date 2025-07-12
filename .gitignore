@@ -1,3 +1,4 @@
 *.qcow2
 chicken-efi-vars.fd
 /result
+/keys
