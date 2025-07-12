@@ -24,7 +24,20 @@
     let
       system = "x86_64-linux";
       overlays = [ fenix.overlays.default ];
-      pkgs = import nixpkgs { inherit system overlays; };
+      pkgs = pkgsExternal.extend (_: prev: import ./pkgs prev);
+
+      pkgsExternal = import nixpkgs {
+        inherit system overlays;
+        config.allowUnfreePredicate = pkg:
+          builtins.elem (pkgs.lib.getName pkg) [
+            "datagrip"
+            "idea-ultimate"
+            "geogebra"
+            "obsidian"
+            "packetTracer"
+          ];
+      };
+
     in {
       # Please replace my-nixos with your hostname
       nixosConfigurations.chicken = nixpkgs.lib.nixosSystem {
@@ -39,7 +52,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { pkgs = pkgs; };
+            home-manager.extraSpecialArgs = { inherit pkgs; };
             home-manager.users.hannah = ./home-manager/default.nix;
           }
 
