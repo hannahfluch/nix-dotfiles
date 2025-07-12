@@ -51,12 +51,24 @@
   environment.systemPackages = with pkgs; [vim git wget];
 
   # Display Manager
-  services.displayManager.ly = {
+  services.greetd = {
     enable = true;
     settings = {
-      load = true;
-      save = true;
+      default_session = {
+        command = "${lib.getExe pkgs.greetd.tuigreet} --time --remember --remember-session";
+        user = "greeter";
+      };
     };
+  };
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+    StandardInput = "tty";
+    StandardOutput = "tty";
+    StandardError = "journal"; # Without this errors will spam on screen
+    # Without these bootlogs will spam on screen
+    TTYReset = true;
+    TTYVHangup = true;
+    TTYVTDisallocate = true;
   };
 
   # Qemu setup
