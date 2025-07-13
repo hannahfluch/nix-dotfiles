@@ -60,6 +60,14 @@
       obsidian
       teams-for-linux
       packetTracer
+      (vesktop.overrideAttrs (finalAttrs: previousAttrs: {
+        postUnpack = ''
+          cp ${../custom_vesktop.gif} $sourceRoot/static/shiggy.gif
+
+          ${previousAttrs.postUnpack or ""}
+
+        '';
+      }))
     ];
 
     # This value determines the Home Manager release that your
