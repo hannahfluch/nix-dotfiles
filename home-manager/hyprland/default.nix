@@ -1,5 +1,5 @@
 { lib, pkgs, ... }: {
-  imports = [ ./hyprcursor.nix ];
+  imports = [ ./hyprcursor.nix ./dark-theme.nix ];
 
   wayland.windowManager.hyprland = {
     enable = true;
