@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ pkgs, ... }: {
   imports = [ ./terminal ./hyprland ./wofi.nix ./ssh.nix ./git.nix ];
 
   # Home Manager needs a bit of information about you and the
@@ -60,6 +60,7 @@
       obsidian
       teams-for-linux
       packetTracer
+      firefox
       (vesktop.overrideAttrs (finalAttrs: previousAttrs: {
         postUnpack = ''
           cp ${../custom_vesktop.gif} $sourceRoot/static/shiggy.gif
