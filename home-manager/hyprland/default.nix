@@ -82,14 +82,14 @@
       general = {
         gaps_in = 5;
         gaps_out = 10;
-        boarder_size = 2;
+        border_size = 2;
         layout = "dwindle";
         allow_tearing = false;
       };
       decoration = {
         rounding = 10;
         shadow = {
-          enables = "yes";
+          enabled = "yes";
           range = 4;
           render_power = 3;
           color = "rgba(1a1a1aee)";
@@ -105,7 +105,7 @@
       # monitors
       monitor = [
         "eDP-1,1920x1080,0x0,1"
-        "preferred,auto,1,mirror,eDP-1" # ,preffered,auto,1
+        ",preferred,auto,1,mirror,eDP-1" # ,prefered,auto,1
       ];
 
       # animations
@@ -120,7 +120,7 @@
         "noblur, class:^(xwaylandvideobridge)$"
       ];
       animations = {
-        enables = true;
+        enabled = true;
         bezier = [
           "easeInOutCirc, 0.85, 0, 0.15, 1"
           "easeInOutQuart, 0.76, 0, 0.24, 1"

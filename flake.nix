@@ -28,6 +28,10 @@
 
       pkgsExternal = import nixpkgs {
         inherit system overlays;
+        config.permittedInsecurePackages = [
+          "dotnet-sdk-6.0.428"
+          "dotnet-runtime-6.0.36"
+        ]; # todo: patch networkminer to use a modern alternative
         config.allowUnfreePredicate = pkg:
           builtins.elem (pkgs.lib.getName pkg) [
             "datagrip"
@@ -35,6 +39,7 @@
             "geogebra"
             "obsidian"
             "packetTracer"
+            "binaryninja-free"
           ];
       };
 
@@ -43,6 +48,12 @@
       nixosConfigurations.chicken = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          { nixpkgs.pkgs = pkgs; }
+          {
+            # pin system nixpkgs to the same version as the flake input
+            # (don't see a way to declaratively set channels but this seems to work fine?)
+            nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
+          }
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
           ./configuration.nix

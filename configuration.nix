@@ -1,4 +1,8 @@
 { lib, pkgs, ... }: {
+
+  # settings
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # systemd bootloader
   boot.loader.systemd-boot.enable = true;
 

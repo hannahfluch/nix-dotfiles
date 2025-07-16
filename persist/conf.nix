@@ -28,13 +28,17 @@
     ".local/share/fish/fish_history"
 
     # JetBrains IDEs
-    ".local/share/JetBrains"
+    ".local/share/JetBrains/"
+
+    # Binary Ninja
+    ".config/Vector 35/Binary Ninja.conf"
+    ".binaryninja/"
 
     # zed
     ".local/share/zed/"
 
     # PacketTracer
-    ".local/share/'Cisco Packet Tracer'"
+    ".local/share/Cisco Packet Tracer/"
   ];
 
   persist.location.caches.contents = [
@@ -46,6 +50,9 @@
 
     # sudo: saves first time using sudo
     "/var/db/sudo/lectured/"
+
+    # NetowrkMiner
+    ".local/share/NetworkMiner/AssembledFiles/cache/"
   ];
 
   persist.location.logs.contents = [

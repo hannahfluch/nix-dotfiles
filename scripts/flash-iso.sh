@@ -6,4 +6,4 @@ du -h result/iso/*
 echo Select disk to write ISO to:
 lsblk
 read mydisk
-sudo popsicle result/iso/chicken-*.iso $mydisk
+sudo popsicle result/iso/nixos-*.iso $mydisk
