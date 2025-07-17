@@ -5,4 +5,8 @@
       set fish_greeting # Disable greeting
     '';
   };
+
+  persist.data.contents = [
+    ".local/share/fish/"
+  ];
 }
