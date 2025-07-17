@@ -9,7 +9,11 @@
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    impermanence.url = "github:nix-community/impermanence";
+    impermanence = {
+      url = "github:nix-community/impermanence/home-manager-v2";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,7 +24,16 @@
     };
   };
 
-  outputs = { self, nixpkgs, disko, impermanence, home-manager, fenix, ... }:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      disko,
+      impermanence,
+      home-manager,
+      fenix,
+      ...
+    }:
     let
       system = "x86_64-linux";
       overlays = [ fenix.overlays.default ];
@@ -28,11 +41,8 @@
 
       pkgsExternal = import nixpkgs {
         inherit system overlays;
-        config.permittedInsecurePackages = [
-          "dotnet-sdk-6.0.428"
-          "dotnet-runtime-6.0.36"
-        ]; # todo: patch networkminer to use a modern alternative
-        config.allowUnfreePredicate = pkg:
+        config.allowUnfreePredicate =
+          pkg:
           builtins.elem (pkgs.lib.getName pkg) [
             "datagrip"
             "idea-ultimate"
@@ -43,12 +53,12 @@
           ];
       };
 
-    in {
+    in
+    {
       # Please replace my-nixos with your hostname
       nixosConfigurations.chicken = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          { nixpkgs.pkgs = pkgs; }
           {
             # pin system nixpkgs to the same version as the flake input
             # (don't see a way to declaratively set channels but this seems to work fine?)
@@ -64,7 +74,15 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit pkgs; };
-            home-manager.users.hannah = ./home-manager/default.nix;
+            home-manager.users.hannah =
+              { ... }:
+              {
+                imports = [
+                  ./home-manager
+                  ./persist/home.nix
+                  impermanence.homeManagerModules.impermanence
+                ];
+              };
           }
 
           disko.nixosModules.disko
@@ -80,28 +98,31 @@
       nixosConfigurations.hatcher = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ({ pkgs, modulesPath, ... }: {
-            imports = [
-              (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
-            ];
-            networking.wireless.enable = false;
-            isoImage.squashfsCompression = "zstd";
+          (
+            { pkgs, modulesPath, ... }:
+            {
+              imports = [
+                (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
+              ];
+              networking.wireless.enable = false;
+              isoImage.squashfsCompression = "zstd";
 
-            isoImage.contents = [{
-              source = self;
-              target = "/source";
-            }];
+              isoImage.contents = [
+                {
+                  source = self;
+                  target = "/source";
+                }
+              ];
 
-            isoImage.storeContents =
-              [ self.nixosConfigurations.chicken.config.system.build.toplevel ];
+              isoImage.storeContents = [ self.nixosConfigurations.chicken.config.system.build.toplevel ];
 
-            environment.systemPackages = [
-              disko.packages.x86_64-linux.disko-install
+              environment.systemPackages = [
+                disko.packages.x86_64-linux.disko-install
 
-              (pkgs.writeShellScriptBin "install-with-disko"
-                (builtins.readFile ./scripts/install-with-disko.sh))
-            ];
-          })
+                (pkgs.writeShellScriptBin "install-with-disko" (builtins.readFile ./scripts/install-with-disko.sh))
+              ];
+            }
+          )
           ./hatcher.nix
           ./hosts/lenovo-v15-g3-iap.nix
         ];
