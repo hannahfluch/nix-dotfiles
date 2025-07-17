@@ -96,7 +96,7 @@
     "nixcfg/"
   ];
 
-  persist.cache.contents = [
+  persist.caches.contents = [
     ".cache/"
   ];
   # Let Home Manager install and manage itself.

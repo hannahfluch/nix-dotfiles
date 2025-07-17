@@ -1,11 +1,12 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   boot.initrd.postResumeCommands = lib.mkAfter ''
     mkdir /btrfs_tmp
     mount /dev/disk/by-partlabel/disk-main-root /btrfs_tmp # TODO: this depends on diskos undocumented naming scheme :(
 
-    if [[ -e /btrfs_tmp/root ]]; then
-        timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
-        mv /btrfs_tmp/root "/btrfs_tmp/persistent/old_roots/$timestamp"
+    if [[ -e /btrfs_tmp/rootfs ]]; then
+        timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/rootfs)" "+%Y-%m-%-d_%H:%M:%S")
+        mv /btrfs_tmp/rootfs "/btrfs_tmp/persistent/old_roots/$timestamp"
     fi
 
     delete_subvolume_recursively() {
@@ -20,7 +21,7 @@
         delete_subvolume_recursively "$i"
     done
 
-    btrfs subvolume create /btrfs_tmp/root
+    btrfs subvolume create /btrfs_tmp/rootfs
     umount /btrfs_tmp
   '';
 }
