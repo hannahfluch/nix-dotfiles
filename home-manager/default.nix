@@ -7,9 +7,8 @@
     ./ssh.nix
     ./git.nix
     ./applications
+    ./toolchains
   ];
-
-  xdg.userDirs.enable = true;
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -17,25 +16,11 @@
     username = "hannah";
     homeDirectory = "/home/${username}";
 
+    sessionVariables = {
+      XDG_DOWNLOAD_DIR = "$HOME/downloads";
+      XDG_DOCUMENTS_DIR = "$HOME/documents";
+    };
     packages = with pkgs; [
-      # python
-
-      # js
-      # nodejs-slim
-      # bun
-
-      # c-sharp
-      # dotnet-sdk
-      # dotnet-ef
-
-      # c
-      # libgcc
-
-      # java
-      # zulu8
-      # zulu17
-      # zulu24
-
       # fonts
       meslo-lgs-nf
 
@@ -49,13 +34,8 @@
       screen
       docker
       podman
+
       # ctf
-      # binaryninja-free
-      # ghidra-bin
-      # bytecode-viewer
-      # recaf-launcher
-      # networkminer
-      # wireshark
       # hash_extender
       # wineWowPackages.waylandFull
       # qemu
