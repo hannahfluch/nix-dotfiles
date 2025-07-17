@@ -1,4 +1,4 @@
-{ pkgs,lib, ... }: {
+{ pkgs, ... }: {
   programs.helix = {
     enable = true;
     defaultEditor = true;
@@ -7,7 +7,8 @@
       pyright
       ruff
 
-      nil
+      nixd
+      nixfmt-rfc-style
 
       omnisharp-roslyn
       csharpier
@@ -34,7 +35,7 @@
     };
 
     languages = {
-      langauge = [
+      language = [
         {
           name = "rust";
           language-servers = [ "rust-analyzer" ];
@@ -48,8 +49,8 @@
         }
         {
           name = "nix";
-          language-servers = [ "nil" ];
-          formatter.command = "${lib.getExe pkgs.nixfmt-rfc-style}";
+          language-servers = [ "nixd" ];
+          formatter.command = "nixfmt";
           auto-format = true;
         }
         {

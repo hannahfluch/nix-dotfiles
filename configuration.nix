@@ -1,7 +1,11 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, ... }:
+{
 
   # settings
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # systemd bootloader
   boot.loader.systemd-boot.enable = true;
@@ -9,8 +13,7 @@
   # networking
   networking.hostName = "chicken";
   # Pick only one of the below networking options.
-  networking.networkmanager.enable =
-    true; # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # time zone
   time.timeZone = "Europe/Vienna";
@@ -44,22 +47,27 @@
   users.users.hannah = {
     isNormalUser = true;
     initialPassword = "lol";
-    extraGroups = [ "wheel" "video" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "video"
+    ]; # Enable ‘sudo’ for the user.
     packages = [ ];
   };
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs; [ vim git wget ];
+  environment.systemPackages = with pkgs; [
+    vim
+    git
+    wget
+  ];
 
   # Display Manager
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${
-            lib.getExe pkgs.greetd.tuigreet
-          } --time --remember --remember-session";
+        command = "${lib.getExe pkgs.greetd.tuigreet} --time --remember --remember-session";
         user = "greeter";
       };
     };
@@ -76,16 +84,18 @@
   };
 
   # Qemu setup
-  virtualisation = let
-    options = {
-      virtualisation.memorySize = 8192;
-      virtualisation.graphics = true;
-      virtualisation.cores = 6;
+  virtualisation =
+    let
+      options = {
+        virtualisation.memorySize = 8192;
+        virtualisation.graphics = true;
+        virtualisation.cores = 6;
+      };
+    in
+    {
+      vmVariant = options;
+      vmVariantWithDisko = options;
     };
-  in {
-    vmVariant = options;
-    vmVariantWithDisko = options;
-  };
 
   # System-wide installation to make it recogizable by the display manager
   programs.hyprland = {

@@ -1,5 +1,15 @@
-{ pkgs, ... }: {
-  imports = [ ./terminal ./hyprland ./wofi.nix ./ssh.nix ./git.nix ./applications ];
+{ pkgs, ... }:
+{
+  imports = [
+    ./terminal
+    ./hyprland
+    ./wofi.nix
+    ./ssh.nix
+    ./git.nix
+    ./applications
+  ];
+
+  xdg.userDirs.enable = true;
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -8,13 +18,7 @@
     homeDirectory = "/home/${username}";
 
     packages = with pkgs; [
-      # rust
-
       # python
-      (python3.withPackages
-        (pythonPackages: with pythonPackages; [ virtualenv requests ]))
-      ruff
-      uv
 
       # js
       # nodejs-slim
@@ -45,8 +49,6 @@
       screen
       docker
       podman
-      warp
-
       # ctf
       # binaryninja-free
       # ghidra-bin
@@ -63,13 +65,12 @@
       # libreoffice
       # geogebra6
       # baobab
-      # warp
       # gimp
       # obsidian
       # teams-for-linux
       # packetTracer
       # nautilus
-      
+
     ];
 
     # This value determines the Home Manager release that your
@@ -93,6 +94,10 @@
 
     # nixos config
     "nixcfg/"
+  ];
+
+  persist.cache.contents = [
+    ".cache/"
   ];
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
