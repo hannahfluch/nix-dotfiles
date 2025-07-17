@@ -55,9 +55,8 @@
 
     in
     {
-      # Please replace my-nixos with your hostname
       nixosConfigurations.chicken = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
         modules = [
           {
             # pin system nixpkgs to the same version as the flake input
@@ -71,8 +70,6 @@
 
           home-manager.nixosModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit pkgs; };
             home-manager.users.hannah =
               { ... }:
@@ -96,7 +93,7 @@
         ];
       };
       nixosConfigurations.hatcher = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+
         modules = [
           (
             { pkgs, modulesPath, ... }:

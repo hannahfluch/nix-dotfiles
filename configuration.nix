@@ -50,6 +50,7 @@
     extraGroups = [
       "wheel"
       "video"
+      "wireshark"
     ]; # Enable ‘sudo’ for the user.
     packages = [ ];
   };
@@ -60,6 +61,7 @@
     vim
     git
     wget
+    wireshark
   ];
 
   # Display Manager
@@ -101,6 +103,13 @@
   programs.hyprland = {
     enable = true;
     withUWSM = true;
+  };
+
+  # Install wireshark + adds wireshark group
+  programs.wireshark = {
+    enable = true;
+    # capture usb traffic
+    usbmon.enable = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are

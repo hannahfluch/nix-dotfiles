@@ -6,6 +6,8 @@
         virtualenv
         requests
         pwntools
+        angr
+        z3-solver
       ]
     ))
     ruff
