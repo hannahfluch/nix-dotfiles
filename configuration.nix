@@ -51,6 +51,7 @@
       "wheel"
       "video"
       "wireshark"
+      "networkmanager"
     ]; # Enable ‘sudo’ for the user.
     packages = [ ];
   };
