@@ -10,7 +10,7 @@
     ".aspnet/"
   ];
 
-  persist.cache.contents = [
+  persist.caches.contents = [
     ".nuget/packages/"
     ".templateengine/"
   ];
