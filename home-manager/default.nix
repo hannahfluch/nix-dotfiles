@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  imports = [ ./terminal ./hyprland ./wofi.nix ./ssh.nix ./git.nix ];
+  imports = [ ./terminal ./hyprland ./wofi.nix ./ssh.nix ./git.nix ./applications ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -9,7 +9,6 @@
 
     packages = with pkgs; [
       # rust
-      (import ./rust-toolchain.nix pkgs)
 
       # python
       (python3.withPackages
@@ -18,25 +17,20 @@
       uv
 
       # js
-      nodejs-slim
-      bun
+      # nodejs-slim
+      # bun
 
       # c-sharp
-      dotnet-sdk
-      dotnet-ef
+      # dotnet-sdk
+      # dotnet-ef
 
       # c
-      libgcc
+      # libgcc
 
       # java
-      zulu8
-      zulu17
-      zulu24
-
-      # editors
-      zed-editor
-      jetbrains.datagrip
-      jetbrains.idea-ultimate
+      # zulu8
+      # zulu17
+      # zulu24
 
       # fonts
       meslo-lgs-nf
@@ -47,28 +41,35 @@
       ripgrep
       fastfetch
       tokei
-      tldr
+      tlrc
       screen
       docker
+      podman
+      warp
+
+      # ctf
+      # binaryninja-free
+      # ghidra-bin
+      # bytecode-viewer
+      # recaf-launcher
+      # networkminer
+      # wireshark
+      # hash_extender
+      # wineWowPackages.waylandFull
+      # qemu
+      # gdb
 
       # apps
-      libreoffice
-      geogebra6
-      baobab
-      warp
-      gimp
-      obsidian
-      teams-for-linux
-      packetTracer
-      firefox
-      (vesktop.overrideAttrs (finalAttrs: previousAttrs: {
-        postUnpack = ''
-          cp ${../custom_vesktop.gif} $sourceRoot/static/shiggy.gif
-
-          ${previousAttrs.postUnpack or ""}
-
-        '';
-      }))
+      # libreoffice
+      # geogebra6
+      # baobab
+      # warp
+      # gimp
+      # obsidian
+      # teams-for-linux
+      # packetTracer
+      # nautilus
+      
     ];
 
     # This value determines the Home Manager release that your
@@ -82,6 +83,17 @@
     stateVersion = "25.05";
   };
 
+  persist.data.contents = [
+    # user data
+    "music/"
+    "pictures/"
+    "documents/"
+    "videos/"
+    "dev/"
+
+    # nixos config
+    "nixcfg/"
+  ];
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

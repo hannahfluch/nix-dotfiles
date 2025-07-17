@@ -1,14 +1,13 @@
-{ pkgs, ... }: {
+{ pkgs,lib, ... }: {
   programs.helix = {
     enable = true;
     defaultEditor = true;
     extraPackages = with pkgs; [
-      (import ../rust-toolchain.nix pkgs)
+      (import ../toolchains/rust.nix pkgs)
       pyright
       ruff
 
       nil
-      nixfmt-classic
 
       omnisharp-roslyn
       csharpier
@@ -50,7 +49,7 @@
         {
           name = "nix";
           language-servers = [ "nil" ];
-          formatter.command = "nixfmt";
+          formatter.command = "${lib.getExe pkgs.nixfmt-rfc-style}";
           auto-format = true;
         }
         {

@@ -139,4 +139,8 @@
 
   # hyprland portal is added automatically, gtk for file-chooser
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
+  persist.data.contents = [
+    ".local/share/hyprland/lastVersion"
+  ];
 }
