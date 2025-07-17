@@ -4,6 +4,7 @@
   persist.location.data.contents = [
     "/var/lib/nixos/"
     "/etc/machine-id"
+    "/etc/NetworkManager/system-connections/"
   ];
 
   persist.location.caches.contents = [
