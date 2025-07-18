@@ -19,6 +19,8 @@
     hash_extender
     qemu
     gdb
+    winetricks
+    wineWowPackages.waylandFull
 
   ];
   persist.data.contents = [
