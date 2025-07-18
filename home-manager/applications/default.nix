@@ -10,6 +10,7 @@
     ./bytecode-viewer.nix
     ./libreoffice.nix
     ./burpsuite.nix
+    ./obsidian.nix
   ];
   home.packages = [
     pkgs.baobab
