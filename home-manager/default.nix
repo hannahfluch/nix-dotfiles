@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
+    ./xdg.nix
     ./terminal
     ./hyprland
     ./wofi.nix
@@ -16,11 +17,6 @@
     username = "hannah";
     homeDirectory = "/home/${username}";
 
-    sessionVariables = {
-      XDG_DOWNLOAD_DIR = "$HOME/downloads";
-      XDG_DOCUMENTS_DIR = "$HOME/documents";
-      QT_QPA_PLATFORM = "wayland";
-    };
     packages = with pkgs; [
       # fonts
       meslo-lgs-nf
