@@ -50,6 +50,7 @@
             "obsidian"
             "packetTracer"
             "binaryninja-free"
+            "volatility3"
           ];
       };
 
