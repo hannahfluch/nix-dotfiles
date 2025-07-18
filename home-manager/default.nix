@@ -21,24 +21,6 @@
       # fonts
       meslo-lgs-nf
 
-      # cli essentails
-      wl-clipboard
-      fd
-      ripgrep
-      fastfetch
-      tokei
-      tlrc
-      screen
-      docker
-      podman
-      unp
-
-      # ctf
-      # hash_extender
-      # wineWowPackages.waylandFull
-      # qemu
-      # gdb
-
       # apps
       # libreoffice
       # geogebra6

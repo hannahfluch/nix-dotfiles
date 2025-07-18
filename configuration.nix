@@ -86,7 +86,6 @@
     TTYVTDisallocate = true;
   };
 
-  # Qemu setup
   virtualisation =
     let
       options = {
@@ -96,6 +95,8 @@
       };
     in
     {
+      docker.enable = true;
+      podman.enable = true;
       vmVariant = options;
       vmVariantWithDisko = options;
     };
