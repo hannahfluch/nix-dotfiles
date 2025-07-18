@@ -9,5 +9,6 @@
     ./ghidra.nix
     ./bytecode-viewer.nix
     ./libreoffice.nix
+    ./burpsuite.nix
   ];
 }

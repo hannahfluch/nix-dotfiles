@@ -51,6 +51,7 @@
             "packetTracer"
             "binaryninja-free"
             "volatility3"
+            "burpsuite"
           ];
       };
 
