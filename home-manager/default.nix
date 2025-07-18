@@ -22,7 +22,6 @@
       meslo-lgs-nf
 
       # apps
-      # geogebra6
       # baobab
       # gimp
       # obsidian
