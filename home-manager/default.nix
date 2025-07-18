@@ -31,6 +31,7 @@
       screen
       docker
       podman
+      unp
 
       # ctf
       # hash_extender
