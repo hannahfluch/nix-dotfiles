@@ -24,13 +24,13 @@
           "$mod, Q, exec, ${lib.getExe pkgs.alacritty}"
           "$mod, X, forcekillactive"
           "$mod, F, exec, fullscreen"
-          "$mod, W, exec, ${lib.getExe pkgs.wofi}"
+          "$mod, W, exec, ${lib.getExe pkgs.fuzzel}"
           "$mod, M, exec, uwsm stop"
           "$mod, Space, togglefloating"
           "$mod SHIFT, Space, centerwindow"
           "$mod, F, fullscreen"
-          # todo: switch to cliphist-wofi-img
-          "$mod, V, exec, ${lib.getExe pkgs.cliphist} list | ${lib.getExe pkgs.wofi} --dmenu | ${lib.getExe pkgs.cliphist} decode | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}"
+          # todo: switch to cliphist-fuzzel-img
+          "$mod, V, exec, ${lib.getExe pkgs.cliphist} list | ${lib.getExe pkgs.fuzzel} --dmenu --with-nth 2 | ${lib.getExe pkgs.cliphist} decode | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}"
           "$mod, left, movefocus, l"
           "$mod, right, movefocus, r"
           "$mod, up, movefocus, u"
@@ -130,7 +130,6 @@
       # animations
       layerrule = [ "noanim, gtk4-layer-shell" ];
       windowrulev2 = [
-        "noanim, class:^(wofi)$"
         "noanim, class:^(waybar)$"
         "opacity 0.0 override, class:^(xwaylandvideobridge)$"
         "noanim, class:^(xwaylandvideobridge)$"

@@ -4,7 +4,7 @@
     ./xdg.nix
     ./terminal
     ./hyprland
-    ./wofi.nix
+    ./fuzzel.nix
     ./ssh.nix
     ./git.nix
     ./applications
