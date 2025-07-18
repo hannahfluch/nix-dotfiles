@@ -8,5 +8,6 @@
     ./warp.nix
     ./ghidra.nix
     ./bytecode-viewer.nix
+    ./libreoffice.nix
   ];
 }
