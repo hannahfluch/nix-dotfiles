@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./vesktop.nix
@@ -10,5 +10,8 @@
     ./bytecode-viewer.nix
     ./libreoffice.nix
     ./burpsuite.nix
+  ];
+  home.packages = [
+    pkgs.baobab
   ];
 }

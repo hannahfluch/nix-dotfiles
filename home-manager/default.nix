@@ -22,7 +22,6 @@
       meslo-lgs-nf
 
       # apps
-      # baobab
       # gimp
       # obsidian
       # teams-for-linux
