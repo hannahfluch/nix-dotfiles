@@ -22,11 +22,7 @@
 
   ];
   persist.data.contents = [
-    # docker containers
-    "/var/lib/docker/"
-    # docker config
-    "/root/.docker/"
-
+    ".wine/"
     # podman containers & config
     ".local/share/containers/storage/"
   ];
