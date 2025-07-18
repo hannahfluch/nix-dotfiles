@@ -28,6 +28,11 @@
       # teams-for-linux
       # packetTracer
       # nautilus
+      # hyprlock
+      # mysql workbench
+      # prismlauncher
+      # steam
+      # vlc
 
     ];
 
