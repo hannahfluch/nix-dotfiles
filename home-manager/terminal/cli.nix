@@ -21,7 +21,7 @@
     gdb
     winetricks
     wineWowPackages.waylandFull
-
+    volatility3
   ];
   persist.data.contents = [
     ".wine/"
