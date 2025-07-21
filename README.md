@@ -6,5 +6,8 @@ nix run -L 'path:.#nixosConfigurations.chicken.config.system.build.vmWithDisko'
 ```
 
 ## TODO
-- libdebug
+- libdebug, potentially nix-ld
 - fish: persist variables
+- disko: more swap
+- fix network miner
+- `file`
