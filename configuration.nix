@@ -7,6 +7,9 @@
     "flakes"
   ];
 
+  # disable nix channels
+  nix.channel.enable = false;
+
   # systemd bootloader
   boot.loader.systemd-boot.enable = true;
 
