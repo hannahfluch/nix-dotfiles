@@ -55,7 +55,7 @@ in
                     # Subvolume for the swapfile
                     "/swap" = {
                       mountpoint = "/.swapvol";
-                      swap.swapfile.size = "8G";
+                      swap.swapfile.size = "20G"; # no hibernation >:()
                     };
                   }
                   // (reasonable_subvolume "/persistent" [ ])
