@@ -4,6 +4,7 @@
   inputs = {
     # NixOS official package source, using the nixos-25.05 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     disko = {
       url = "github:nix-community/disko/latest";
@@ -28,6 +29,7 @@
     {
       self,
       nixpkgs,
+      unstable,
       disko,
       impermanence,
       home-manager,
@@ -55,6 +57,15 @@
           ];
       };
 
+      unstablePkgs = import unstable {
+        inherit system;
+        # todo: networkminer somehow requires this (???)
+        config.permittedInsecurePackages = [
+          "dotnet-sdk-6.0.428"
+          "dotnet-runtime-6.0.36"
+        ];
+      };
+
     in
     {
       nixosConfigurations.chicken = nixpkgs.lib.nixosSystem {
@@ -68,16 +79,16 @@
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
           ./configuration.nix
-          ./hosts/lenovo-v15-g3-iap.nix
+          ./hosts/lenovo-thinkpad-e14-g7.nix
 
           home-manager.nixosModules.home-manager
           {
-            home-manager.extraSpecialArgs = { inherit pkgs; };
+            home-manager.extraSpecialArgs = { inherit pkgs unstablePkgs; };
             home-manager.users.hannah =
               { ... }:
               {
                 imports = [
-                  ./home-manager
+                  ./home
                   ./persist/home.nix
                   impermanence.homeManagerModules.impermanence
                 ];
@@ -123,7 +134,7 @@
             }
           )
           ./hatcher.nix
-          ./hosts/lenovo-v15-g3-iap.nix
+          ./hosts/lenovo-thinkpad-e14-g7.nix
         ];
       };
     };
