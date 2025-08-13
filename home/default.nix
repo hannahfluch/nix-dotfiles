@@ -8,6 +8,8 @@
     ./ssh.nix
     ./git.nix
     ./applications
+    # ./applications/networkminer.nix
+    # ./applications/firefox.nix
     ./toolchains
   ];
 

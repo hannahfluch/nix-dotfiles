@@ -123,7 +123,7 @@
 
       # monitors
       monitor = [
-        "eDP-1,1920x1080,0x0,1"
+        "eDP-1,preferred,auto,1.2"
         ",preferred,auto,1,mirror,eDP-1" # ,prefered,auto,1
       ];
 
