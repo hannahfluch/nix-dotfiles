@@ -11,6 +11,7 @@
     ./libreoffice.nix
     ./burpsuite.nix
     ./obsidian.nix
+    ./networkminer.nix
   ];
   home.packages = [
     pkgs.baobab
