@@ -23,6 +23,12 @@
       url = "github:nix-community/fenix/monthly";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+    exchequer.url = "git+ssh://git@github.com/hannahfluch/exchequer?ref=main";
   };
 
   outputs =
@@ -34,11 +40,12 @@
       impermanence,
       home-manager,
       fenix,
+      agenix,
+      exchequer,
       ...
     }:
     let
       system = "x86_64-linux";
-      overlays = [ fenix.overlays.default ];
       pkgs = pkgsExternal.extend (_: prev: import ./pkgs prev);
 
       pkgsExternal = import nixpkgs {
@@ -56,6 +63,15 @@
             "burpsuite"
           ];
       };
+
+      agenixOverlay = self: super: {
+        agenix = agenix.packages.${system}.default;
+      };
+
+      overlays = [
+        fenix.overlays.default
+        agenixOverlay
+      ];
 
       unstablePkgs = import unstable {
         inherit system;
@@ -83,16 +99,20 @@
 
           home-manager.nixosModules.home-manager
           {
-            home-manager.extraSpecialArgs = { inherit pkgs unstablePkgs; };
-            home-manager.users.hannah =
-              { ... }:
-              {
-                imports = [
-                  ./home
-                  ./persist/home.nix
-                  impermanence.homeManagerModules.impermanence
-                ];
-              };
+            home-manager = {
+
+              extraSpecialArgs = { inherit pkgs unstablePkgs; };
+              users.hannah =
+                { ... }:
+                {
+                  imports = [
+                    ./home
+                    ./persist/home.nix
+                    impermanence.homeManagerModules.impermanence
+                    agenix.homeManagerModules.default
+                  ];
+                };
+            };
           }
 
           disko.nixosModules.disko
@@ -103,6 +123,9 @@
 
           ./persist/persist.nix
           ./persist/conf.nix
+
+          agenix.nixosModules.default
+          exchequer.nixosModules.default
         ];
       };
       nixosConfigurations.hatcher = nixpkgs.lib.nixosSystem {
