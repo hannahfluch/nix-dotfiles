@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
 
   # settings
@@ -46,10 +51,15 @@
   # Enable keyring storage
   services.gnome.gnome-keyring.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # age secrets
+  # agenix runs BEFORE impermanence
+  age.identityPaths = [ "/persistent/data/home/hannah/nixcfg/keys/id_ed25519" ];
+
+  # user accounts
+  users.mutableUsers = false;
   users.users.hannah = {
     isNormalUser = true;
-    initialPassword = "lol";
+    hashedPasswordFile = config.age.secrets.passwd.path;
     extraGroups = [
       "wheel"
       "video"
