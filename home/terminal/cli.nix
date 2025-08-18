@@ -14,6 +14,7 @@
     podman
     podman-compose
     unp
+    file
 
     # ctf
     hash_extender
