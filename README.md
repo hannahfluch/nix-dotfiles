@@ -8,6 +8,9 @@ nix run -L 'path:.#nixosConfigurations.chicken.config.system.build.vmWithDisko'
 ## TODO
 - libdebug, potentially nix-ld
 - fish: persist variables
-~~- fix network miner~~
-- `file`
+- ~~ fix network miner~~
+- ~~`file`~~
 - configure git PAT in config
+- ropper
+- telegram
+- msfvenom
