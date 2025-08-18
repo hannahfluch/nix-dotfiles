@@ -58,6 +58,9 @@
 
     # nixos config
     "nixcfg/"
+
+    # chromium certificates
+    ".pki/"
   ];
 
   persist.caches.contents = [
