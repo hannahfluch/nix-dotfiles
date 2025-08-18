@@ -20,12 +20,9 @@
     hash_extender
     qemu
     gdb
-    winetricks
-    wineWowPackages.waylandFull
     volatility3
   ];
   persist.data.contents = [
-    ".wine/"
     # podman containers & config
     ".local/share/containers/storage/"
   ];
