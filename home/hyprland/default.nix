@@ -155,8 +155,23 @@
     };
   };
 
-  # prefer wayland
-  home.file."${config.xdg.configHome}/uwsm/env".text = "export QT_QPA_PLATFORM=wayland";
+  # wm env vars
+  home.file."${config.xdg.configHome}/uwsm/env".text = ''
+    # perfer wayland for qt apps
+    export QT_QPA_PLATFORM=wayland;xcb
+
+    # perfer wayland for gtk apps
+    export GDK_BACKEND=wayland,x11,*
+
+    # run sdl2 apps on wayland
+    export SDL_VIDEODRIVER=wayland
+
+    # autoscale qt apps based on monitor
+    export QT_AUTO_SCREEN_SCALE_FACTOR=1
+
+    # force electron apps to use wayland
+    export NIXOS_OZONE_WL=1
+  '';
 
   persist.data.contents = [
     ".local/share/hyprland/lastVersion"

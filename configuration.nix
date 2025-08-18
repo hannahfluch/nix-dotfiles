@@ -77,21 +77,6 @@
     wget
     wireshark
   ];
-  environment.sessionVariables = {
-    ### wm stuff
-
-    # force all electron apps to use wayland
-    NIXOS_OZONE_WL = "1";
-    # perfer wayland for gtk apps
-    GDK_BACKEND = "wayland,x11,*";
-    # perfer wayland for qt apps
-    QT_QPA_PLATFORM = "wayland;xcb";
-    # run sdl2 apps on wayland
-    SDL_VIDEODRIVER = "wayland";
-
-    # auto scale QT apps based on monitor
-    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-  };
 
   # Display Manager
   services.greetd = {
