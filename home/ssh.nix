@@ -9,11 +9,20 @@ in
   };
 
   persist.data.contents = [
-    # TODO: fix permissions
     # keys
-    ".ssh/"
-    ".gnupg/"
-    ".local/share/keyrings/"
+    {
+      directory = ".ssh/";
+      mode = "0700";
+    }
+
+    {
+      directory = ".gnupg/";
+      mode = "0700";
+    }
+    {
+      directory = ".local/share/keyrings/";
+      mode = "0700";
+    }
   ];
 
   programs.ssh.enable = true;
