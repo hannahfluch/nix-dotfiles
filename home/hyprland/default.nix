@@ -21,10 +21,10 @@
       "$mod" = "SUPER";
       bind =
         [
-          "$mod, Q, exec, ${lib.getExe pkgs.alacritty}"
+          "$mod, Q, exec,uwsm app -- alacritty" # bluetooth doesnt work without uwsm-specific launch
           "$mod, X, forcekillactive"
           "$mod, F, exec, fullscreen"
-          "$mod, W, exec, ${lib.getExe pkgs.fuzzel}"
+          "$mod, W, exec, uwsm app -- fuzzel"
           "$mod, M, exec, uwsm stop"
           "$mod, Space, togglefloating"
           "$mod SHIFT, Space, centerwindow"

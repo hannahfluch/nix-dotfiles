@@ -9,7 +9,11 @@
     "/var/lib/docker/"
     # docker config
     "/root/.docker/"
-
+    # bluetooth connections
+    {
+      directory = "/var/lib/bluetooth/";
+      mode = "0700";
+    }
   ];
 
   persist.location.caches.contents = [
