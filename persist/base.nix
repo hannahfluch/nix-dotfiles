@@ -1,6 +1,10 @@
 { lib, ... }:
 rec {
-  defaultMode = "0755";
+  defaultPerms = {
+    mode = "0755";
+    user = "root";
+    group = "root";
+  };
   persistentOption =
     with lib;
     with lib.types;
@@ -14,44 +18,54 @@ rec {
           };
           contents = mkOption {
             default = [ ];
-            type = types.listOf (
-              types.coercedTo types.str
+            type = listOf (
+              coercedTo str
                 (
                   s:
                   if isDirectory s then
                     {
                       directory = stripTrailing s;
-                      mode = defaultMode;
                       file = null;
                     }
+                    // defaultPerms
                   else
                     {
                       file = s;
                       directory = null;
                       mode = null;
+                      user = null;
+                      group = null;
                     }
                 )
-                (
-                  types.submodule {
-                    options = {
-                      directory = mkOption {
-                        type = nullOr str;
-                        default = null;
-                        description = "Path to directory.";
-                      };
-                      mode = mkOption {
-                        type = nullOr str;
-                        default = null;
-                        description = "Permissions mode (e.g., 0700).";
-                      };
-                      file = mkOption {
-                        type = nullOr str;
-                        default = null;
-                        description = "Path to file.";
-                      };
+                (submodule {
+                  options = {
+                    directory = mkOption {
+                      type = nullOr str;
+                      default = null;
+                      description = "Path to directory.";
                     };
-                  }
-                )
+                    mode = mkOption {
+                      type = nullOr str;
+                      default = defaultPerms.mode;
+                      description = "Permissions mode for directory (e.g., 0700). Does not apply to file.";
+                    };
+                    group = mkOption {
+                      type = nullOr str;
+                      default = defaultPerms.group;
+                      description = "Group of directory (e.g., root). Does not apply to file.";
+                    };
+                    user = mkOption {
+                      type = nullOr str;
+                      default = defaultPerms.user;
+                      description = "Owner of directory (e.g., root). Does not apply to file.";
+                    };
+                    file = mkOption {
+                      type = nullOr str;
+                      default = null;
+                      description = "Path to file.";
+                    };
+                  };
+                })
             );
           };
         };
@@ -73,10 +87,7 @@ rec {
     file = e.file;
   });
 
-  transformDir = map (e: {
-    directory = e.directory;
-    mode = if e.mode != null then e.mode else defaultMode;
-  });
+  transformDir = map (e: builtins.removeAttrs e [ "file" ]);
 
   parseUserDirectories = paths: transformDir (filter2 (not isSystem) isDirectory paths);
   parseUserFiles = paths: transformFile (filter2 (not isSystem) (not isDirectory) paths);
