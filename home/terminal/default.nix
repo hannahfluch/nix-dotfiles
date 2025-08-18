@@ -6,6 +6,7 @@
     ./starship.nix
     ./helix.nix
     ./cli.nix
+    ./wine.nix
   ];
   programs.nix-index = {
     enable = true;
