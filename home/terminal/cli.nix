@@ -23,6 +23,7 @@
     qemu
     gdb
     volatility3
+    rubyPackages_3_4.seccomp-tools
   ];
   persist.data.contents = [
     # podman containers & config
