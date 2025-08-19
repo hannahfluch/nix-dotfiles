@@ -102,16 +102,6 @@
     TTYVTDisallocate = true;
   };
 
-  # make nixcfg writeable by `hannah`
-  systemd.user.services.writableConfig = {
-    description = "Make nixcfg directory writeable.";
-    script = ''
-      chown -R hannah /home/hannah/nixcfg
-      chmod -R g+w,u+w,o= /home/hannah/nixcfg
-    '';
-    wantedBy = [ "multi-user.target" ]; # starts after login
-  };
-
   virtualisation =
     let
       options = {

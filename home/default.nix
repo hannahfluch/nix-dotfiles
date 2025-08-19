@@ -12,6 +12,25 @@
     ./toolchains
   ];
 
+  # make nixcfg writeable by `hannah`
+  systemd.user.services.writableConfig =
+    let
+      after = "multi-user.target";
+    in
+    {
+      Unit = {
+        Description = "Make nixcfg writable by `hannah`";
+        After = [ "${after}" ];
+      };
+
+      Service = {
+        ExecStart = "chown -R hannah /home/hannah/nixcfg; chmod -R 0700 /home/hannah/nixcfg;";
+        Restart = "on-failure";
+      };
+
+      Install.WantedBy = [ "${after}" ]; # starts after login
+    };
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home = rec {
