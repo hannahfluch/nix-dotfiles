@@ -15,6 +15,8 @@
     podman-compose
     unp
     file
+    man-pages
+    man-pages-posix
 
     # ctf
     hash_extender
