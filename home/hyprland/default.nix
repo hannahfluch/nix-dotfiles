@@ -8,6 +8,7 @@
   imports = [
     ./hyprcursor.nix
     ./dark-theme.nix
+    ./quickshell.nix
   ];
 
   wayland.windowManager.hyprland = {
