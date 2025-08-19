@@ -14,6 +14,8 @@
       directory = "/var/lib/bluetooth/";
       mode = "0700";
     }
+    # system ssh keys
+    "/etc/ssh/"
   ];
 
   persist.location.caches.contents = [
