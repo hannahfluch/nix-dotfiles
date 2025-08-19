@@ -29,6 +29,10 @@
       inputs.home-manager.follows = "home-manager";
     };
     exchequer.url = "git+ssh://git@github.com/hannahfluch/exchequer?ref=main";
+    firefox-extensions = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -42,6 +46,7 @@
       fenix,
       agenix,
       exchequer,
+      firefox-extensions,
       ...
     }:
     let
@@ -64,14 +69,13 @@
           ];
       };
 
-      agenixOverlay = self: super: {
-        agenix = agenix.packages.${system}.default;
-      };
-
       overlays = [
         fenix.overlays.default
-        agenixOverlay
       ];
+      extra = {
+        agenix = agenix.packages.${system}.default;
+        extensions = firefox-extensions.packages.x86_64-linux;
+      };
 
       unstablePkgs = import unstable {
         inherit system;
@@ -101,7 +105,7 @@
           {
             home-manager = {
 
-              extraSpecialArgs = { inherit pkgs unstablePkgs; };
+              extraSpecialArgs = { inherit pkgs unstablePkgs extra; };
               users.hannah =
                 { ... }:
                 {

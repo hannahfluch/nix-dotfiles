@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ extra, ... }:
 {
   home.packages = [
-    pkgs.agenix
+    extra.agenix
   ];
 }
