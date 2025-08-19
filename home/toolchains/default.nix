@@ -8,6 +8,6 @@
   ];
   home.packages = [
     (import ./rust.nix pkgs)
-    pkgs.libgcc
+    pkgs.gcc
   ];
 }
