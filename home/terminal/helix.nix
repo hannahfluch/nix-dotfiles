@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.helix = {
     enable = true;
     defaultEditor = true;
@@ -45,7 +46,7 @@
 
         {
           name = "python";
-          language-servers = [ "pyright" "ruff" ];
+          language-servers = [ "pyright" ]; # maybe: ruff
         }
         {
           name = "nix";

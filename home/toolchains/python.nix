@@ -5,7 +5,7 @@
       pythonPackages: with pythonPackages; [
         virtualenv
         requests
-        pwntools
+        pwntools # todo: shellcraft requires gcc at runtime
         angr
         z3-solver
       ]
