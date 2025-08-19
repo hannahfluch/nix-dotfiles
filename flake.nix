@@ -33,6 +33,10 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -47,6 +51,7 @@
       agenix,
       exchequer,
       firefox-extensions,
+      quickshell,
       ...
     }:
     let
@@ -75,6 +80,10 @@
       extra = {
         agenix = agenix.packages.${system}.default;
         extensions = firefox-extensions.packages.x86_64-linux;
+        quickshell = quickshell.packages.${system}.default.override {
+          withX11 = false;
+          withI3 = false;
+        };
       };
 
       unstablePkgs = import unstable {
