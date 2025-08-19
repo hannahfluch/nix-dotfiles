@@ -1,10 +1,5 @@
 { lib, ... }:
 rec {
-  defaultPerms = {
-    mode = "0755";
-    user = "root";
-    group = "root";
-  };
   persistentOption =
     with lib;
     with lib.types;
@@ -27,14 +22,10 @@ rec {
                       directory = stripTrailing s;
                       file = null;
                     }
-                    // defaultPerms
                   else
                     {
                       file = s;
                       directory = null;
-                      mode = null;
-                      user = null;
-                      group = null;
                     }
                 )
                 (submodule {
@@ -46,17 +37,17 @@ rec {
                     };
                     mode = mkOption {
                       type = nullOr str;
-                      default = defaultPerms.mode;
+                      default = null;
                       description = "Permissions mode for directory (e.g., 0700). Does not apply to file.";
                     };
                     group = mkOption {
                       type = nullOr str;
-                      default = defaultPerms.group;
+                      default = null;
                       description = "Group of directory (e.g., root). Does not apply to file.";
                     };
                     user = mkOption {
                       type = nullOr str;
-                      default = defaultPerms.user;
+                      default = null;
                       description = "Owner of directory (e.g., root). Does not apply to file.";
                     };
                     file = mkOption {
@@ -87,7 +78,16 @@ rec {
     file = e.file;
   });
 
-  transformDir = map (e: builtins.removeAttrs e [ "file" ]);
+  transformDir = map (
+    e:
+
+    {
+      directory = e.directory;
+    }
+    // (lib.optionalAttrs (e.mode != null) { mode = e.mode; })
+    // (lib.optionalAttrs (e.user != null) { user = e.user; })
+    // (lib.optionalAttrs (e.group != null) { group = e.group; })
+  );
 
   parseUserDirectories = paths: transformDir (filter2 (not isSystem) isDirectory paths);
   parseUserFiles = paths: transformFile (filter2 (not isSystem) (not isDirectory) paths);
