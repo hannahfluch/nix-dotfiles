@@ -9,5 +9,7 @@
   home.packages = [
     (import ./rust.nix pkgs)
     pkgs.gcc
+    pkgs.kdePackages.qtdeclarative # qmlformat todo: add to helix
+
   ];
 }
