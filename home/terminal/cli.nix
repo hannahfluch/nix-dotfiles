@@ -32,7 +32,5 @@
   persist.caches.contents = [
     # podman
     ".local/share/containers/cache/"
-    # man
-    ".manpath"
   ];
 }
