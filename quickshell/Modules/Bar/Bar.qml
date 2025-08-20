@@ -18,8 +18,8 @@ Variants {
         color: Color.transparent
         visible: true
         anchors {
-            top: Style.barPosition === "top"
-            bottom: Style.barPosition === "bottom"
+            top: Settings.bar.top
+            bottom: !Settings.bar.top
             left: true
             right: true
         }
@@ -33,7 +33,7 @@ Variants {
                 id: bar
 
                 anchors.fill: parent
-                color: Qt.rgba(Color.mSurface.r, Color.mSurface.g, Color.mSurface.b, Style.barBackgroundOpacity)
+                color: Qt.rgba(Color.mSurface.r, Color.mSurface.g, Color.mSurface.b, Settings.bar.backgroundOpacity)
                 layer.enabled: true
             }
             // Left

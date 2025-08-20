@@ -7,9 +7,6 @@ import Quickshell.Io
 Singleton {
     id: root
 
-    // Bar config
-    property string barPosition: "top"
-    property real barBackgroundOpacity: 1.0
     // Font to use
     property string fontFamily: "Roboto"
 
