@@ -80,6 +80,10 @@
 
     # chromium certificates
     ".pki/"
+
+    # audio
+    ".config/pulse/"
+    ".local/state/wireplumber/"
   ];
 
   persist.caches.contents = [
