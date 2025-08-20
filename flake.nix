@@ -98,7 +98,7 @@
     in
     {
       nixosConfigurations.chicken = nixpkgs.lib.nixosSystem {
-        inherit system;
+        inherit system pkgs;
         modules = [
           {
             # pin system nixpkgs to the same version as the flake input
@@ -114,7 +114,9 @@
           {
             home-manager = {
 
-              extraSpecialArgs = { inherit pkgs unstablePkgs extra; };
+              # same pkgs, overlays, ... for nixos and home-manager
+              useGlobalPkgs = true;
+              extraSpecialArgs = { inherit unstablePkgs extra; };
               users.hannah =
                 { ... }:
                 {
