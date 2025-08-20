@@ -74,6 +74,10 @@
           name = "c";
           language-servers = [ "clangd" ];
         }
+        {
+          name = "qml";
+          language-servers = [ ];
+        }
       ];
     };
   };
