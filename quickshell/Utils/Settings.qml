@@ -4,7 +4,8 @@ import Quickshell.Io
 
  Singleton {
     id: root
-    
+
+      property real scale: 1.3333; // todo: make this monitor speciifc
       // Bar config
       property JsonObject bar
 
