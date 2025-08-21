@@ -21,7 +21,7 @@ Item {
   signal hidden
   signal entered
   signal exited
-  signal clicked
+  signal clicked(MouseEvent mouse)
   signal wheel(int delta)
 
   // Internal state
@@ -187,6 +187,7 @@ Item {
   MouseArea {
     anchors.fill: parent
     hoverEnabled: true
+    acceptedButtons: Qt.LeftButton | Qt.RightButton
     onEntered: {
       showDelayed()
       tooltip.show()
@@ -197,12 +198,12 @@ Item {
       tooltip.hide()
       root.exited()
     }
-    onClicked: {
-      root.clicked()
+    onClicked: mouse => {
+      root.clicked(mouse)
     }
     onWheel: wheel => {
-               root.wheel(wheel.angleDelta.y)
-             }
+       root.wheel(wheel.angleDelta.y)
+     }
   }
 
   function show() {
