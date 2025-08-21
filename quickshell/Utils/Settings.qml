@@ -6,6 +6,7 @@ import Quickshell.Io
     id: root
 
       property real scale: 1.3333; // todo: make this monitor speciifc
+      property bool volumeOverdrive: false;
       // Bar config
       property JsonObject bar
 
@@ -19,5 +20,10 @@ import Quickshell.Io
         property bool showTray: true
         property real backgroundOpacity: 1.0
         property list<string> monitors: []
+      }
+
+      property JsonObject general
+      general: JsonObject {
+        property bool dimDesktop: true
       }
 }

@@ -12,7 +12,7 @@ Variants {
     delegate: PanelWindow {
         id: root
         required property ShellScreen modelData
-        readonly property real scaling: ScalingService.dynamic(screen)
+        readonly property real scaling: ScalingService.scale(screen)
         screen: modelData
         implicitHeight: Style.barHeight * scaling
         color: Color.transparent
@@ -71,8 +71,12 @@ Variants {
                 anchors.verticalCenter: bar.verticalCenter
                 spacing: Style.marginS * scaling
 
+                Volume {
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+ 
                 Battery {
-                  anchors.verticalCenter: parent.verticalCenter
+                    anchors.verticalCenter: parent.verticalCenter
                 }
             }
         }
