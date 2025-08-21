@@ -39,6 +39,12 @@ LoaderWidget {
         hideTimer.start()
       }
 
+    Shortcut {
+      sequence: "Escape"          
+      context: Qt.WindowShortcut
+      onActivated: panel.hide()
+  }
+
       // Connect to NPanel's dismissed signal to handle external close events
       Connections {
         target: panel
