@@ -6,6 +6,8 @@ import qs.Widgets
 Rectangle {
     id: root
 
+    property string tooltipText: ""
+
     signal entered
     signal exited
     signal clicked
@@ -21,13 +23,27 @@ Rectangle {
         font.weight: Style.fontWeightBold
     }
 
+    TooltipWidget {
+        id: tooltip
+        positionAbove: !Settings.bar.top
+        target: root
+        delay: Style.tooltipDelayLong
+        text: root.tooltipText
+    }
+
     MouseArea {
         id: clockMouseArea
         anchors.fill: parent
         cursorShape: Qt.PointingHandCursor
         hoverEnabled: true
-        onEntered: root.entered()
-        onExited: root.exited()
+        onEntered: {
+            tooltip.show()
+            root.entered()
+        }
+        onExited: {
+            tooltip.hide()
+            root.exited()
+        }
         onClicked: root.clicked()
     }
 }
