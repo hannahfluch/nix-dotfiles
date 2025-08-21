@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, unstablePkgs, ... }:
 {
   imports = [
     ./xdg.nix
@@ -40,6 +40,7 @@
     packages = with pkgs; [
       # fonts
       meslo-lgs-nf
+      unstablePkgs.material-symbols # rendering issue with the current stable one
 
       # apps
       # gimp
