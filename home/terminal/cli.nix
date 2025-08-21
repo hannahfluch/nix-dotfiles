@@ -17,6 +17,8 @@
     file
     man-pages
     man-pages-posix
+    traceroute
+    bottom
 
     # ctf
     hash_extender
@@ -24,6 +26,8 @@
     gdb
     volatility3
     rubyPackages_3_4.seccomp-tools
+    nmap
+    metasploit
   ];
   persist.data.contents = [
     # podman containers & config
