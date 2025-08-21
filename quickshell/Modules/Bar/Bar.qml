@@ -55,6 +55,7 @@ Variants {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: Style.marginS * scaling
+
                 Clock {
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -69,6 +70,10 @@ Variants {
                 anchors.rightMargin: Style.marginS * scaling
                 anchors.verticalCenter: bar.verticalCenter
                 spacing: Style.marginS * scaling
+
+                Battery {
+                  anchors.verticalCenter: parent.verticalCenter
+                }
             }
         }
     }
