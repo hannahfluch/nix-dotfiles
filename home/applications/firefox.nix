@@ -24,6 +24,9 @@
     };
 
     profiles.default = {
+      settings = {
+        "sidebar.verticalTabs" = true;
+      };
       bookmarks = {
         force = true;
         settings = [
