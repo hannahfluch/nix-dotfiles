@@ -14,3 +14,9 @@ nix run -L 'path:.#nixosConfigurations.chicken.config.system.build.vmWithDisko'
 - telegram
 - msfvenom
 - backups
+
+
+## For next Release
+- material-symbols (stable)
+- quickshell (hm)
+- networkminer (stable)
