@@ -11,6 +11,6 @@ nix run -L 'path:.#nixosConfigurations.chicken.config.system.build.vmWithDisko'
 - ~~ fix network miner~~
 - ~~`file`~~
 - configure git PAT in config
-- ropper
 - telegram
 - msfvenom
+- backups
