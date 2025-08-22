@@ -51,7 +51,7 @@ Rectangle {
   TooltipWidget {
     id: tooltip
     target: root
-    positionAbove: !Settings.bar.top
+    positionAbove: !Settings.data.bar.top
     text: root.tooltipText
   }
 

@@ -18,8 +18,8 @@ Variants {
         color: Color.transparent
         visible: true
         anchors {
-            top: Settings.bar.top
-            bottom: !Settings.bar.top
+            top: Settings.data.bar.top
+            bottom: !Settings.data.bar.top
             left: true
             right: true
         }
@@ -33,7 +33,7 @@ Variants {
                 id: bar
 
                 anchors.fill: parent
-                color: Qt.rgba(Color.mSurface.r, Color.mSurface.g, Color.mSurface.b, Settings.bar.backgroundOpacity)
+                color: Qt.rgba(Color.mSurface.r, Color.mSurface.g, Color.mSurface.b, Settings.data.bar.backgroundOpacity)
                 layer.enabled: true
             }
             // Left
@@ -71,6 +71,10 @@ Variants {
                 anchors.verticalCenter: bar.verticalCenter
                 spacing: Style.marginS * scaling
 
+                NotificationHistory {
+                  anchors.verticalCenter: parent.verticalCenter
+                }
+                
                 Volume {
                     anchors.verticalCenter: parent.verticalCenter
                 }

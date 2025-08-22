@@ -86,7 +86,7 @@ ColumnLayout {
               SliderWidget {
                 Layout.fillWidth: true
                 from: 0
-                to: Settings.volumeOverdrive ? 2.0 : 1.0
+                to: Settings.data.volumeOverdrive ? 2.0 : 1.0
                 value: localVolume
                 stepSize: 0.01
                 onMoved: {
