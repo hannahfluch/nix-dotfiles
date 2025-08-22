@@ -9,7 +9,6 @@ Rectangle {
     height: Math.round(Style.capsuleHeight * scaling)
     radius: Math.round(Style.radiusM * scaling)
     color: Color.mSurfaceVariant
-    
 
     ClockWidget {
         id: clock

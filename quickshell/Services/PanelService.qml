@@ -3,10 +3,10 @@ pragma Singleton
 import Quickshell
 
 Singleton {
-  id: root
+    id: root
 
-  // Currently opened panel
-  property var openedPanel: null
+    // Currently opened panel
+    property var openedPanel: null
 
-  property var sidePanel: null
+    property var sidePanel: null
 }
