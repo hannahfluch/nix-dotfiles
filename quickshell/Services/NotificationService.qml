@@ -33,6 +33,7 @@ QtObject {
         // Still add to history but don't show notification
         root.addToHistory(notification)
         root.count += 1
+        root.newSilent(notification)
         return
       }
 
@@ -203,6 +204,8 @@ QtObject {
 
   // Signal to trigger animation before removal
   signal animateAndRemove(var notification, int index)
+
+  signal newSilent(var notification); // new silent notification 
 
   // Function to remove all notifications from the model
   function removeAllNotifications() {

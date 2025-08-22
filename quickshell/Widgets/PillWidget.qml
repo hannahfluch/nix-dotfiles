@@ -12,6 +12,7 @@ Item {
   property color pillColor: Color.mSurfaceVariant
   property color textColor: Color.mOnSurface
   property color iconCircleColor: Color.mPrimary
+  property color collapsedIconCircleColor: Color.mSurfaceVariant
   property color iconTextColor: Color.mSurface
   property color collapsedIconColor: Color.mOnSurface
   property real sizeMultiplier: 0.8
@@ -80,7 +81,7 @@ Item {
     width: iconSize
     height: iconSize
     radius: width * 0.5
-    color: showPill ? iconCircleColor : Color.mSurfaceVariant
+    color: showPill ? iconCircleColor : collapsedIconCircleColor
     anchors.verticalCenter: parent.verticalCenter
     anchors.right: parent.right
 
@@ -94,7 +95,7 @@ Item {
     IconWidget {
       text: root.icon
       font.pointSize: Style.fontSizeM * scaling
-      color: showPill ? iconTextColor : Color.mOnSurface
+      color: showPill ? iconTextColor : collapsedIconColor
       anchors.centerIn: parent
     }
   }
