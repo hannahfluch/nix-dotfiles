@@ -17,5 +17,4 @@ ShellRoot {
     NotificationHistoryPanel {
         id: notificationHistoryPanel
     }
-
 }

@@ -72,13 +72,13 @@ Variants {
                 spacing: Style.marginS * scaling
 
                 NotificationHistory {
-                  anchors.verticalCenter: parent.verticalCenter
+                    anchors.verticalCenter: parent.verticalCenter
                 }
-                
+
                 Volume {
                     anchors.verticalCenter: parent.verticalCenter
                 }
- 
+
                 Battery {
                     anchors.verticalCenter: parent.verticalCenter
                 }

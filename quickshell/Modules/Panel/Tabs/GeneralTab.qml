@@ -1,8 +1,7 @@
 import QtQuick.Layouts
 
 ColumnLayout {
-  id: root
+    id: root
 
-  spacing: 0
-
+    spacing: 0
 }

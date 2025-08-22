@@ -37,12 +37,12 @@ Rectangle {
         cursorShape: Qt.PointingHandCursor
         hoverEnabled: true
         onEntered: {
-            tooltip.show()
-            root.entered()
+            tooltip.show();
+            root.entered();
         }
         onExited: {
-            tooltip.hide()
-            root.exited()
+            tooltip.hide();
+            root.exited();
         }
         onClicked: root.clicked()
     }
