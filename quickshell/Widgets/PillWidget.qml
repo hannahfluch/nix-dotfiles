@@ -168,7 +168,7 @@ Item {
 
   TooltipWidget {
     id: tooltip
-    positionAbove: !Settings.bar.top
+    positionAbove: !Settings.data.bar.top
     target: pill
     delay: Style.tooltipDelayLong
     text: root.tooltipText

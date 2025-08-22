@@ -25,7 +25,7 @@ Rectangle {
 
     TooltipWidget {
         id: tooltip
-        positionAbove: !Settings.bar.top
+        positionAbove: !Settings.data.bar.top
         target: root
         delay: Style.tooltipDelayLong
         text: root.tooltipText
