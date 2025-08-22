@@ -4,8 +4,13 @@ import Quickshell.Wayland
 import qs.Utils
 import qs.Services
 import qs.Widgets
-PillWidget {
+import Quickshell.Services.Notifications
+
+Item {
   id: root
+
+  width: pill.width
+  height: pill.height
 
   function notificationIcon() {
     if (Settings.data.notifications.suppressed)
@@ -13,9 +18,32 @@ PillWidget {
     return "notifications"
   }
 
+  Timer {
+    id: flashTimer
+    repeat: false
+    interval: Style.animationSlow
+    onTriggered: {
+      pill.collapsedIconCircleColor = Color.mSurfaceVariant
+      pill.collapsedIconColor = Color.mOnSurface
+    }
+  }
+
+    
+  // used to trigger flash when notification is received on silent mode
+  Component.onCompleted: {
+  NotificationService.newSilent.connect(function (notification) {
+    pill.collapsedIconCircleColor = (notification.urgency === NotificationUrgency.Critical) ? Color.mError : (notification.urgency === NotificationUrgency.Low) ? Color.mOnSurface : Color.mPrimary
+    pill.collapsedIconColor = pill.iconTextColor
+    flashTimer.start()
+  })
+}
+PillWidget {
+  id: pill
+
+
   visible: true
   icon: root.notificationIcon()
-  iconCircleColor: Color.mPrimary
+  collapsedIconCircleColor: Color.mSurfaceVariant
   collapsedIconColor: Color.mOnSurface
   text: NotificationService.count
   tooltipText: "Notifications: " + NotificationService.count + "\nLeft click for notification history.\nRight click to toggle notification visibility."
@@ -49,7 +77,7 @@ PillWidget {
           case Qt.RightButton:
             Settings.data.notifications.suppressed = !Settings.data.notifications.suppressed
             break
-   
-    }
+       }
   }
+}
 }
