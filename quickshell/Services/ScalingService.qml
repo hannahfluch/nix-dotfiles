@@ -2,9 +2,21 @@ pragma Singleton
 
 import Quickshell
 import qs.Utils
+import qs.Services
 
 Singleton {
     id: root
+    // -------------------------------------------
+    // Manual scaling via Settings
+    function scale(aScreen) {
+        Logger.log("Scaling", aScreen.name)
+        try {
+            return MonitorService.getMonitorByName(aScreen.name).scale;
+        }catch (e) {
+            Logger.warn(e)
+        }
+        return Settings.data.general.defaultScale;
+    }
     // -------------------------------------------
     // Dynamic scaling based on resolution
 
@@ -17,9 +29,9 @@ Singleton {
     // readonly property int designScreenHeight: 1107
 
     // todo: proper scaling
-    function scale(aScreen) {
-        var ratioW = aScreen.width / (designScreenWidth / Settings.scale);
-        var ratioH = aScreen.height / (designScreenHeight / Settings.scale);
+    function dynamic(aScreen) {
+        var ratioW = aScreen.width / (designScreenWidth / Settings.data.general.defaultScale);
+        var ratioH = aScreen.height / (designScreenHeight / Settings.data.general.defaultScale);
         return Math.min(ratioW, ratioH);
     }
 }
