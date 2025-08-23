@@ -29,6 +29,8 @@
     nmap
     metasploit
   ];
+
+  services.podman.enable = true;
   persist.data.contents = [
     # podman containers & config
     ".local/share/containers/storage/"
