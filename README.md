@@ -16,6 +16,8 @@ nix run -L 'path:.#nixosConfigurations.chicken.config.system.build.vmWithDisko'
 - telegram
 - ~~msfvenom~~
 - backups
+- fix uv
+- add python to prompt
 
 
 ## For next Release
