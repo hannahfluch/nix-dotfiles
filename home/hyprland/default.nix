@@ -11,6 +11,7 @@
     ./dark-theme.nix
     ./quickshell.nix
   ];
+  programs.hyprlock.enable = true; # temporary until quickshell is done
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -28,6 +29,7 @@
           "$mod, X, forcekillactive"
           "$mod, F, exec, fullscreen"
           "$mod, W, exec, uwsm app -- fuzzel"
+          "$mod, L, exec, uwsm app -- hyprlock"
           "$mod, M, exec, uwsm stop"
           "$mod, Space, togglefloating"
           "$mod SHIFT, Space, centerwindow"
@@ -127,7 +129,8 @@
       # monitors
       monitor = [
         "eDP-1,preferred,auto,1.333333"
-        ",preferred,auto,1,mirror,eDP-1" # ,prefered,auto,1
+        # ",preferred,auto,1,mirror,eDP-1" # ,prefered,auto,1
+        ",preferred,auto,1"
       ];
 
       # animations
@@ -145,14 +148,15 @@
         bezier = [
           "easeInOutCirc, 0.85, 0, 0.15, 1"
           "easeInOutQuart, 0.76, 0, 0.24, 1"
+          "easeInOutCubic, 0.65, 0, 0.35, 1"
         ];
         animation = [
-          "windows, 1, 6, easeInOutCirc"
+          "windows, 1, 5, easeInOutCubic"
           "windowsOut, 1, 7, default, popin 80%"
           "border, 1, 10, default"
           "borderangle, 1, 8, default"
           "fade, 1, 7, default"
-          "workspaces, 1, 7, easeInOutQuart"
+          "workspaces, 1, 5.25, easeInOutQuart"
         ];
       };
     };
