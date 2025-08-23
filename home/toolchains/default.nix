@@ -12,4 +12,9 @@
     pkgs.kdePackages.qtdeclarative # qmlformat todo: add to helix
 
   ];
+
+  persist.caches.contents = [
+    # rust
+    ".cargo"
+  ];
 }
