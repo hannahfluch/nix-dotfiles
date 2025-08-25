@@ -15,6 +15,6 @@
 
   persist.caches.contents = [
     # rust
-    ".cargo"
+    ".cargo/"
   ];
 }
