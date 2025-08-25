@@ -13,6 +13,7 @@
     ./burpsuite.nix
     ./obsidian.nix
     ./networkminer.nix
+    ./teams.nix
   ];
   home.packages = [
     pkgs.baobab
