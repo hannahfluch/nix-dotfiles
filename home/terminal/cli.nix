@@ -9,8 +9,6 @@
     tokei
     tlrc
     screen
-    docker
-    docker-compose
     podman
     podman-compose
     unp

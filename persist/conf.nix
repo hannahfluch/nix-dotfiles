@@ -5,10 +5,6 @@
     "/var/lib/nixos/"
     "/etc/machine-id"
     "/etc/NetworkManager/system-connections/"
-    # docker containers
-    "/var/lib/docker/"
-    # docker config
-    "/root/.docker/"
     # bluetooth connections
     {
       directory = "/var/lib/bluetooth/";
