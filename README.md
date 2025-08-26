@@ -24,3 +24,4 @@ nix run -L 'path:.#nixosConfigurations.chicken.config.system.build.vmWithDisko'
 - material-symbols (stable)
 - quickshell (hm)
 - networkminer (stable)
+- rclone hm should work! (https://github.com/nix-community/home-manager/issues/7577)
