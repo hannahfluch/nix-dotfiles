@@ -7,6 +7,7 @@
     ./helix.nix
     ./cli.nix
     ./wine.nix
+    ./rclone.nix
   ];
   programs.nix-index = {
     enable = true;

@@ -125,6 +125,7 @@
                     ./persist/home.nix
                     impermanence.homeManagerModules.impermanence
                     agenix.homeManagerModules.default
+                    exchequer.homeManagerModules.default
                   ];
                 };
             };

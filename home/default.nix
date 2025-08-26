@@ -1,4 +1,8 @@
 { pkgs, unstablePkgs, ... }:
+let
+  username = "hannah";
+  homeDirectory = "/home/${username}";
+in
 {
   imports = [
     ./xdg.nix
@@ -31,11 +35,12 @@
       Install.WantedBy = [ "${after}" ]; # starts after login
     };
 
+  systemd.user.startServices = "sd-switch"; # make sure agenix is activated before rclone runs
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home = rec {
-    username = "hannah";
-    homeDirectory = "/home/${username}";
+  home = {
+    inherit username homeDirectory;
 
     packages = with pkgs; [
       # fonts
@@ -66,6 +71,8 @@
     # changes in each release.
     stateVersion = "25.05";
   };
+
+  age.identityPaths = [ "${homeDirectory}/nixcfg/keys/id_ed25519" ];
 
   persist.data.contents = [
     # user data
