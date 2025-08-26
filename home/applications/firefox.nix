@@ -15,8 +15,8 @@
       DisableAccounts = true;
       DontCheckDefaultBrowser = true;
       DisplayBookmarksToolbar = "always";
-      OfferToSaveLogins = true;
-      PasswordManagerEnabled = true;
+      OfferToSaveLogins = false;
+      PasswordManagerEnabled = false;
 
       ExtensionSettings = {
         "*".installation_mode = "force_installed";
@@ -26,6 +26,9 @@
     profiles.default = {
       settings = {
         "sidebar.verticalTabs" = true;
+        # mouse selection
+        "ui.highlight" = "white";
+        "ui.highlighttext" = "#002d75";
       };
       bookmarks = {
         force = true;
@@ -91,6 +94,8 @@
           [
             ublock-origin
             tree-style-tab
+            bitwarden
+            sponsorblock
           ];
       };
       search.force = true;
