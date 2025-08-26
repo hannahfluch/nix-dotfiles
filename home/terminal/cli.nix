@@ -18,6 +18,7 @@
     traceroute
     bottom
     zellij
+    zip
 
     # ctf
     hash_extender
