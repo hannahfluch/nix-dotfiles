@@ -96,6 +96,8 @@
             tree-style-tab
             bitwarden
             sponsorblock
+            ccnace
+            re-enable-right-click
           ];
       };
       search.force = true;

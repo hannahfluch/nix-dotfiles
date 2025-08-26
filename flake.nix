@@ -37,6 +37,11 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ccnace = {
+      url = "github:inet4/ccnace";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.firefox-extensions.follows = "firefox-extensions";
+    };
   };
 
   outputs =
@@ -52,6 +57,7 @@
       exchequer,
       firefox-extensions,
       quickshell,
+      ccnace,
       ...
     }:
     let
@@ -84,6 +90,7 @@
           withX11 = false;
           withI3 = false;
         };
+        ccnace = ccnace.packages.${system}.default;
       };
 
       unstablePkgs = import unstable {

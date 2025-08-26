@@ -25,6 +25,29 @@
         "type": "github"
       }
     },
+    "ccnace": {
+      "inputs": {
+        "firefox-extensions": [
+          "firefox-extensions"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1756227799,
+        "narHash": "sha256-j4COp1KMbCToCLre09zsztpS0ClcqtwjbIhGNtFGbt0=",
+        "owner": "inet4",
+        "repo": "ccnace",
+        "rev": "c69c2813c156c51b6162cf7376a97bd010a7d786",
+        "type": "github"
+      },
+      "original": {
+        "owner": "inet4",
+        "repo": "ccnace",
+        "type": "github"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -212,6 +235,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "ccnace": "ccnace",
         "disko": "disko",
         "exchequer": "exchequer",
         "fenix": "fenix",
