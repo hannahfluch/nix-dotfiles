@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   stylix.enable = true;
-  stylix.image = ../../assets/wallpaper.jpeg;
+  stylix.image = ../../assets/wallpapers/mountains.jpg;
   stylix.fonts.monospace = {
     name = "MesloLGSNF";
     package = pkgs.meslo-lgs-nf;
