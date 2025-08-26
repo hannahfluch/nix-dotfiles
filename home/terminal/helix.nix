@@ -25,7 +25,6 @@
       clang
     ];
     settings = {
-      theme = "everblush_transparent";
       editor.lsp.display-inlay-hints = true;
     };
     themes = {

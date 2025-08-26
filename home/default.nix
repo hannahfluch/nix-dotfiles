@@ -7,7 +7,7 @@ in
   imports = [
     ./xdg.nix
     ./terminal
-    ./hyprland
+    ./wm
     ./fuzzel.nix
     ./ssh.nix
     ./git.nix

@@ -38,8 +38,8 @@
         ''
         + "[╰─](fg:frame)$character";
 
-      palette = "tide";
-      palettes.tide = {
+      # todo: proper theming based on stylix (currently just extending theme)
+      palettes.base16 = {
         bg = "#303030";
         fg = "#87875F";
 

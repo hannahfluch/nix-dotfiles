@@ -6,11 +6,6 @@
   ...
 }:
 {
-  imports = [
-    ./hyprcursor.nix
-    ./dark-theme.nix
-    ./quickshell.nix
-  ];
   programs.hyprlock.enable = true; # temporary until quickshell is done
 
   wayland.windowManager.hyprland = {
@@ -112,17 +107,8 @@
       };
       decoration = {
         rounding = 10;
-        shadow = {
-          enabled = "yes";
-          range = 4;
-          render_power = 3;
-          color = "rgba(1a1a1aee)";
-        };
-
         blur = {
-          enabled = true;
-          size = 3;
-          passes = 1;
+          enabled = false;
         };
       };
 

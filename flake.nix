@@ -5,6 +5,7 @@
     # NixOS official package source, using the nixos-25.05 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    systems.url = "github:nix-systems/x86_64-linux";
 
     disko = {
       url = "github:nix-community/disko/latest";
@@ -27,6 +28,7 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
+      inputs.systems.follows = "systems";
     };
     exchequer.url = "git+ssh://git@github.com/hannahfluch/exchequer?ref=main";
     firefox-extensions = {
@@ -41,6 +43,11 @@
       url = "github:inet4/ccnace";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.firefox-extensions.follows = "firefox-extensions";
+    };
+    stylix = {
+      url = "github:nix-community/stylix/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
     };
   };
 
@@ -58,6 +65,7 @@
       firefox-extensions,
       quickshell,
       ccnace,
+      stylix,
       ...
     }:
     let
@@ -133,6 +141,7 @@
                     impermanence.homeManagerModules.impermanence
                     agenix.homeManagerModules.default
                     exchequer.homeManagerModules.default
+                    stylix.homeModules.stylix
                   ];
                 };
             };
