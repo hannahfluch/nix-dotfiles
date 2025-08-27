@@ -12,7 +12,7 @@ in
     ./ssh.nix
     ./git.nix
     ./agenix.nix
-    ./applications
+    ./apps
     ./toolchains
   ];
 
@@ -49,7 +49,6 @@ in
 
       # apps
       # gimp
-      # teams-for-linux
       # packetTracer
       # nautilus
       # hyprlock
