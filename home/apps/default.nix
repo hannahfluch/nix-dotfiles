@@ -14,6 +14,7 @@
     ./obsidian.nix
     ./networkminer.nix
     ./teams.nix
+    ./telegram.nix
   ];
   home.packages = [
     pkgs.baobab

@@ -17,7 +17,6 @@
     man-pages-posix
     traceroute
     bottom
-    zellij
     zip
 
     # ctf

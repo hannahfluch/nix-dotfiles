@@ -8,6 +8,7 @@
     ./cli.nix
     ./wine.nix
     ./rclone.nix
+    ./zellij.nix
   ];
   programs.nix-index = {
     enable = true;

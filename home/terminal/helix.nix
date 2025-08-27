@@ -26,6 +26,7 @@
     ];
     settings = {
       editor.lsp.display-inlay-hints = true;
+      editor.mouse = false;
     };
     themes = {
       everblush_transparent = {
