@@ -10,7 +10,7 @@ Singleton {
 
   property var connectedInterfaces: []
   property string icon:  "signal_disconnected";
-  property string interfaceStr: "No interfaces with addresses available.";
+  property string interfaceStr: "No available networks.";
 
   Component.onCompleted: {
     Logger.log("Network", "Service started")
@@ -42,7 +42,7 @@ Singleton {
     let fmt = "";
     for (var i = 0; i < connectedInterfaces.length; i++) {
       const netint = connectedInterfaces[i];
-      fmt += `${netint["interface"]}: ${netint["inet4"] ?? "/"}\n`
+      fmt += `${netint["interface"]}${netint["network"] ? `(${netint["network"]})` :  ""}: ${netint["inet4"] ?? "/"}\n`
     }
     interfaceStr = fmt;
   }
@@ -86,14 +86,15 @@ Singleton {
       const line = raw.trim();
 
       // Start of an interface block
-      const ifaceMatch = line.match(/^([a-zA-Z0-9\-]+): (connected|disconnected|unavailable)/i);
+      const ifaceMatch = line.match(/^([a-zA-Z0-9\-]+): (connected|disconnected|unavailable)(?:\s+(?:\(externally\)\s+)?to\s+(.+))?/i);
       if (ifaceMatch) {
         // finalize previous
         if (current && current.connected) {
           results.push({
             interface: current.name,
             inet4: current.inet4 || null,
-            type: current.deviceType || null
+            type: current.deviceType || null,
+            network: current.network || null
           });
         }
         // start new
@@ -101,7 +102,8 @@ Singleton {
           name: ifaceMatch[1],
           connected: ifaceMatch[2].toLowerCase() === "connected",
           inet4: null,
-          type: null
+          type: null,
+          network: ifaceMatch[3]
         };
         continue;
       }
@@ -114,7 +116,8 @@ Singleton {
           results.push({
             interface: current.name,
             inet4: current.inet4 || null,
-            type: current.deviceType || null
+            type: current.deviceType || null,
+            network: current.network || null
           });
         }
         current = null;
@@ -138,7 +141,8 @@ Singleton {
       results.push({
         interface: current.name,
         inet4: current.inet4 || null,
-        type: current.deviceType || null
+        type: current.deviceType || null,
+        network: current.network || null
       });
     }
 
