@@ -4,6 +4,6 @@
 }:
 {
   home.packages = [
-    extra.quickshell
+    extra.shell
   ];
 }

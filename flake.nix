@@ -35,9 +35,10 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
+    shell = {
+      url = "github:hannahfluch/chicken-shell";
+      inputs.nixpkgs.follows = "unstable";
+      inputs.systems.follows = "systems";
     };
     ccnace = {
       url = "github:inet4/ccnace";
@@ -67,7 +68,7 @@
       agenix,
       exchequer,
       firefox-extensions,
-      quickshell,
+      shell,
       ccnace,
       stylix,
       assets,
@@ -98,11 +99,8 @@
       ];
       extra = {
         agenix = agenix.packages.${system}.default;
-        extensions = firefox-extensions.packages.x86_64-linux;
-        quickshell = quickshell.packages.${system}.default.override {
-          withX11 = false;
-          withI3 = false;
-        };
+        extensions = firefox-extensions.packages.${system};
+        shell = shell.packages.${system}.default;
         ccnace = ccnace.packages.${system}.default;
       };
 

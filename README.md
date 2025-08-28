@@ -1,6 +1,6 @@
 # nix
 
-My NixOS configuration and quickshell-setup.
+My NixOS configuration.
 
 ## TODO
 - libdebug, potentially nix-ld

@@ -82,6 +82,7 @@ in
     "dev/"
     ".secrets/"
     "assets/"
+    "shell/"
 
     # nixos config
     "nixcfg/"

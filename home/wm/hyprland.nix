@@ -14,7 +14,7 @@
     settings = {
       exec-once = [
         "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --watch ${lib.getExe pkgs.cliphist} store"
-        "uwsm app -- ${lib.getExe extra.quickshell}  --config /home/hannah/nixcfg/quickshell/"
+        "uwsm app -- ${lib.getExe extra.shell}"
       ];
       # keybinds
       "$mod" = "SUPER";
