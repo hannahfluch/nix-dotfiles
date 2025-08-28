@@ -25,8 +25,16 @@
       clang
     ];
     settings = {
-      editor.lsp.display-inlay-hints = true;
-      editor.mouse = false;
+      editor = {
+        lsp.display-inlay-hints = true;
+        mouse = false;
+      };
+      keys.normal = {
+        left = "no_op";
+        right = "no_op";
+        down = "no_op";
+        up = "no_op";
+      };
     };
     themes = {
       everblush_transparent = {
