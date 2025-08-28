@@ -59,7 +59,7 @@ Singleton {
     property int animationSlow: 450
 
     // Dimensions
-    property int barHeight: 36
+    property int barHeight: 28
     property int capsuleHeight: (barHeight * 0.73)
     property int baseWidgetSize: 32
     property int sliderWidth: 200
