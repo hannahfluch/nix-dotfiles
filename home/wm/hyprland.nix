@@ -21,7 +21,7 @@
       bind =
         [
           "$mod, Q, exec,uwsm app -- alacritty" # bluetooth doesnt work without uwsm-specific launch
-          "$mod, X, forcekillactive"
+          "$mod, X, killactive"
           "$mod, F, exec, fullscreen"
           "$mod, W, exec, uwsm app -- fuzzel"
           "$mod, L, exec, uwsm app -- hyprlock"
