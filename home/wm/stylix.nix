@@ -1,6 +1,11 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  assets,
+  lib,
+  ...
+}:
 let
-  wallpapers = lib.filesystem.listFilesRecursive ../../assets/wallpapers;
+  wallpapers = lib.filesystem.listFilesRecursive "${assets.outPath}/wallpapers";
 in
 {
   stylix.enable = true;
@@ -21,10 +26,12 @@ in
         let
           parts = lib.splitString "." (builtins.baseNameOf path);
         in
-        if builtins.length parts > 1 then
-          lib.removeSuffix ("." + lib.last parts) (builtins.baseNameOf path)
-        else
-          builtins.baseNameOf path;
+        builtins.unsafeDiscardStringContext (
+          if builtins.length parts > 1 then
+            lib.removeSuffix ("." + lib.last parts) (builtins.baseNameOf path)
+          else
+            builtins.baseNameOf path
+        );
       # set image as stylix wallpaper
       value = {
         configuration.stylix.image = lib.mkForce path;
@@ -32,5 +39,5 @@ in
     }) wallpapers
 
   );
-  stylix.image = ../../assets/wallpapers/mountains.jpg; # default wallpaper
+  stylix.image = "${assets.outPath}/wallpapers/mountains.jpg"; # default wallpaper
 }

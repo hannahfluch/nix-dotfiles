@@ -81,6 +81,7 @@ in
     "videos/"
     "dev/"
     ".secrets/"
+    "assets/"
 
     # nixos config
     "nixcfg/"

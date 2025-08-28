@@ -27,6 +27,22 @@
         "type": "github"
       }
     },
+    "assets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756380817,
+        "narHash": "sha256-ZPosMaUlakaSZmd1Pej5Sdo83yva/xrypSPpD6WYUp0=",
+        "owner": "hannahfluch",
+        "repo": "dotfile-assets",
+        "rev": "308b400869a4a7f065d55d60778e6611beaf684e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hannahfluch",
+        "repo": "dotfile-assets",
+        "type": "github"
+      }
+    },
     "base16": {
       "inputs": {
         "fromYaml": "fromYaml"
@@ -400,6 +416,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "assets": "assets",
         "ccnace": "ccnace",
         "disko": "disko",
         "exchequer": "exchequer",

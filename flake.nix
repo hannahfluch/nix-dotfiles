@@ -49,6 +49,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
     };
+    assets = {
+      url = "github:hannahfluch/dotfile-assets";
+      flake = false;
+    };
   };
 
   outputs =
@@ -66,6 +70,7 @@
       quickshell,
       ccnace,
       stylix,
+      assets,
       ...
     }:
     let
@@ -131,7 +136,7 @@
 
               # same pkgs, overlays, ... for nixos and home-manager
               useGlobalPkgs = true;
-              extraSpecialArgs = { inherit unstablePkgs extra; };
+              extraSpecialArgs = { inherit unstablePkgs extra assets; };
               users.hannah =
                 { ... }:
                 {
