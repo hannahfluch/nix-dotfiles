@@ -87,7 +87,7 @@
             "idea-ultimate"
             "geogebra"
             "obsidian"
-            "packetTracer"
+            "ciscoPacketTracer8"
             "binaryninja-free"
             "volatility3"
             "burpsuite"

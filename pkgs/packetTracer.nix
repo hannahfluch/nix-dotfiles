@@ -1,9 +1,35 @@
-# copied from nixpkgs
-{ lib, stdenvNoCC, requireFile, autoPatchelfHook, makeWrapper, alsa-lib, dbus
-, expat, fontconfig, glib, libdrm, libglvnd, libpulseaudio, libudev0-shim
-, libxkbcommon, libxml2, libxslt, nspr, wayland, nss, xorg, dpkg, unixtools
-, buildFHSEnv, copyDesktopItems, makeDesktopItem, fetchFromGitHub
-, version ? "8.2.2", packetTracerSource ? null }:
+{
+  unixtools,
+  lib,
+  stdenvNoCC,
+  requireFile,
+  autoPatchelfHook,
+  makeWrapper,
+  alsa-lib,
+  dbus,
+  expat,
+  fontconfig,
+  glib,
+  libdrm,
+  libglvnd,
+  libpulseaudio,
+  libudev0-shim,
+  libxkbcommon,
+  libxml2,
+  libxslt,
+  nspr,
+  wayland,
+  nss,
+  xorg,
+  dpkg,
+  buildFHSEnv,
+  copyDesktopItems,
+  makeDesktopItem,
+  fetchFromGitHub,
+  version ? "8.2.2",
+  packetTracerSource ? null,
+}:
+
 let
   hashes = {
     "8.2.0" = "sha256-GxmIXVn2Ew7lVBT7AuIRoXc0YGids4v9Gsfw1FEX7RY=";
@@ -17,17 +43,18 @@ let
   };
 
   unwrapped = stdenvNoCC.mkDerivation {
-    name = "packetTracer-unwrapped";
+    name = "ciscoPacketTracer8-unwrapped";
     inherit version;
 
-    src = if (packetTracerSource != null) then
-      packetTracerSource
-    else
-      requireFile {
-        name = names.${version};
-        hash = hashes.${version};
-        url = "https://www.netacad.com";
-      };
+    src =
+      if (packetTracerSource != null) then
+        packetTracerSource
+      else
+        requireFile {
+          name = names.${version};
+          hash = hashes.${version};
+          url = "https://www.netacad.com";
+        };
 
     buildInputs = [
       autoPatchelfHook
@@ -47,7 +74,8 @@ let
       nspr
       nss
       wayland
-    ] ++ (with xorg; [
+    ]
+    ++ (with xorg; [
       libICE
       libSM
       libX11
@@ -70,17 +98,6 @@ let
 
     nativeBuildInputs = [ unixtools.xxd ];
 
-    patchPhase = ''
-      source ${
-        fetchFromGitHub {
-          owner = "hannahfluch";
-          repo = "patchpt";
-          tag = "v0.1.0";
-          hash = "sha256-2eQ+3z6f2KkxWeRbvu+1QR/ZN/31LfEcPIDce5eUUD8=";
-        }
-      }/patch.sh "$out/opt/pt/bin/PacketTracer"
-    '';
-
     unpackPhase = ''
       runHook preUnpack
 
@@ -90,28 +107,46 @@ let
       runHook postUnpack
     '';
 
+    # apply activity wizard patch
+    patchPhase = ''
+      sh ${
+        fetchFromGitHub {
+          owner = "hannahfluch";
+          repo = "patchpt";
+          tag = "v0.1.0";
+          hash = "sha256-2eQ+3z6f2KkxWeRbvu+1QR/ZN/31LfEcPIDce5eUUD8=";
+        }
+      }/patch.sh "$out/opt/pt/bin/PacketTracer"
+    '';
+
+    # patch: run under wayland
     installPhase = ''
       runHook preInstall
 
       makeWrapper "$out/opt/pt/bin/PacketTracer" "$out/bin/packettracer8" \
-        --prefix LD_LIBRARY_PATH : "$out/opt/pt/bin"
+        --prefix LD_LIBRARY_PATH : "$out/opt/pt/bin" \
+        --set QT_QPA_PLATFORM xcb
 
       runHook postInstall
     '';
   };
 
   fhs-env = buildFHSEnv {
-    name = "packetTracer-fhs-env";
+    name = "ciscoPacketTracer8-fhs-env";
     runScript = lib.getExe' unwrapped "packettracer8";
-    targetPkgs = _: [ libudev0-shim ];
+    targetPkgs = pkgs: [ libudev0-shim ];
   };
-in stdenvNoCC.mkDerivation {
-  pname = "packetTracer";
+in
+
+stdenvNoCC.mkDerivation {
+  pname = "ciscoPacketTracer8";
   inherit version;
 
   dontUnpack = true;
 
-  nativeBuildInputs = [ copyDesktopItems ];
+  nativeBuildInputs = [
+    copyDesktopItems
+  ];
 
   installPhase = ''
     runHook preInstall
@@ -124,11 +159,10 @@ in stdenvNoCC.mkDerivation {
 
   desktopItems = [
     (makeDesktopItem {
-      name = "cisco-pt";
-      desktopName = "Packet Tracer";
+      name = "cisco-pt8";
+      desktopName = "Cisco Packet Tracer 8";
       icon = "${unwrapped}/opt/pt/art/app.png";
-
-      exec = "packettracer8 %u";
+      exec = "packettracer8 %f";
       mimeTypes = [
         "x-scheme-handler/pttp" # patch: enable pttp protocol
         "application/x-pkt"
@@ -143,7 +177,9 @@ in stdenvNoCC.mkDerivation {
     homepage = "https://www.netacad.com/courses/packet-tracer";
     license = lib.licenses.unfree;
     mainProgram = "packettracer8";
-    maintainers = with lib.maintainers; [ gepbird ];
+    maintainers = with lib.maintainers; [
+      gepbird
+    ];
     platforms = [ "x86_64-linux" ];
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
   };
