@@ -51,11 +51,7 @@ in
       # gimp
       # packetTracer
       # nautilus
-      # hyprlock
       # mysql workbench
-
-      # prismlauncher
-      # steam
       # vlc
 
     ];

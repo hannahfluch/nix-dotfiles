@@ -13,6 +13,10 @@
           search = "Ctrl 7";
         in
         {
+          unbind._args = [
+            "Ctrl o"
+            "Ctrl s"
+          ];
           "shared_except \"session\" \"locked\"" = {
             bind = {
               _args = [ session ];
