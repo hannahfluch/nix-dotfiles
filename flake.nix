@@ -52,6 +52,7 @@
     };
     assets = {
       url = "github:hannahfluch/dotfile-assets";
+      # url = "path:/home/hannah/assets";
       flake = false;
     };
   };
@@ -100,7 +101,9 @@
       extra = {
         agenix = agenix.packages.${system}.default;
         extensions = firefox-extensions.packages.${system};
-        shell = shell.packages.${system}.default;
+        shell = shell.packages.${system}.default.override {
+          wallpaper_path = "${assets.outPath}/wallpapers/";
+        };
         ccnace = ccnace.packages.${system}.default;
       };
 

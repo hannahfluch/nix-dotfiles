@@ -27,6 +27,7 @@
           "$mod, X, killactive"
           "$mod, F, exec, fullscreen"
           "$mod, W, exec, uwsm app -- ${ipc} appLauncher load"
+          "$mod, A, exec, uwsm app -- ${ipc} wallpaper load"
           "$mod, L, exec, uwsm app -- hyprlock"
           "$mod, M, exec, uwsm stop"
           "$mod, Space, togglefloating"
