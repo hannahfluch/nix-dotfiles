@@ -19,18 +19,20 @@
       # keybinds
       "$mod" = "SUPER";
       bind =
+        let
+          ipc = "${lib.getExe extra.shell} ipc call";
+        in
         [
           "$mod, Q, exec,uwsm app -- alacritty" # bluetooth doesnt work without uwsm-specific launch
           "$mod, X, killactive"
           "$mod, F, exec, fullscreen"
-          "$mod, W, exec, uwsm app -- fuzzel"
+          "$mod, W, exec, uwsm app -- ${ipc} appLauncher load"
           "$mod, L, exec, uwsm app -- hyprlock"
           "$mod, M, exec, uwsm stop"
           "$mod, Space, togglefloating"
           "$mod SHIFT, Space, centerwindow"
           "$mod, F, fullscreen"
-          # todo: switch to cliphist-fuzzel-img
-          "$mod, V, exec, ${lib.getExe pkgs.cliphist} list | ${lib.getExe pkgs.fuzzel} --dmenu --with-nth 2 | ${lib.getExe pkgs.cliphist} decode | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}"
+          "$mod, V, exec, ${ipc} clipboard load"
           "$mod, left, movefocus, l"
           "$mod, right, movefocus, r"
           "$mod, up, movefocus, u"
