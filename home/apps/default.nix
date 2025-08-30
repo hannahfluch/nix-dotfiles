@@ -17,6 +17,7 @@
     ./telegram.nix
     ./pt.nix
     ./gimp.nix
+    ./mysql-workbench.nix
   ];
   home.packages = [
     pkgs.baobab
