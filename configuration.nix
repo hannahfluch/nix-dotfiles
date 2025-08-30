@@ -134,6 +134,8 @@
     usbmon.enable = true;
   };
 
+  programs.nix-ld.enable = true;
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;

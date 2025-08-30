@@ -48,7 +48,6 @@ in
       unstablePkgs.material-symbols # rendering issue with the current stable one
 
       # apps
-      # nautilus
       # mysql workbench
       # vlc
 

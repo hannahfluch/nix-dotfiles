@@ -8,6 +8,7 @@
         pwntools # todo: shellcraft requires gcc at runtime
         angr
         z3-solver
+        libdebug
       ]
     ))
     ruff
