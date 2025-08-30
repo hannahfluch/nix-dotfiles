@@ -1,4 +1,4 @@
-{ pkgs, unstablePkgs, ... }:
+{ pkgs, ... }:
 let
   username = "hannah";
   homeDirectory = "/home/${username}";
@@ -45,7 +45,6 @@ in
     packages = with pkgs; [
       # fonts
       meslo-lgs-nf
-      unstablePkgs.material-symbols # rendering issue with the current stable one
 
       # apps
       # mysql workbench
