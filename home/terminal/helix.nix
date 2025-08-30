@@ -22,6 +22,8 @@
 
       clang-tools
       clang
+
+      sqls
     ];
     settings = {
       editor = {
