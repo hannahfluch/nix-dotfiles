@@ -27,6 +27,7 @@
     rubyPackages_3_4.seccomp-tools
     nmap
     metasploit
+    steam-run
   ];
 
   services.podman.enable = true;

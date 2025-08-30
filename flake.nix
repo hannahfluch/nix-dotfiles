@@ -92,6 +92,7 @@
             "binaryninja-free"
             "volatility3"
             "burpsuite"
+            "steam-unwrapped"
           ];
       };
 
