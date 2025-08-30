@@ -5,7 +5,7 @@ My NixOS configuration.
 ## TODO
 - configure git PAT in config
 - backups
-- fix uv
+- ~~fix uv~~
 - ~~libdebug, potentially nix-ld~~
 - ~~fix network miner~~
 - ~~`file`~~
