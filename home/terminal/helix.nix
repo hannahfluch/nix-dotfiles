@@ -5,7 +5,6 @@
     defaultEditor = true;
     extraPackages = with pkgs; [
       (import ../toolchains/rust.nix pkgs)
-      pyright
       ruff
 
       nixd
@@ -44,47 +43,26 @@
     };
 
     languages = {
-      language = [
+      language = builtins.map (lang: lang // { auto-format = true; }) [
         {
           name = "rust";
-          language-servers = [ "rust-analyzer" ];
           formatter.command = "rustfmt";
-          auto-format = true;
         }
-
         {
           name = "python";
-          language-servers = [ "pyright" ]; # maybe: ruff
+          formatter.command = "ruff format";
         }
         {
           name = "nix";
-          language-servers = [ "nixd" ];
           formatter.command = "nixfmt";
-          auto-format = true;
         }
         {
           name = "c-sharp";
-          language-servers = [ "omnisharp-roslyn" ];
           formatter.command = "csharpier";
-          auto-format = true;
         }
         {
           name = "typescript";
-          language-servers = [ "typescript-language-server" ];
           formatter.command = "prettier";
-          auto-format = true;
-        }
-        {
-          name = "toml";
-          language-servers = [ "taplo" ];
-        }
-        {
-          name = "c";
-          language-servers = [ "clangd" ];
-        }
-        {
-          name = "qml";
-          language-servers = [ ];
         }
       ];
     };
