@@ -28,6 +28,7 @@
     nmap
     metasploit
     steam-run
+    binwalk
   ];
 
   services.podman.enable = true;
