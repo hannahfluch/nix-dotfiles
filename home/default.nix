@@ -72,6 +72,7 @@ in
     "documents/"
     "videos/"
     "dev/"
+    "screenshots/"
     ".secrets/"
     "assets/"
     "shell/"

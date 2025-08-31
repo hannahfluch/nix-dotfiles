@@ -28,6 +28,7 @@
           "$mod, F, exec, fullscreen"
           "$mod, W, exec, uwsm app -- ${ipc} appLauncher load"
           "$mod, A, exec, uwsm app -- ${ipc} wallpaper load"
+          "$mod, C, exec, uwsm app -- ${lib.getExe pkgs.hyprshot} -m region -s -o ${config.home.homeDirectory}/screenshots/"
           "$mod, L, exec, uwsm app -- hyprlock"
           "$mod, M, exec, uwsm stop"
           "$mod, Space, togglefloating"
