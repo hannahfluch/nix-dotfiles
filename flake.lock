@@ -327,6 +327,32 @@
         "type": "github"
       }
     },
+    "honklet": {
+      "inputs": {
+        "nixpkgs": [
+          "unstable"
+        ],
+        "quickshell": [
+          "quickshell"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1756643551,
+        "narHash": "sha256-OZkwacePusJmnS0bYHC/Bzp7/sJkcAJoyYCnFBWcMv0=",
+        "owner": "hannahfluch",
+        "repo": "honklet",
+        "rev": "288a687823196058fb4d8b4f213283d7de14278d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hannahfluch",
+        "repo": "honklet",
+        "type": "github"
+      }
+    },
     "impermanence": {
       "inputs": {
         "home-manager": [
@@ -396,22 +422,21 @@
     "quickshell": {
       "inputs": {
         "nixpkgs": [
-          "shell",
-          "nixpkgs"
+          "unstable"
         ]
       },
       "locked": {
         "lastModified": 1756352679,
         "narHash": "sha256-UkKaPXTPzT7HAcBOV4NlWx2GAEJaTf0eb5OX6Q6jPqg=",
-        "ref": "refs/heads/master",
+        "owner": "outfoxxed",
+        "repo": "quickshell",
         "rev": "f7597cdae2d537c5b12843599955856090dc49d5",
-        "revCount": 668,
-        "type": "git",
-        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
+        "owner": "outfoxxed",
+        "repo": "quickshell",
+        "type": "github"
       }
     },
     "root": {
@@ -424,8 +449,10 @@
         "fenix": "fenix",
         "firefox-extensions": "firefox-extensions",
         "home-manager": "home-manager",
+        "honklet": "honklet",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
+        "quickshell": "quickshell",
         "shell": "shell",
         "stylix": "stylix",
         "systems": "systems",
@@ -454,7 +481,9 @@
         "nixpkgs": [
           "unstable"
         ],
-        "quickshell": "quickshell",
+        "quickshell": [
+          "quickshell"
+        ],
         "systems": [
           "systems"
         ]

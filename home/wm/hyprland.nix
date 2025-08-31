@@ -15,6 +15,7 @@
       exec-once = [
         "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --watch ${lib.getExe pkgs.cliphist} store"
         "uwsm app -- ${lib.getExe extra.shell}"
+        "${lib.getExe extra.honklet}"
       ];
       # keybinds
       "$mod" = "SUPER";

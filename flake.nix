@@ -35,11 +35,6 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    shell = {
-      url = "github:hannahfluch/chicken-shell";
-      inputs.nixpkgs.follows = "unstable";
-      inputs.systems.follows = "systems";
-    };
     ccnace = {
       url = "github:inet4/ccnace";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -54,6 +49,22 @@
       url = "github:hannahfluch/dotfile-assets";
       # url = "path:/home/hannah/assets";
       flake = false;
+    };
+    quickshell = {
+      url = "github:outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "unstable";
+    };
+    shell = {
+      url = "github:hannahfluch/chicken-shell";
+      inputs.nixpkgs.follows = "unstable";
+      inputs.systems.follows = "systems";
+      inputs.quickshell.follows = "quickshell";
+    };
+    honklet = {
+      url = "github:hannahfluch/honklet";
+      inputs.nixpkgs.follows = "unstable";
+      inputs.systems.follows = "systems";
+      inputs.quickshell.follows = "quickshell";
     };
   };
 
@@ -73,6 +84,7 @@
       ccnace,
       stylix,
       assets,
+      honklet,
       ...
     }:
     let
@@ -104,6 +116,7 @@
         extensions = firefox-extensions.packages.${system};
         shell = shell.packages.${system}.default;
         ccnace = ccnace.packages.${system}.default;
+        honklet = honklet.packages.${system}.default;
       };
 
       unstablePkgs = import unstable {
