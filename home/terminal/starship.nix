@@ -27,6 +27,7 @@
             + "( $package |)"
             + "( $rust |)"
             + "( $python |)"
+            + "( $shlvl |)"
             + "( \${custom.nix_flake} |)"
             + "" # this is a \b not a whitespace!
             + "[](fg:bg)"
@@ -58,6 +59,7 @@
         rust = "#F74C00";
         python = "#00AFAF";
         nix = "#7EBAE4";
+        shlvl = "088167";
 
         git_branch = "#5FD700";
         git_status = "#D7AF00";
@@ -87,6 +89,12 @@
       git_state = {
         format = "[$state $progress_current/$progress_total]($style bg:bg)";
         style = "fg:git_state";
+      };
+      shlvl = {
+        disabled = false;
+
+        format = "[$symbol $shlvl](fg:shlvl bg:bg)";
+        symbol = "";
       };
 
       character = {
