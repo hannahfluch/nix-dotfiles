@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   programs.helix = {
     enable = true;
@@ -24,6 +24,8 @@
       clang
 
       sqls
+
+      kdePackages.qtdeclarative
     ];
     settings = {
       editor = {
@@ -45,7 +47,20 @@
     };
 
     languages = {
-      language = builtins.map (lang: lang // { auto-format = true; }) [
+      language-server = {
+        qmlls = {
+          command = "${lib.getExe' pkgs.qt6.qtdeclarative "qmlls"}";
+          args = [ "-E" ];
+        };
+      };
+      language = [
+        {
+          name = "qml";
+          language-servers = [ "qmlls" ];
+        }
+
+      ]
+      ++ builtins.map (lang: lang // { auto-format = true; }) [
         {
           name = "rust";
           formatter.command = "rustfmt";
