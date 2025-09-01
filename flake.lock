@@ -332,19 +332,16 @@
         "nixpkgs": [
           "unstable"
         ],
-        "quickshell": [
-          "quickshell"
-        ],
         "systems": [
           "systems"
         ]
       },
       "locked": {
-        "lastModified": 1756643551,
-        "narHash": "sha256-OZkwacePusJmnS0bYHC/Bzp7/sJkcAJoyYCnFBWcMv0=",
+        "lastModified": 1756739281,
+        "narHash": "sha256-0tGqpZGFnATVr8NtcMW2/4M4xpXXySHDSnqp5Ua/Bo4=",
         "owner": "hannahfluch",
         "repo": "honklet",
-        "rev": "288a687823196058fb4d8b4f213283d7de14278d",
+        "rev": "4c8dfd7bbf1cd3569114ea43bbed1b332d9027b2",
         "type": "github"
       },
       "original": {
@@ -419,26 +416,6 @@
         "type": "github"
       }
     },
-    "quickshell": {
-      "inputs": {
-        "nixpkgs": [
-          "unstable"
-        ]
-      },
-      "locked": {
-        "lastModified": 1756352679,
-        "narHash": "sha256-UkKaPXTPzT7HAcBOV4NlWx2GAEJaTf0eb5OX6Q6jPqg=",
-        "owner": "outfoxxed",
-        "repo": "quickshell",
-        "rev": "f7597cdae2d537c5b12843599955856090dc49d5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "outfoxxed",
-        "repo": "quickshell",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -452,7 +429,6 @@
         "honklet": "honklet",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
-        "quickshell": "quickshell",
         "shell": "shell",
         "stylix": "stylix",
         "systems": "systems",
@@ -481,19 +457,16 @@
         "nixpkgs": [
           "unstable"
         ],
-        "quickshell": [
-          "quickshell"
-        ],
         "systems": [
           "systems"
         ]
       },
       "locked": {
-        "lastModified": 1756630318,
-        "narHash": "sha256-aamllQn9K2fPoDHcSj/XK23nEL4j6vrskrbxqaG05/c=",
+        "lastModified": 1756740504,
+        "narHash": "sha256-Nbish2zrbB9l5WFDGHFTRzJrNE0rPaeCDtTX8qoO6EM=",
         "owner": "hannahfluch",
         "repo": "chicken-shell",
-        "rev": "9e63841c0d558f6e3e7de00a3cc686e1e6784891",
+        "rev": "9ee6095d4dce9b9e6c08a7fc8235872880282dac",
         "type": "github"
       },
       "original": {

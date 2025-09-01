@@ -50,21 +50,15 @@
       # url = "path:/home/hannah/assets";
       flake = false;
     };
-    quickshell = {
-      url = "github:outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "unstable";
-    };
     shell = {
       url = "github:hannahfluch/chicken-shell";
       inputs.nixpkgs.follows = "unstable";
       inputs.systems.follows = "systems";
-      inputs.quickshell.follows = "quickshell";
     };
     honklet = {
       url = "github:hannahfluch/honklet";
       inputs.nixpkgs.follows = "unstable";
       inputs.systems.follows = "systems";
-      inputs.quickshell.follows = "quickshell";
     };
   };
 
