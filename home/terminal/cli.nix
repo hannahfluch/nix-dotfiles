@@ -29,6 +29,7 @@
     metasploit
     steam-run
     binwalk
+    snicat
   ];
 
   services.podman.enable = true;
