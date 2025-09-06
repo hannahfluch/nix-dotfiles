@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    zulu24
+    jdk24
     maven
   ];
 
