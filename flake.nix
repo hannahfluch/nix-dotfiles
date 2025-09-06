@@ -99,6 +99,7 @@
             "volatility3"
             "burpsuite"
             "steam-unwrapped"
+            "positron-bin"
           ];
       };
 

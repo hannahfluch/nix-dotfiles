@@ -1,4 +1,8 @@
-{...}:
+{ ... }:
 {
-  imports = [./jetbrains.nix ./zed.nix];
+  imports = [
+    ./jetbrains.nix
+    ./zed.nix
+    ./positron.nix
+  ];
 }

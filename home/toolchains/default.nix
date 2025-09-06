@@ -5,6 +5,7 @@
     ./dotnet.nix
     ./python.nix
     ./java-script.nix
+    ./r.nix
   ];
   home.packages = [
     (import ./rust.nix pkgs)
