@@ -18,6 +18,7 @@
     traceroute
     bottom
     zip
+    imagemagick
 
     # ctf
     hash_extender
@@ -30,6 +31,7 @@
     steam-run
     binwalk
     snicat
+    binaryen
   ];
 
   services.podman.enable = true;
