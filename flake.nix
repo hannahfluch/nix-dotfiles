@@ -135,7 +135,7 @@
           }
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
-          ./configuration.nix
+          ./nixos
           ./hosts/lenovo-thinkpad-e14-g7.nix
 
           home-manager.nixosModules.home-manager
