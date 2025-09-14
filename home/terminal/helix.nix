@@ -18,7 +18,7 @@
 
       jdt-language-server
 
-      taplo
+      taplo # toml
 
       clang-tools
       clang
@@ -26,6 +26,9 @@
       sqls
 
       kdePackages.qtdeclarative
+      quarto # R-markdown
+
+      lua-language-server
     ];
     settings = {
       editor = {
