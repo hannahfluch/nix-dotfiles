@@ -6,7 +6,7 @@
 }:
 {
 
-  # imports = [ ./networking ];
+  imports = [ ./networking ];
 
   # settings
   nix.settings.experimental-features = [

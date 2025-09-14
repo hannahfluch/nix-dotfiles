@@ -178,11 +178,11 @@
     },
     "exchequer": {
       "locked": {
-        "lastModified": 1756211281,
-        "narHash": "sha256-cKDmCIuUMArsLCxBKEubgMVu6Ru3FYCfY1lNqjaa0JU=",
+        "lastModified": 1757838466,
+        "narHash": "sha256-suKvLcER4pWatHPZM8ke81RiDc1sbtkMHLepCdHFUtY=",
         "ref": "main",
-        "rev": "3cd473ee14a2f1b643c07c145fe26631640070ce",
-        "revCount": 2,
+        "rev": "da629056ed804197625309876cbfb83fdf6bbcdd",
+        "revCount": 3,
         "type": "git",
         "url": "ssh://git@github.com/hannahfluch/exchequer"
       },
