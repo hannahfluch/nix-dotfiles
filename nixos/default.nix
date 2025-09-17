@@ -42,6 +42,9 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Switch to SUPERIOR dbus
+  services.dbus.implementation = "broker";
+
   # Enable upower
   services.upower.enable = true;
 

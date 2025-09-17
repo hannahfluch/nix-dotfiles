@@ -100,6 +100,7 @@
             "burpsuite"
             "steam-unwrapped"
             "positron-bin"
+            "ida-classroom"
           ];
       };
 
