@@ -1,6 +1,7 @@
 prev:
 (builtins.mapAttrs (_: p: prev.callPackage p { }) {
   ciscoPacketTracer8 = import ./packetTracer.nix;
+  ida-classroom = import ./ida-classroom.nix;
 })
 // {
   python3 = prev.python3.override {

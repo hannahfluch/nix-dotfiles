@@ -2,6 +2,7 @@
 {
   imports = [
     ./vesktop.nix
+    ./ida-classroom.nix
     ./editors
     ./binaryninja.nix
     ./firefox.nix
