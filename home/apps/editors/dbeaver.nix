@@ -5,5 +5,6 @@
 
   persist.data.contents = [
     ".local/share/DBeaverData/"
+    ".eclipse/"
   ];
 }
