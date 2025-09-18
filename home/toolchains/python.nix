@@ -20,7 +20,7 @@ in
     settings = {
       python-downloads = "never";
       python-preference = "system";
-      pip.python = py;
+      # pip.python = py;
     };
   };
 

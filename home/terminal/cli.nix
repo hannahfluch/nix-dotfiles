@@ -32,6 +32,8 @@
     binwalk
     snicat
     binaryen
+    wordlists
+    gobuster
   ];
 
   services.podman.enable = true;

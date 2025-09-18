@@ -8,12 +8,12 @@ let
   pythonForIDA = pkgs.python313.withPackages (ps: with ps; [ rpyc ]);
 in
 pkgs.stdenv.mkDerivation rec {
-  pname = "ida-classroom";
+  pname = "ida-pro";
   version = "9.2.0";
 
   src = requireFile {
-    name = "ida-classroom-free_92_x64linux.run";
-    hash = "sha256-58gULsmoaycWv9v4tbWl85AMlpzrc2oZRiNXOy6eQ3c=";
+    name = "ida-pro_92_x64linux.run";
+    hash = "sha256-qt0PiulyuE+U8ql0g0q/FhnzvZM7O02CdfnFAAjQWuE=";
     url = "my.hex-rays.com";
   };
 
@@ -22,7 +22,7 @@ pkgs.stdenv.mkDerivation rec {
     exec = "ida";
     # icon = ../share/appico.png;
     comment = meta.description;
-    desktopName = "IDA Classroom";
+    desktopName = "IDA Pro";
     genericName = "Interactive Disassembler";
     categories = [ "Development" ];
     startupWMClass = "IDA";
