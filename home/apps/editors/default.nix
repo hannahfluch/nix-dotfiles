@@ -3,7 +3,7 @@
   imports = [
     ./jetbrains.nix
     ./zed.nix
-    ./positron.nix
+    ./rstudio.nix
     ./dbeaver.nix
   ];
 }
