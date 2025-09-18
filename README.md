@@ -16,5 +16,4 @@ My NixOS configuration.
 
 ## For next Release
 - networkminer (stable)
-- niri (hm)
 - rclone hm should work! (https://github.com/nix-community/home-manager/issues/7577)
