@@ -6,4 +6,9 @@ let
 in
 {
   home.packages = [ wrapper ];
+
+  persist.data.contents = [
+    ".local/share/rstudio/"
+    ".config/RStudio/"
+  ];
 }
