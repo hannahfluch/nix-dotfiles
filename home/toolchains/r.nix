@@ -1,10 +1,22 @@
 { pkgs, ... }:
 let
-  wrapper = pkgs.rWrapper.override {
-    packages = with pkgs.rPackages; [ languageserver ];
-  };
+  packages = with pkgs.rPackages; [
+    tidyverse
+    languageserver
+  ];
+  wrapper = pkgs.rWrapper.override { inherit packages; };
+  rstudio = pkgs.rstudioWrapper.override { inherit packages; };
 in
 {
+  home.packages = [
+    wrapper
+    rstudio
+  ];
+
+  persist.data.contents = [
+    ".local/share/rstudio/"
+    ".config/RStudio/"
+  ];
+
   programs.helix.extraPackages = [ wrapper ];
-  home.packages = [ wrapper ];
 }
