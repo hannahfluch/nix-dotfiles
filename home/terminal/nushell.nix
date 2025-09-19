@@ -20,7 +20,28 @@
     '';
     # todo: use nix-index: command-not-found
     extraConfig = ''
-            $env.config.hooks.command_not_found = { |cmd_name|
+
+      def wallpaper [name?: string] {
+        let gens = (${lib.getExe pkgs.home-manager} generations | lines | parse --regex '(/nix/store/\S+)' | get capture0)
+        for p in $gens {
+          let specdir = ($p | path join 'specialisation')
+          if ($specdir | path exists) {
+            print $"Found specialisations at: ($specdir)"
+            print "Available specialisations:"
+            ls $specdir | get name | path basename | print
+            match $name {
+              null => { print "Usage: wallpaper <specialisation-name>"  }
+              _ => {
+                print $"Attempting to activate ($name) ..."
+                ^($specdir | path join $name | path join "activate")
+              }
+            }
+            break
+          }
+        }
+      }
+
+      $env.config.hooks.command_not_found = { |cmd_name|
         let install = { |pkgs|
           $pkgs | each {|pkg| $"  nix shell nixpkgs#($pkg)" }
         }
