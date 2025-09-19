@@ -9,9 +9,9 @@
     ./wine.nix
     ./rclone.nix
     ./zellij.nix
+    ./nushell.nix
   ];
   programs.nix-index = {
     enable = true;
-    enableFishIntegration = true;
   };
 }

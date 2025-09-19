@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       terminal = {
-        shell = "fish";
+        shell = "nu";
       };
     };
   };
