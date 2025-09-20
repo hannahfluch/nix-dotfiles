@@ -60,6 +60,10 @@
       inputs.nixpkgs.follows = "unstable";
       inputs.systems.follows = "systems";
     };
+    pwndbg = {
+      url = "github:pwndbg/pwndbg";
+      inputs.nixpkgs.follows = "unstable";
+    };
   };
 
   outputs =
@@ -79,6 +83,7 @@
       stylix,
       assets,
       honklet,
+      pwndbg,
       ...
     }:
     let
@@ -112,6 +117,7 @@
         shell = shell.packages.${system}.default;
         ccnace = ccnace.packages.${system}.default;
         honklet = honklet.packages.${system}.default;
+        pwndbg = pwndbg.packages.${system}.default;
       };
 
       unstablePkgs = import unstable {
