@@ -169,6 +169,7 @@
 
     # force electron apps to use wayland
     export NIXOS_OZONE_WL=1
+    export ELECTRON_OZONE_PLATFORM_HINT=auto
   '';
 
   persist.data.contents = [
