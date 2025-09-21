@@ -178,11 +178,11 @@
     },
     "exchequer": {
       "locked": {
-        "lastModified": 1758005983,
-        "narHash": "sha256-ZSnJuPMsdz7ROXGFSTdFph1MRJl488rYCCar+rSM7ZI=",
+        "lastModified": 1758387841,
+        "narHash": "sha256-YreoUEhjPQTBxMrx1+uGhkWbjmmzcMy6WkKwVzyTUZ0=",
         "ref": "main",
-        "rev": "82922bf9d1a7e861c9db9da07a4542a551740ffd",
-        "revCount": 4,
+        "rev": "be2c2b0c021890cc11c9b18242b3776bdea556a5",
+        "revCount": 5,
         "type": "git",
         "url": "ssh://git@github.com/hannahfluch/exchequer"
       },
@@ -536,11 +536,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1756740504,
-        "narHash": "sha256-Nbish2zrbB9l5WFDGHFTRzJrNE0rPaeCDtTX8qoO6EM=",
+        "lastModified": 1758472331,
+        "narHash": "sha256-cEVpS1Iu6IZpjgWojuH+GowBXKleaBJZL0GRsgXgMZ4=",
         "owner": "hannahfluch",
         "repo": "chicken-shell",
-        "rev": "9ee6095d4dce9b9e6c08a7fc8235872880282dac",
+        "rev": "ccb555b8c612e1e7a1f5675836b85b38e375ea9c",
         "type": "github"
       },
       "original": {
