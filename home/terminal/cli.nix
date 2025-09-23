@@ -46,6 +46,8 @@
   persist.data.contents = [
     # podman containers & config
     ".local/share/containers/storage/"
+    # metasploit data
+    ".msf4/"
   ];
   persist.caches.contents = [
     # podman
