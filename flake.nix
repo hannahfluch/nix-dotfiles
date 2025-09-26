@@ -100,7 +100,7 @@
             "geogebra"
             "obsidian"
             "ciscoPacketTracer8"
-            "binaryninja-free"
+            "binaryninja-personal"
             "volatility3"
             "burpsuite"
             "steam-unwrapped"

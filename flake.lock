@@ -30,11 +30,11 @@
     "assets": {
       "flake": false,
       "locked": {
-        "lastModified": 1758316439,
-        "narHash": "sha256-IvTIC//eDRI7FIcBrs9b3rpgEesQiQga6qjvElDFWXU=",
+        "lastModified": 1758620426,
+        "narHash": "sha256-f2yD8gUl1xQB+JdLYyQa+6eA5Rl6p0LDdBxFIh/wMV4=",
         "owner": "hannahfluch",
         "repo": "dotfile-assets",
-        "rev": "f9e1159a4977676a59034840344db8cdfb1670fc",
+        "rev": "9fdcde162193f7105895c452687037ee86a30875",
         "type": "github"
       },
       "original": {

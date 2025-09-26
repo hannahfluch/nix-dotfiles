@@ -9,5 +9,7 @@ prev:
       libdebug = prev.python3Packages.callPackage ./libdebug.nix { };
     };
   };
-
+}
+// {
+  binaryninja-personal = prev.kdePackages.callPackage ./binja.nix { };
 }
