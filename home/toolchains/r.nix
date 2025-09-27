@@ -3,6 +3,7 @@ let
   packages = with pkgs.rPackages; [
     tidyverse
     languageserver
+    ggplot2
   ];
   wrapper = pkgs.rWrapper.override { inherit packages; };
   rstudio = pkgs.rstudioWrapper.override { inherit packages; };
