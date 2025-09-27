@@ -22,23 +22,13 @@
           allowedIPs = [
             "192.168.51.0/24"
             "192.168.43.0/24"
-            "192.168.0.2/32"
-            "192.168.0.3/32"
-            "192.168.1.0/28"
-            "192.168.2.0/28"
-            "192.168.3.0/28"
-            "192.168.4.0/28"
-            "192.168.5.0/28"
-            "192.168.6.0/28"
-            "192.168.7.0/28"
-            "192.168.8.0/28"
-            "192.168.9.0/28"
-            "192.168.10.0/28"
-            "172.21.0.0/16"
+            "fd66:666::/32"
+            "fd66:777::/32"
+            "fe80::/64"
           ];
 
           # Set this to the server IP and port.
-          endpoint = "157.180.33.168:443"; # ToDo: route to endpoint not automatically configured https://wiki.archlinux.org/index.php/WireGuard#Loop_routing https://discourse.nixos.org/t/solved-minimal-firewall-setup-for-wireguard-client/7577
+          endpoint = "195.201.23.142:443"; # ToDo: route to endpoint not automatically configured https://wiki.archlinux.org/index.php/WireGuard#Loop_routing https://discourse.nixos.org/t/solved-minimal-firewall-setup-for-wireguard-client/7577
 
           # Send keepalives every 25 seconds. Important to keep NAT tables alive.
           persistentKeepalive = 25;
