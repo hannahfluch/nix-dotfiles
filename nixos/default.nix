@@ -124,6 +124,7 @@
     {
       vmVariant = options;
       vmVariantWithDisko = options;
+      docker.enable = true;
     };
 
   # System-wide installation to make it recogizable by the display manager
