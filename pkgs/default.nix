@@ -10,6 +10,3 @@ prev:
     };
   };
 }
-// {
-  binaryninja-personal = prev.kdePackages.callPackage ./binja.nix { };
-}

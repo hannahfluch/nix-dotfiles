@@ -64,6 +64,10 @@
       url = "github:pwndbg/pwndbg";
       inputs.nixpkgs.follows = "unstable";
     };
+    binary-ninja = {
+      url = "github:hannahfluch/nix-binary-ninja";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -84,6 +88,7 @@
       assets,
       honklet,
       pwndbg,
+      binary-ninja,
       ...
     }:
     let
@@ -110,6 +115,7 @@
 
       overlays = [
         fenix.overlays.default
+        binary-ninja.overlays.default
       ];
       extra = {
         agenix = agenix.packages.${system}.default;
@@ -161,6 +167,7 @@
                     agenix.homeManagerModules.default
                     exchequer.homeManagerModules.default
                     stylix.homeModules.stylix
+                    binary-ninja.hmModules.binaryninja
                   ];
                 };
             };
