@@ -84,6 +84,10 @@
           name = "typescript";
           formatter.command = "prettier";
         }
+        {
+          name = "javascript";
+          formatter.command = "prettier";
+        }
       ];
     };
   };
