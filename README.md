@@ -5,7 +5,7 @@ My NixOS configuration.
 ## TODO
 - configure git PAT in config
 - backups
-- --ozone-platform=wayland: Rstudio
+- ~~--ozone-platform=wayland: Rstudio~~
 - ~~fix uv~~
 - ~~libdebug, potentially nix-ld~~
 - ~~fix network miner~~
