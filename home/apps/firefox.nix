@@ -102,6 +102,7 @@
             sponsorblock
             ccnace
             re-enable-right-click
+            violentmonkey
           ];
       };
       search.force = true;
