@@ -6,6 +6,11 @@ in
   programs.ssh.matchBlocks = {
     "gitlab.com".identityFile = authKey;
     "github.com".identityFile = authKey;
+    "h4xx.eu" = {
+      identityFile = authKey;
+      checkHostIP = false;
+      extraOptions."StrictHostKeychecking" = "no";
+    };
   };
 
   persist.data.contents = [
