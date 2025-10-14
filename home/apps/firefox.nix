@@ -86,6 +86,21 @@
             keyword = "@no";
             url = "https://search.nixos.org/options?channel=25.05&query=%s";
           }
+          {
+            name = "duckle";
+            tags = [ "game" ];
+            keyword = "@duckle";
+            url = "https://duckle.crouchkick.com/";
+          }
+          {
+            name = "errno";
+            tags = [
+              "linux"
+              "errno"
+            ];
+            keyword = "@errno";
+            url = "https://github.com/torvalds/linux/blob/master/include/uapi/asm-generic/errno-base.h";
+          }
         ];
       };
 
@@ -101,6 +116,7 @@
             bitwarden
             sponsorblock
             ccnace
+            copai
             re-enable-right-click
             violentmonkey
           ];

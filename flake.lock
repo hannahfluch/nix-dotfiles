@@ -30,11 +30,11 @@
     "assets": {
       "flake": false,
       "locked": {
-        "lastModified": 1758620426,
-        "narHash": "sha256-f2yD8gUl1xQB+JdLYyQa+6eA5Rl6p0LDdBxFIh/wMV4=",
+        "lastModified": 1759767077,
+        "narHash": "sha256-vau4T1SK9zKj0GJYxs+qvZKHjZtQOHSVp6tE6jfuFao=",
         "owner": "hannahfluch",
         "repo": "dotfile-assets",
-        "rev": "9fdcde162193f7105895c452687037ee86a30875",
+        "rev": "b013f349482aac7fa797aef0f8cec74600f201cd",
         "type": "github"
       },
       "original": {
@@ -151,6 +151,29 @@
       "original": {
         "owner": "inet4",
         "repo": "ccnace",
+        "type": "github"
+      }
+    },
+    "copai": {
+      "inputs": {
+        "firefox-extensions": [
+          "firefox-extensions"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1760440663,
+        "narHash": "sha256-/DZ76L+Ms/smD9LF+eRdDQlLc319857x9QSo5sh65D8=",
+        "owner": "inet4",
+        "repo": "copai",
+        "rev": "fffd03d1e80750f022abc29db42e1fe363f0ab11",
+        "type": "github"
+      },
+      "original": {
+        "owner": "inet4",
+        "repo": "copai",
         "type": "github"
       }
     },
@@ -534,6 +557,7 @@
         "assets": "assets",
         "binary-ninja": "binary-ninja",
         "ccnace": "ccnace",
+        "copai": "copai",
         "disko": "disko",
         "exchequer": "exchequer",
         "fenix": "fenix",

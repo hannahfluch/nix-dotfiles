@@ -40,6 +40,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.firefox-extensions.follows = "firefox-extensions";
     };
+    copai = {
+      url = "github:inet4/copai";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.firefox-extensions.follows = "firefox-extensions";
+    };
     stylix = {
       url = "github:nix-community/stylix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -84,6 +89,7 @@
       firefox-extensions,
       shell,
       ccnace,
+      copai,
       stylix,
       assets,
       honklet,
@@ -122,6 +128,7 @@
         extensions = firefox-extensions.packages.${system};
         shell = shell.packages.${system}.default;
         ccnace = ccnace.packages.${system}.default;
+        copai = copai.packages.${system}.default;
         honklet = honklet.packages.${system}.default;
         pwndbg = pwndbg.packages.${system}.default;
       };
