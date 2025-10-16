@@ -4,6 +4,7 @@ let
     tidyverse
     languageserver
     ggplot2
+    readxl
   ];
   wrapper = pkgs.rWrapper.override { inherit packages; };
   rstudio = pkgs.rstudioWrapper.override { inherit packages; };
