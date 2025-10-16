@@ -412,6 +412,27 @@
         "type": "github"
       }
     },
+    "ida": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1760619672,
+        "narHash": "sha256-L+TlI7x27XRzLST1yT8uheTFHmbVWjNd9KWLTlbeyRo=",
+        "ref": "main",
+        "rev": "fe168e082538b6d13fafb1eb9b0c88244b7f22fc",
+        "revCount": 1,
+        "type": "git",
+        "url": "ssh://git@github.com/hannahfluch/ida"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "ssh://git@github.com/hannahfluch/ida"
+      }
+    },
     "impermanence": {
       "inputs": {
         "home-manager": [
@@ -564,6 +585,7 @@
         "firefox-extensions": "firefox-extensions",
         "home-manager": "home-manager",
         "honklet": "honklet",
+        "ida": "ida",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
         "pwndbg": "pwndbg",

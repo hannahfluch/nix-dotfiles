@@ -73,6 +73,10 @@
       url = "github:hannahfluch/nix-binary-ninja";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ida = {
+      url = "git+ssh://git@github.com/hannahfluch/ida?ref=main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -95,6 +99,7 @@
       honklet,
       pwndbg,
       binary-ninja,
+      ida,
       ...
     }:
     let
@@ -131,6 +136,7 @@
         copai = copai.packages.${system}.default;
         honklet = honklet.packages.${system}.default;
         pwndbg = pwndbg.packages.${system}.default;
+        ida-pro = ida.packages.${system}.default;
       };
 
       unstablePkgs = import unstable {

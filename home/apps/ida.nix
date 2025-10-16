@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ extra, ... }:
 {
-  home.packages = [ pkgs.ida-pro ];
+  home.packages = [ extra.ida-pro ];
 
   persist.data.contents = [
     ".idapro/"
