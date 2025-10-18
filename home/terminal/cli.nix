@@ -21,6 +21,7 @@
       bottom
       zip
       imagemagick
+      sshfs
 
       # ctf
       hash_extender
