@@ -8,7 +8,6 @@ in
     ./xdg.nix
     ./terminal
     ./wm
-    ./fuzzel.nix
     ./ssh.nix
     ./git.nix
     ./agenix.nix
