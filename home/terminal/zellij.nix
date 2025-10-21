@@ -2,7 +2,7 @@
   programs.zellij = {
     enable = true;
     settings = {
-      default_shell = "nu";
+      default_shell = "zsh";
       # copy_on_select = false;
       show_startup_tips = false;
       # mouse_mode = false;

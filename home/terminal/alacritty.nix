@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       terminal = {
-        shell = "nu";
+        shell = "zsh";
       };
     };
   };

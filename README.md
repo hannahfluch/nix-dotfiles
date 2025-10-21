@@ -18,4 +18,3 @@ My NixOS configuration.
 ## For next Release
 - networkminer (stable)
 - rclone hm should work! (https://github.com/nix-community/home-manager/issues/7577)
-- nix-index: working command-not-found support for nushell

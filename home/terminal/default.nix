@@ -8,7 +8,7 @@
     ./wine.nix
     ./rclone.nix
     ./zellij.nix
-    ./nushell.nix
+    ./zsh.nix
   ];
   programs.nix-index = {
     enable = true;
