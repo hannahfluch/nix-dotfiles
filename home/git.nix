@@ -11,6 +11,17 @@
       format = "ssh";
     };
 
+    aliases = {
+      d = "diff";
+      ds = "diff --staged";
+      cm = "commit -m";
+      a = "add";
+      p = "push";
+      s = "status";
+      l = "log";
+      rbi = "reabse -i";
+    };
+
     extraConfig = {
       core.editor = "hx";
       init.defaultBranch = "main";
