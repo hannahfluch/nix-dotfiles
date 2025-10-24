@@ -44,6 +44,7 @@
     ]
     ++ [ extra.pwndbg ];
 
+  programs.fzf.enable = true;
   services.podman.enable = true;
   persist.data.contents = [
     # podman containers & config
