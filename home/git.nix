@@ -15,11 +15,12 @@
       d = "diff";
       ds = "diff --staged";
       cm = "commit -m";
+      ca = "commit --amend --no-edit";
       a = "add";
       p = "push";
       s = "status";
       l = "log";
-      rbi = "reabse -i";
+      rbi = "rebase -i";
     };
 
     extraConfig = {
