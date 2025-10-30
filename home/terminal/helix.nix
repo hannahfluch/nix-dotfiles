@@ -34,6 +34,8 @@
       editor = {
         lsp.display-inlay-hints = true;
         mouse = false;
+        color-modes = true;
+        file-picker.hidden = false;
       };
       keys.normal = {
         left = "no_op";
