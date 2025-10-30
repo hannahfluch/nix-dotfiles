@@ -38,7 +38,6 @@
       wordlists
       gobuster
       rubyPackages_3_4.one_gadget
-      pwninit
       patchelf
       dsniff
     ]

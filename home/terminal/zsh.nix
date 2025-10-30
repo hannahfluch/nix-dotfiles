@@ -25,14 +25,19 @@
       source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
     '';
 
-    shellAliases = {
-      nrs = "sudo nixos-rebuild switch --flake /home/hannah/nixcfg";
-      ls = "ls --color=auto";
-      reload = "source ~/.zshrc; rehash";
-      erm = "${lib.getExe pkgs.erdtree} --level=1 --sort=size -H --hidden --no-ignore";
-      diff = "diff --color=auto";
-      yoink = "${lib.getExe pkgs.git} clone --depth 1";
-    };
+    shellAliases =
+      let
+        path = "/home/hannah/nixcfg";
+      in
+      {
+        nrs = "sudo nixos-rebuild switch --flake ${path}";
+        ls = "ls --color=auto";
+        reload = "source ~/.zshrc; rehash";
+        erm = "${lib.getExe pkgs.erdtree} --level=1 --sort=size -H --hidden --no-ignore";
+        diff = "diff --color=auto";
+        yoink = "${lib.getExe pkgs.git} clone --depth 1";
+        pwninit = "${lib.getExe pkgs.pwninit} --template-path ${path}/scripts/pwninit-template.py";
+      };
 
     history = {
       append = true;
