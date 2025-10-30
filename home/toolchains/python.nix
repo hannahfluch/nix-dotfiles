@@ -15,6 +15,7 @@ let
       angr
       z3-solver
       libdebug
+      ropper
     ]
   );
 in
@@ -40,6 +41,8 @@ in
         # * import related
         "F403"
         "F405"
+        # lamda assignment
+        "E731"
       ];
     };
   };
