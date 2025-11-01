@@ -29,6 +29,8 @@
       quarto # R-markdown
 
       lua-language-server
+
+      gopls
     ];
     settings = {
       editor = {

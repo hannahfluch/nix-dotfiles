@@ -6,6 +6,7 @@
     ./python.nix
     ./java-script.nix
     ./r.nix
+    ./go.nix
   ];
   home.packages = [
     (import ./rust.nix pkgs)
