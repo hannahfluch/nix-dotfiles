@@ -622,11 +622,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758472331,
-        "narHash": "sha256-cEVpS1Iu6IZpjgWojuH+GowBXKleaBJZL0GRsgXgMZ4=",
+        "lastModified": 1762159741,
+        "narHash": "sha256-jWt3wAfk6e5ah7CQFnmoixiV9X9ekgt+iPwbHrNM+GQ=",
         "owner": "hannahfluch",
         "repo": "chicken-shell",
-        "rev": "ccb555b8c612e1e7a1f5675836b85b38e375ea9c",
+        "rev": "e491b435b690b8a4cfae423e2097545962501fd8",
         "type": "github"
       },
       "original": {
