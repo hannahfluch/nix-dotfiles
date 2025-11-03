@@ -5,6 +5,7 @@ from pwn import *
 {bindings}
 
 context.binary = {bin_name}
+context.terminal = ["zellij", "action", "new-pane", "-c", "--", "sh", "-c"]
 
 # abbreviations
 cst = constants
@@ -72,13 +73,13 @@ cl = lambda t=None, *a, **kw: gt(t).close(*a, **kw)
 def get_target():
     if args.LOCAL:
         r = process({proc_args})
-        if args.GDB:
-            r = gdb.debug(
-                {proc_args},
-                gdbscript="""
-                           b main
-                       """,
-            )
+    elif args.GDB:
+        r = gdb.debug(
+            {proc_args},
+            gdbscript="""
+                       b main
+                   """,
+        )
     else:
         r = remote("addr", 1337)
 
