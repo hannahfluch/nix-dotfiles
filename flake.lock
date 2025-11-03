@@ -389,29 +389,6 @@
         "type": "github"
       }
     },
-    "honklet": {
-      "inputs": {
-        "nixpkgs": [
-          "unstable"
-        ],
-        "systems": [
-          "systems"
-        ]
-      },
-      "locked": {
-        "lastModified": 1756739281,
-        "narHash": "sha256-0tGqpZGFnATVr8NtcMW2/4M4xpXXySHDSnqp5Ua/Bo4=",
-        "owner": "hannahfluch",
-        "repo": "honklet",
-        "rev": "4c8dfd7bbf1cd3569114ea43bbed1b332d9027b2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hannahfluch",
-        "repo": "honklet",
-        "type": "github"
-      }
-    },
     "ida": {
       "inputs": {
         "nixpkgs": [
@@ -584,7 +561,6 @@
         "fenix": "fenix",
         "firefox-extensions": "firefox-extensions",
         "home-manager": "home-manager",
-        "honklet": "honklet",
         "ida": "ida",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",

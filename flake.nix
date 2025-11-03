@@ -60,11 +60,6 @@
       inputs.nixpkgs.follows = "unstable";
       inputs.systems.follows = "systems";
     };
-    honklet = {
-      url = "github:hannahfluch/honklet";
-      inputs.nixpkgs.follows = "unstable";
-      inputs.systems.follows = "systems";
-    };
     pwndbg = {
       url = "github:pwndbg/pwndbg";
       inputs.nixpkgs.follows = "unstable";
@@ -96,7 +91,6 @@
       copai,
       stylix,
       assets,
-      honklet,
       pwndbg,
       binary-ninja,
       ida,
@@ -134,7 +128,6 @@
         shell = shell.packages.${system}.default;
         ccnace = ccnace.packages.${system}.default;
         copai = copai.packages.${system}.default;
-        honklet = honklet.packages.${system}.default;
         pwndbg = pwndbg.packages.${system}.default;
         ida-pro = ida.packages.${system}.default;
       };
