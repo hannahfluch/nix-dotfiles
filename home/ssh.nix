@@ -4,8 +4,7 @@ let
 in
 {
   programs.ssh.matchBlocks = {
-    "gitlab.com".identityFile = authKey;
-    "github.com".identityFile = authKey;
+    "*".identityFile = authKey;
     "h4xx.eu" = {
       identityFile = authKey;
       checkHostIP = false;
