@@ -2,6 +2,7 @@
   config,
   pkgs,
   extra,
+  lib,
   ...
 }:
 let
@@ -22,6 +23,14 @@ in
 {
 
   home.packages = [ py ];
+  home.shellAliases =
+    let
+      pypath = lib.getExe py;
+    in
+    {
+      py = pypath;
+      venv = "uv venv --python ${pypath}";
+    };
 
   programs.uv = {
     enable = true;
