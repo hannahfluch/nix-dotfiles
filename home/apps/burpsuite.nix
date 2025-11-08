@@ -5,6 +5,6 @@
   ];
   persist.data.contents = [
     ".BurpSuite/"
-    ".java/.userPerfs/burp/"
+    ".java/.userPrefs/burp/"
   ];
 }
