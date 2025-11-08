@@ -1,8 +1,5 @@
 { pkgs, ... }:
 {
   home.packages = [ pkgs.go ];
-
-  persist.caches.contents = [
-    "go/"
-  ];
+  home.sessionVariables.GOPATH = "/persistent/caches/home/hannah/go/";
 }
