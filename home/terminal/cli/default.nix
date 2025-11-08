@@ -39,7 +39,6 @@
       volatility3
       rubyPackages_3_4.seccomp-tools
       nmap
-      steam-run
       binwalk
       snicat
       binaryen
@@ -49,6 +48,9 @@
       patchelf
       dsniff
     ]
-    ++ [ extra.pwndbg ];
+    ++ [
+      extra.pwndbg
+      extra.nix-alien
+    ];
 
 }

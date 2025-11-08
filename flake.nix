@@ -68,6 +68,10 @@
       url = "github:hannahfluch/nix-binary-ninja";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-alien = {
+      url = "github:thiagokokada/nix-alien";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     ida = {
       url = "git+ssh://git@github.com/hannahfluch/ida?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -94,6 +98,7 @@
       pwndbg,
       binary-ninja,
       ida,
+      nix-alien,
       ...
     }:
     let
@@ -113,7 +118,6 @@
             "binaryninja-personal"
             "volatility3"
             "burpsuite"
-            "steam-unwrapped"
             "ida-pro"
           ];
       };
@@ -130,6 +134,7 @@
         copai = copai.packages.${system}.default;
         pwndbg = pwndbg.packages.${system}.default;
         ida-pro = ida.packages.${system}.default;
+        nix-alien = nix-alien.packages.${system}.nix-alien;
       };
 
       unstablePkgs = import unstable {
