@@ -6,6 +6,7 @@
     ./wine.nix
     ./rclone.nix
     ./podman.nix
+    ./n.nix
   ];
 
   home.packages =
