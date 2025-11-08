@@ -4,9 +4,7 @@
     ./alacritty.nix
     ./starship.nix
     ./helix.nix
-    ./cli.nix
-    ./wine.nix
-    ./rclone.nix
+    ./cli
     ./zellij.nix
     ./zsh.nix
   ];

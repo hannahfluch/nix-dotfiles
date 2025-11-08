@@ -1,5 +1,13 @@
 { pkgs, extra, ... }:
 {
+  imports = [
+    ./fzf.nix
+    ./metasploit.nix
+    ./wine.nix
+    ./rclone.nix
+    ./podman.nix
+  ];
+
   home.packages =
     with pkgs;
     [
@@ -30,7 +38,6 @@
       volatility3
       rubyPackages_3_4.seccomp-tools
       nmap
-      metasploit
       steam-run
       binwalk
       snicat
@@ -43,16 +50,4 @@
     ]
     ++ [ extra.pwndbg ];
 
-  programs.fzf.enable = true;
-  services.podman.enable = true;
-  persist.data.contents = [
-    # podman containers & config
-    ".local/share/containers/storage/"
-    # metasploit data
-    ".msf4/"
-  ];
-  persist.caches.contents = [
-    # podman
-    ".local/share/containers/cache/"
-  ];
 }
