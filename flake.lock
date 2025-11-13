@@ -30,11 +30,11 @@
     "assets": {
       "flake": false,
       "locked": {
-        "lastModified": 1762245983,
-        "narHash": "sha256-ta95r26dk1vIUqV3ogCFzNxSb6IwUJRAoLeyMdyu12M=",
+        "lastModified": 1763406192,
+        "narHash": "sha256-R4RgAyYtg/3jLMr62jZrO5vg9Ifl3XSQgoKvE/3eTzk=",
         "owner": "hannahfluch",
         "repo": "dotfile-assets",
-        "rev": "a81aaa3b70084f7a46ef6eb0583e0dee7952d8ee",
+        "rev": "355652bdf51a705a44cfbfd2d97fc8e2c5d0d8a3",
         "type": "github"
       },
       "original": {
@@ -657,11 +657,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1762159741,
-        "narHash": "sha256-jWt3wAfk6e5ah7CQFnmoixiV9X9ekgt+iPwbHrNM+GQ=",
+        "lastModified": 1763062538,
+        "narHash": "sha256-A+FBFj9QLj/tS2KZvfhohR5dF+6k7Bdz4n+6oPvAq4o=",
         "owner": "hannahfluch",
         "repo": "chicken-shell",
-        "rev": "e491b435b690b8a4cfae423e2097545962501fd8",
+        "rev": "03ed403c9acc117c2fb3366c23be31997cd9ce48",
         "type": "github"
       },
       "original": {
