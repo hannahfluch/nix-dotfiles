@@ -71,9 +71,10 @@ cl = lambda t=None, *a, **kw: gt(t).close(*a, **kw)
 
 
 def get_target():
-    if args.LOCAL:
-        r = process({proc_args})
+    if args.REMOTE:
+        r = remote("addr", 1337)
     elif args.GDB:
+        context.log_level = "debug"
         r = gdb.debug(
             {proc_args},
             gdbscript="""
@@ -81,7 +82,7 @@ def get_target():
                    """,
         )
     else:
-        r = remote("addr", 1337)
+        r = process({proc_args})
 
     return r
 
