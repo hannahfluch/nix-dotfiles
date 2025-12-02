@@ -10,7 +10,7 @@
       pkgs.vesktop.overrideAttrs (
         finalAttrs: previousAttrs: {
           postUnpack = ''
-            cp ${assets.outPath}/custom_vesktop.gif $sourceRoot/static/shiggy.gif
+            cp ${assets.outPath}/custom_vesktop.gif $sourceRoot/static/splash.webp
 
             ${previousAttrs.postUnpack or ""}
 
