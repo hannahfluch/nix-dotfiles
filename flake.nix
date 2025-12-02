@@ -64,8 +64,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     binary-ninja = {
-      url = "path:/home/hannah/dev/nix/nix-binary-ninja";
-      # url = "github:hannahfluch/nix-binary-ninja";
+      url = "github:hannahfluch/nix-binary-ninja";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-alien = {
