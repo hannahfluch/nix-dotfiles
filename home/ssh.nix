@@ -3,13 +3,10 @@ let
   authKey = "${config.home.homeDirectory}/nixcfg/keys/id_ed25519";
 in
 {
-  programs.ssh.matchBlocks = {
-    "*".identityFile = authKey;
-    "h4xx.eu" = {
-      identityFile = authKey;
-      checkHostIP = false;
-      extraOptions."StrictHostKeychecking" = "no";
-    };
+  programs.ssh.enableDefaultConfig = false;
+  programs.ssh.matchBlocks."*" = {
+    identityFile = authKey;
+    compression = true;
   };
 
   persist.data.contents = [
