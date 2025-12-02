@@ -96,7 +96,7 @@
         preserve_split = "yes";
       };
       master.new_status = "master";
-      gesture = "3, horizontal, worspace";
+      gesture = "3, horizontal, workspace";
       misc = {
         force_default_wallpaper = 0;
         disable_splash_rendering = true;
