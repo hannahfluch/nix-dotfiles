@@ -1,12 +1,12 @@
 {
   extra,
-  unstablePkgs,
+  pkgs,
   ...
 }:
 {
   home.packages = [
     extra.shell
-    unstablePkgs.quickshell
+    pkgs.quickshell
   ];
 
   qt.enable = true; # for qmlls
