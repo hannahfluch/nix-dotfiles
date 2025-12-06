@@ -40,7 +40,10 @@ in
 
   );
   stylix.image = "${assets.outPath}/wallpapers/mountains.jpg"; # default wallpaper
-
+  # write current generation after /run/user exists
+  home.activation.writeGenerationPath = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+    run dirname "$0" >> ~/.local/share/hm_generations
+  '';
   # wallpaper chaning script
   home.packages = [
     (pkgs.writeShellScriptBin "wallpaper" ''
@@ -50,7 +53,7 @@ in
       name="$1"
 
       # Iterate over home-manager generations
-      ${lib.getExe pkgs.home-manager} generations | while IFS= read -r line; do
+      tac ~/.local/share/hm_generations | while IFS= read -r line; do
         # Extract the first /nix/store/... path from the line
         path="$(grep -oE '/nix/store/[^ ]+' <<<"$line" | head -n1 || true)"
 
