@@ -2,9 +2,8 @@
   description = "A simple NixOS flake";
 
   inputs = {
-    # NixOS official package source, using the nixos-25.05 branch here
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    # NixOS official package source, using the nixos-25.11 branch here
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     systems.url = "github:nix-systems/x86_64-linux";
 
     disko = {
@@ -17,7 +16,7 @@
       inputs.home-manager.follows = "home-manager";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     fenix = {
@@ -46,7 +45,7 @@
       inputs.firefox-extensions.follows = "firefox-extensions";
     };
     stylix = {
-      url = "github:nix-community/stylix/release-25.05";
+      url = "github:nix-community/stylix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
     };
@@ -57,12 +56,12 @@
     };
     shell = {
       url = "github:hannahfluch/chicken-shell";
-      inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
     };
     pwndbg = {
       url = "github:pwndbg/pwndbg";
-      inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     binary-ninja = {
       url = "github:hannahfluch/nix-binary-ninja";
@@ -82,7 +81,6 @@
     {
       self,
       nixpkgs,
-      unstable,
       disko,
       impermanence,
       home-manager,
@@ -136,16 +134,6 @@
         ida-pro = ida.packages.${system}.default;
         nix-alien = nix-alien.packages.${system}.nix-alien;
       };
-
-      unstablePkgs = import unstable {
-        inherit system;
-        # todo: networkminer somehow requires this (???)
-        config.permittedInsecurePackages = [
-          "dotnet-sdk-6.0.428"
-          "dotnet-runtime-6.0.36"
-        ];
-      };
-
     in
     {
       nixosConfigurations.chicken = nixpkgs.lib.nixosSystem {
@@ -167,7 +155,7 @@
 
               # same pkgs, overlays, ... for nixos and home-manager
               useGlobalPkgs = true;
-              extraSpecialArgs = { inherit unstablePkgs extra assets; };
+              extraSpecialArgs = { inherit extra assets; };
               users.hannah =
                 { ... }:
                 {

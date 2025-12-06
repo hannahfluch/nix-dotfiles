@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    jdk24
+    jdk25
     maven
   ];
 

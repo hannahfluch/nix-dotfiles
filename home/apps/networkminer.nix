@@ -1,8 +1,8 @@
-{ unstablePkgs, ... }:
+{ pkgs, ... }:
 {
   home.packages = [
 
-    (unstablePkgs.networkminer.overrideAttrs (
+    (pkgs.networkminer.overrideAttrs (
       finalAttrs: previousAttrs: {
         postPatch = ''
           ${previousAttrs.postPatch or ""}
