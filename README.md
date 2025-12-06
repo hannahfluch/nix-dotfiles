@@ -13,8 +13,4 @@ My NixOS configuration.
 - ~~telegram~~
 - ~~msfvenom~~
 - ~~add python to prompt~~
-
-
-## For next Release
-- networkminer (stable)
-- rclone hm should work! (https://github.com/nix-community/home-manager/issues/7577)
+- rclone still cookaval ? (https://github.com/nix-community/home-manager/issues/7577)
