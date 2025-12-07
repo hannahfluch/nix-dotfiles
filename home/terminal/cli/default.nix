@@ -44,7 +44,7 @@
       binaryen
       wordlists
       gobuster
-      rubyPackages_3_4.one_gadget
+      one_gadget
       patchelf
       dsniff
     ]
