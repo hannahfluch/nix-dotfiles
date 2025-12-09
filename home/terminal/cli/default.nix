@@ -47,6 +47,7 @@
       one_gadget
       patchelf
       dsniff
+      musl.dev
     ]
     ++ [
       extra.pwndbg
