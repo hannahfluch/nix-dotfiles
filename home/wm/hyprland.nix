@@ -83,7 +83,8 @@
 
       # input
       input = {
-        kb_layout = "de";
+        kb_layout = "at";
+        kb_variant = "nodeadkeys";
         touchpad = {
           natural_scroll = true;
         };
