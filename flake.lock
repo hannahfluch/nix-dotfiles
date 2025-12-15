@@ -165,11 +165,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760513684,
-        "narHash": "sha256-5kkhUfhBMtHR26FIA5WiPubfcl9Lf9Dvzj50FQ85kO4=",
+        "lastModified": 1765882784,
+        "narHash": "sha256-M9KAgCQMwyc33uMiDRreOstqt+h/mAb+ie2eQiIXc7M=",
         "owner": "inet4",
         "repo": "copai",
-        "rev": "51e4c93f6a16084b30f1a2d953df48d6d111bb44",
+        "rev": "f72b13152657e1566043b08fade2c3975fab98cc",
         "type": "github"
       },
       "original": {
