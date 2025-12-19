@@ -6,8 +6,6 @@
   ...
 }:
 {
-  programs.hyprlock.enable = true; # temporary until quickshell is done
-
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
