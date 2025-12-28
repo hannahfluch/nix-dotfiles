@@ -2,6 +2,7 @@
 {
   imports = [
     ./vesktop.nix
+    ./mattermost.nix
     ./ida.nix
     ./editors
     ./binaryninja.nix
