@@ -11,7 +11,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence = {
-      url = "github:nix-community/impermanence/home-manager-v2";
+      url = "github:nix-community/impermanence";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
@@ -162,7 +162,6 @@
                   imports = [
                     ./home
                     ./persist/home.nix
-                    impermanence.homeManagerModules.impermanence
                     agenix.homeManagerModules.default
                     exchequer.homeManagerModules.default
                     stylix.homeModules.stylix
