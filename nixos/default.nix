@@ -73,6 +73,7 @@
   users.users.hannah = {
     isNormalUser = true;
     hashedPasswordFile = config.age.secrets.passwd.path;
+    shell = pkgs.zsh;
     extraGroups = [
       "wheel"
       "video"
@@ -151,6 +152,10 @@
       };
     };
   };
+
+  # Shell
+  programs.bash.enable = false;
+  programs.zsh.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       terminal = {
-        shell = "zsh";
+        shell.program = "zsh";
       };
     };
   };
