@@ -4,6 +4,7 @@ let
     tidyverse
     languageserver
     ggplot2
+    patchwork
     readxl
   ];
   wrapper = pkgs.rWrapper.override { inherit packages; };
