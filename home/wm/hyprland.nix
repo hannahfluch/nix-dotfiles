@@ -22,6 +22,7 @@
         in
         [
           "$mod, Q, exec,uwsm app -- alacritty" # bluetooth doesnt work without uwsm-specific launch
+          "$mod, B, exec,uwsm app -- firefox" # bluetooth doesnt work without uwsm-specific launch
           "$mod, X, killactive"
           "$mod, F, exec, fullscreen"
           "$mod, W, exec, uwsm app -- ${ipc} appLauncher load"
