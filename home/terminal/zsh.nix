@@ -31,6 +31,7 @@
       in
       {
         nrs = "sudo nixos-rebuild switch --flake ${path}";
+        nd = "nix develop -c zsh";
         ls = "ls --color=auto";
         reload = "source ~/.zshrc; rehash";
         erm = "${lib.getExe pkgs.erdtree} --level=1 --sort=size -H --hidden --no-ignore";
