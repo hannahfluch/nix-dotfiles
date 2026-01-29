@@ -66,6 +66,7 @@
     binary-ninja = {
       url = "github:hannahfluch/nix-binary-ninja";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.inputs.systems.follows = "systems";
     };
     nix-alien = {
       url = "github:thiagokokada/nix-alien";
@@ -109,7 +110,7 @@
           pkg:
           builtins.elem (pkgs.lib.getName pkg) [
             "datagrip"
-            "idea-ultimate"
+            "idea"
             "geogebra"
             "obsidian"
             "ciscoPacketTracer8"

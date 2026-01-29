@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     jetbrains.datagrip
-    jetbrains.idea-ultimate
+    jetbrains.idea
   ];
 
   persist.data.contents = [
