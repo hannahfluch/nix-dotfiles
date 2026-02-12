@@ -1,73 +1,67 @@
 { ... }:
+let
+  os_bg = "base07";
+  bg = "base01";
+  fg = "base03";
+  dir = "base00";
+  dir_bg = "base04";
+  failure = "base08";
+  rust = "base17";
+  python = "base09";
+  package = "brown";
+  success = "base14";
+  git = "green";
+  git_stage = "yellow";
+  git_action = "red";
+
+  sudo = fg;
+  os = "base00";
+in
 {
   programs.starship = {
     enable = true;
 
     settings = {
       format =
-        "[╭─](fg:frame)"
+        "[╭─](fg:${bg})"
         + "["
         + (
           # Left prompt
-          "[](fg:os_bg)"
-          + "[](fg:os bg:os_bg)"
-          + "[](fg:os_bg bg:bg) "
+          "[](fg:${os_bg})"
+          + "[](fg:${os} bg:${os_bg})"
+          + "[ ](fg:${os_bg} bg:${dir_bg})"
           + "$directory"
           + "( | $git_branch)( $git_status)( $git_state)"
-          + "[](fg:bg)"
+          + "[ ](fg:${bg})"
           # Right prompt
           + "$fill("
           + (
-            "[](fg:bg)"
+            "[](${bg})"
             + "( $status|)"
             + "( $cmd_duration |)"
             + "( $sudo |)"
-            + "( $jobs |)"
             + "( $package |)"
             + "( $rust |)"
             + "( $python |)"
             + "( $shlvl |)"
             + "( \${custom.nix_flake} |)"
             + "" # this is a \b not a whitespace!
-            + "[](fg:bg)"
+            + "[](fg:${bg})"
           )
           + ")"
         )
         + ''
-          ](fg:fg bg:bg)
+          ](fg:${fg} bg:${bg})
         ''
-        + "[╰─](fg:frame)$character";
+        + "[╰─](fg:${bg})$character";
 
-      # todo: proper theming based on stylix (currently just extending theme)
       palettes.base16 = {
-        bg = "#303030";
-        fg = "#87875F";
-
-        frame = "#6C6C6C";
-        os_bg = "#484848";
-
-        success_character = "#5FD700";
-        failure = "#FF0000";
-
-        os = "#EEEEEE";
-        dir = "#00AFFF";
-
-        sudo = "fg";
-        jobs = "#5FAF00";
-        package = "#AC7647";
-        rust = "#F74C00";
-        python = "#00AFAF";
         nix = "#7EBAE4";
-        shlvl = "088167";
-
-        git_branch = "#5FD700";
-        git_status = "#D7AF00";
-        git_state = "#FF0000"; # operations like rebasing/cherry-picking
       };
 
       # Left prompt
       directory = {
-        format = "[ﱮ $path( $read_only)](fg:dir bg:bg)";
+        format = "[ﱮ $path( $read_only)](fg:${dir} bg:${dir_bg})[](fg:${dir_bg} bg:${bg})";
         read_only = "";
 
         truncation_length = 5;
@@ -76,29 +70,29 @@
       };
 
       git_branch = {
-        format = "[$symbol $branch](fg:git_branch bg:bg)";
+        format = "[$symbol $branch](fg:${git} bg:${bg})";
         symbol = "";
       };
 
       git_status = {
-        format = "[($all_status$ahead_behind)](fg:git_status bg:bg)";
+        format = "[($all_status$ahead_behind)](fg:${git_stage} bg:${bg})";
         stashed = "~";
       };
 
       git_state = {
-        format = "[$state $progress_current/$progress_total]($style bg:bg)";
-        style = "fg:git_state";
+        format = "[$state $progress_current/$progress_total]($style bg:${bg})";
+        style = "fg:${git_action}";
       };
       shlvl = {
         disabled = false;
 
-        format = "[$symbol $shlvl](fg:shlvl bg:bg)";
+        format = "[$symbol $shlvl](fg:${fg} bg:${bg})";
         symbol = "";
       };
 
       character = {
-        success_symbol = "[❯](success_character)";
-        error_symbol = "[❯](failure)";
+        success_symbol = "[❯](${success})";
+        error_symbol = "[❯](${failure})";
       };
 
       # Right prompt
@@ -106,30 +100,25 @@
 
       status = {
         disabled = false;
-        style = "fg:failure bg:bg";
+        style = "fg:${failure} bg:${bg}";
       };
 
-      cmd_duration.format = "[󱎫 $duration](fg:duration bg:bg)";
+      cmd_duration.format = "[󱎫 $duration](fg:duration bg:${bg})";
 
       sudo = {
         disabled = false;
-        format = "[](fg:sudo bg:bg)";
+        format = "[](fg:${sudo} bg:${bg})";
       };
 
-      jobs = {
-        format = "[ $number](fg:jobs bg:bg)";
-        number_threshold = 1;
-      };
+      package.format = "[󰏗 $version](fg:${package} bg:${bg})";
 
-      package.format = "[󰏗 $version](fg:package bg:bg)";
+      rust.format = "[ $version](fg:${rust} bg:${bg})";
 
-      rust.format = "[ $version](fg:rust bg:bg)";
-
-      python.format = "[ $version](fg:python bg:bg)";
+      python.format = "[ $version](fg:${python} bg:${bg})";
 
       # nix shell heuristics only apply, when the shell is active.
       custom.nix_flake = {
-        format = "[](fg:nix bg:bg)";
+        format = "[](fg:nix bg:${bg})";
 
         detect_files = [
           "flake.nix"
