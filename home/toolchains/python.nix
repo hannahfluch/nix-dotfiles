@@ -6,17 +6,22 @@
   ...
 }:
 let
+  pwn = (
+    pkgs.python3Packages.pwntools.override {
+      debugger = extra.pwndbg;
+    }
+  ); # todo: shellcraft requires gcc at runtime
+
   py = pkgs.python3.withPackages (
     pythonPackages: with pythonPackages; [
       virtualenv
       requests
-      (pwntools.override {
-        debugger = extra.pwndbg;
-      }) # todo: shellcraft requires gcc at runtime
       angr
       z3-solver
       libdebug
       ropper
+      pwn
+      (vagd.override { pwntools = pwn; })
     ]
   );
 in
