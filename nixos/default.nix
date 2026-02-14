@@ -6,7 +6,10 @@
 }:
 {
 
-  imports = [ ./networking ];
+  imports = [
+    ./networking
+    ./virtualisation.nix
+  ];
 
   # settings
   nix.settings.experimental-features = [
@@ -113,19 +116,6 @@
     TTYVHangup = true;
     TTYVTDisallocate = true;
   };
-
-  virtualisation =
-    let
-      options = {
-        virtualisation.memorySize = 8192;
-        virtualisation.graphics = true;
-        virtualisation.cores = 6;
-      };
-    in
-    {
-      vmVariant = options;
-      vmVariantWithDisko = options;
-    };
 
   # System-wide installation to make it recogizable by the display manager
   programs.hyprland = {
