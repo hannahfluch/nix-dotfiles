@@ -79,6 +79,8 @@ in
     # nixos config
     "nixcfg/"
 
+  ];
+  persist.session.contents = [
     # chromium certificates
     ".pki/"
 

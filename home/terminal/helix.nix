@@ -4,7 +4,6 @@
     enable = true;
     defaultEditor = true;
     extraPackages = with pkgs; [
-      (import ../toolchains/rust.nix pkgs)
       ruff
 
       nixd

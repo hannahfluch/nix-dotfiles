@@ -171,7 +171,7 @@
     export ELECTRON_OZONE_PLATFORM_HINT=auto
   '';
 
-  persist.data.contents = [
+  persist.session.contents = [
     ".local/share/hyprland/lastVersion"
   ];
 }

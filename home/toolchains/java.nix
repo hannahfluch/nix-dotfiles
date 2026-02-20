@@ -5,7 +5,7 @@
     maven
   ];
 
-  persist.data.contents = [
+  persist.session.contents = [
     # maven
     ".m2/"
   ];

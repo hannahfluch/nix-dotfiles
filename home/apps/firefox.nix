@@ -1,6 +1,6 @@
 { extra, ... }:
 {
-  persist.data.contents = [
+  persist.session.contents = [
     ".mozilla/"
   ];
   stylix.targets.firefox = {

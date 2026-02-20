@@ -3,7 +3,7 @@
   home.packages = [
     pkgs.geogebra6
   ];
-  persist.data.contents = [
+  persist.session.contents = [
     ".config/GeoGebra/"
   ];
 }

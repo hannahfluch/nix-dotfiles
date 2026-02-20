@@ -16,7 +16,7 @@ in
     rstudio
   ];
 
-  persist.data.contents = [
+  persist.session.contents = [
     ".local/share/rstudio/"
     ".config/RStudio/"
   ];

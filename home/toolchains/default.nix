@@ -7,16 +7,11 @@
     ./java-script.nix
     ./r.nix
     ./go.nix
+    ./rust.nix
   ];
   home.packages = [
-    (import ./rust.nix pkgs)
     pkgs.gcc
     pkgs.kdePackages.qtdeclarative # qmlformat todo: add to helix
 
-  ];
-
-  persist.caches.contents = [
-    # rust
-    ".cargo/"
   ];
 }

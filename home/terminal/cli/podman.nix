@@ -2,7 +2,7 @@
 {
 
   services.podman.enable = true;
-  persist.data.contents = [
+  persist.session.contents = [
     # podman containers & config
     ".local/share/containers/storage/"
   ];

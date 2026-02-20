@@ -61,6 +61,7 @@ in
                 // (reasonable_subvolume "/persistent/data" [ "compress=zstd" ])
                 // (reasonable_subvolume "/persistent/old_roots" [ "compress=zstd:15" ])
                 // (reasonable_subvolume "/persistent/logs" [ "compress=zstd:15" ])
+                // (reasonable_subvolume "/persistent/session" [ "compress=zstd" ])
                 // (reasonable_subvolume "/persistent/caches" [ ]);
               };
             };

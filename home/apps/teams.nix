@@ -4,5 +4,5 @@
     pkgs.teams-for-linux
   ];
 
-  persist.data.contents = [ ".config/teams-for-linux/" ];
+  persist.session.contents = [ ".config/teams-for-linux/" ];
 }

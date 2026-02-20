@@ -60,4 +60,10 @@ in
       ];
     };
   };
+
+  persist.session.contents = [
+    # vagd
+    ".local/share/vagd/"
+  ];
+
 }

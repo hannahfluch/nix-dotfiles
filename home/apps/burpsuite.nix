@@ -3,7 +3,7 @@
   home.packages = [
     pkgs.burpsuite
   ];
-  persist.data.contents = [
+  persist.session.contents = [
     ".BurpSuite/"
     ".java/.userPrefs/burp/"
   ];

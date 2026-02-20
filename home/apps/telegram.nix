@@ -2,7 +2,7 @@
 {
   home.packages = [ pkgs.telegram-desktop ];
 
-  persist.data.contents = [
+  persist.session.contents = [
     ".local/share/TelegramDesktop/"
   ];
 }

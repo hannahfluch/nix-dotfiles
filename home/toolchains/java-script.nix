@@ -12,7 +12,7 @@
   persist.logs.contents = [
     ".npm/_logs/"
   ];
-  persist.data.contents = [
+  persist.session.contents = [
     ".npm/_update-notifier-last-checked"
   ];
 }

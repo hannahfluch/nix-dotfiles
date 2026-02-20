@@ -11,7 +11,7 @@
 
   qt.enable = true; # for qmlls
 
-  persist.data.contents = [
+  persist.session.contents = [
     ".local/share/chicken-shell/"
   ];
 }

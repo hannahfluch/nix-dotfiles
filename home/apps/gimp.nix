@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = [ pkgs.gimp ];
-  persist.data.contents = [
+  persist.session.contents = [
     ".config/GIMP/"
   ];
 

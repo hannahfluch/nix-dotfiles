@@ -6,7 +6,7 @@
     dotnet-ef
   ];
 
-  persist.data.contents = [
+  persist.session.contents = [
     ".dotnet/"
     ".aspnet/"
   ];

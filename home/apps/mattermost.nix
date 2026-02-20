@@ -2,7 +2,7 @@
 {
   home.packages = [ pkgs.mattermost-desktop ];
 
-  persist.data.contents = [
+  persist.session.contents = [
     ".config/Mattermost/"
   ];
 }

@@ -18,7 +18,7 @@
       };
     };
 
-  persist.location.data.contents = [
+  persist.location.session.contents = [
     # docker containers
     ".local/share/docker/"
     # docker config

@@ -4,7 +4,7 @@
     pkgs.metasploit
   ];
 
-  persist.data.contents = [
+  persist.session.contents = [
     ".msf4/"
   ];
 }

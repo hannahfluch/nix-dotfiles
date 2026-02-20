@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = [ pkgs.libreoffice ];
-  persist.data.contents = [
+  persist.session.contents = [
     ".config/libreoffice/"
   ];
 }

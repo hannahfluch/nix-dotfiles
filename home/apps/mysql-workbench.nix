@@ -2,7 +2,11 @@
 {
   home.packages = [ pkgs.mysql-workbench ];
 
-  persist.data.contents = [
-    ".mysql/"
+  persist.logs.contents = [
+    ".mysql/workbench/log/"
+  ];
+
+  persist.session.contents = [
+    ".mysql/workbench/"
   ];
 }

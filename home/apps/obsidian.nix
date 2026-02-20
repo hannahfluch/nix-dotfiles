@@ -4,7 +4,7 @@
     pkgs.obsidian
   ];
 
-  persist.data.contents = [
+  persist.session.contents = [
     ".config/obsidian/"
   ];
 }

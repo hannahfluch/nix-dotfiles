@@ -2,7 +2,7 @@
 {
   home.packages = [ extra.ida-pro ];
 
-  persist.data.contents = [
+  persist.session.contents = [
     ".idapro/"
   ];
 }
