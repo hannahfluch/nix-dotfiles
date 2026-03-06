@@ -63,10 +63,14 @@
       url = "github:pwndbg/pwndbg";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
     binary-ninja = {
       url = "github:hannahfluch/nix-binary-ninja";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.inputs.systems.follows = "systems";
+      inputs.flake-utils.follows = "flake-utils";
     };
     nix-alien = {
       url = "github:thiagokokada/nix-alien";
@@ -76,11 +80,11 @@
       url = "git+ssh://git@github.com/hannahfluch/ida?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     leaves = {
       url = "github:Luk-ESC/leaves";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.fenix.follows = "fenix";
+      inputs.flake-utils.follows = "flake-utils";
     };
   };
 
