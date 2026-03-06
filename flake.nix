@@ -76,6 +76,12 @@
       url = "git+ssh://git@github.com/hannahfluch/ida?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    leaves = {
+      url = "github:Luk-ESC/leaves";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.fenix.follows = "fenix";
+    };
   };
 
   outputs =
@@ -98,6 +104,7 @@
       binary-ninja,
       ida,
       nix-alien,
+      leaves,
       ...
     }:
     let
@@ -171,6 +178,8 @@
                 };
             };
           }
+
+          leaves.nixosModules.${system}.default
 
           disko.nixosModules.disko
           ./disko/disko-config.nix
