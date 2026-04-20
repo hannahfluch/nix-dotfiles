@@ -7,5 +7,9 @@
 
   };
   networking.firewall.allowedUDPPorts = [ 50000 ];
+  networking.firewall.allowedTCPPorts = [
+    50000
+    8000
+  ];
 
 }
