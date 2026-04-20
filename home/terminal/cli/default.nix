@@ -37,7 +37,7 @@
       qemu
       gdb
       volatility3
-      rubyPackages_3_4.seccomp-tools
+      rubyPackages_4_0.seccomp-tools
       nmap
       binwalk
       snicat
