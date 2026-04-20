@@ -6,6 +6,8 @@ let
     ggplot2
     patchwork
     readxl
+    GGally
+    plotly
   ];
   wrapper = pkgs.rWrapper.override { inherit packages; };
   rstudio = pkgs.rstudioWrapper.override { inherit packages; };
