@@ -5,35 +5,39 @@
   extra,
   ...
 }:
+let
+  noctalia-shell = lib.getExe config.programs.noctalia-shell.package;
+in
 {
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
     settings = {
       exec-once = [
-        "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --watch ${lib.getExe pkgs.cliphist} store"
-        "uwsm app -- ${lib.getExe extra.shell}"
+        "uwsm app -- ${noctalia-shell}"
+        "uwsm app -- ${lib.getExe extra.honklet}"
       ];
       # keybinds
       "$mod" = "SUPER";
       bind =
         let
-          ipc = "${lib.getExe extra.shell} ipc call";
+          ipc = "${noctalia-shell} ipc call";
         in
         [
           "$mod, Q, exec,uwsm app -- alacritty" # bluetooth doesnt work without uwsm-specific launch
           "$mod, B, exec,uwsm app -- firefox" # bluetooth doesnt work without uwsm-specific launch
           "$mod, X, killactive"
           "$mod, F, exec, fullscreen"
-          "$mod, W, exec, uwsm app -- ${ipc} appLauncher load"
-          "$mod, A, exec, uwsm app -- ${ipc} wallpaper load"
+          "$mod, W, exec, uwsm app -- ${ipc} launcher toggle"
+          "$mod, A, exec, uwsm app -- ${ipc} wallpaper toggle"
+          "$mod, D, exec, uwsm app -- ${ipc} controlCenter toggle"
           "$mod, C, exec, uwsm app -- ${lib.getExe pkgs.hyprshot} -m region -s -o ${config.home.homeDirectory}/screenshots/"
-          "$mod, L, exec, uwsm app -- hyprlock"
+          "$mod, L, exec, uwsm app -- ${ipc} lockScreen lock"
           "$mod, M, exec, uwsm stop"
           "$mod, Space, togglefloating"
           "$mod SHIFT, Space, centerwindow"
           "$mod, F, fullscreen"
-          "$mod, V, exec, ${ipc} clipboard load"
+          "$mod, V, exec, ${ipc} launcher clipboard"
           "$mod, left, movefocus, l"
           "$mod, right, movefocus, r"
           "$mod, up, movefocus, u"

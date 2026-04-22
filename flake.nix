@@ -54,8 +54,8 @@
       # url = "path:/home/hannah/assets";
       flake = false;
     };
-    shell = {
-      url = "github:hannahfluch/chicken-shell";
+    honklet = {
+      url = "github:hannahfluch/honklet";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
     };
@@ -86,6 +86,11 @@
       inputs.fenix.follows = "fenix";
       inputs.flake-utils.follows = "flake-utils";
     };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.noctalia-qs.inputs.systems.follows = "systems";
+    };
   };
 
   outputs =
@@ -99,7 +104,6 @@
       agenix,
       exchequer,
       firefox-extensions,
-      shell,
       ccnace,
       copai,
       stylix,
@@ -109,6 +113,8 @@
       ida,
       nix-alien,
       leaves,
+      noctalia,
+      honklet,
       ...
     }:
     let
@@ -139,12 +145,14 @@
       extra = {
         agenix = agenix.packages.${system}.default;
         extensions = firefox-extensions.packages.${system};
-        shell = shell.packages.${system}.default;
         ccnace = ccnace.packages.${system}.default;
         copai = copai.packages.${system}.default;
         pwndbg = pwndbg.packages.${system}.default;
         ida-pro = ida.packages.${system}.default;
         nix-alien = nix-alien.packages.${system}.nix-alien;
+        honklet = honklet.packages.${system}.default;
+
+        noctalia-hm = noctalia.homeModules.default;
       };
     in
     {

@@ -5,13 +5,9 @@
 }:
 {
   home.packages = [
-    extra.shell
+    extra.honklet
     pkgs.quickshell
   ];
 
   qt.enable = true; # for qmlls
-
-  persist.session.contents = [
-    ".local/share/chicken-shell/"
-  ];
 }

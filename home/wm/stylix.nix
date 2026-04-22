@@ -44,13 +44,19 @@ in
   home.activation.writeGenerationPath = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
     run dirname "$0" >> ~/.local/share/hm_generations
   '';
-  # wallpaper chaning script
+  # wallpaper chaning script (accepts name of spec or path to wallpaper)
   home.packages = [
     (pkgs.writeShellScriptBin "wallpaper" ''
       #!/usr/bin/env bash
       set -eo pipefail
 
-      name="$1"
+      input="$1"
+
+      # Get basename
+      filename="$(basename -- "$input")"
+
+      # Remove everything after first dot
+      name="''${filename%%.*}"
 
       # Iterate over home-manager generations
       tac ~/.local/share/hm_generations | while IFS= read -r line; do
