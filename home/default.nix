@@ -74,7 +74,6 @@ in
     "screenshots/"
     ".secrets/"
     "assets/"
-    "shell/"
 
     # nixos config
     "nixcfg/"
