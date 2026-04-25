@@ -31,6 +31,7 @@
       in
       {
         nrs = "sudo nixos-rebuild switch --flake ${path}";
+        nrt = "sudo nixos-rebuild test --flake ${path}";
         nd = "nix develop -c zsh";
         ls = "ls --color=auto";
         reload = "source ~/.zshrc; rehash";
