@@ -91,6 +91,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.noctalia-qs.inputs.systems.follows = "systems";
     };
+    ryubing = {
+      url = "git+ssh://git@github.com/hannahfluch/ryubing?ref=main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -115,6 +119,7 @@
       leaves,
       noctalia,
       honklet,
+      ryubing,
       ...
     }:
     let
@@ -151,6 +156,7 @@
         ida-pro = ida.packages.${system}.default;
         nix-alien = nix-alien.packages.${system}.nix-alien;
         honklet = honklet.packages.${system}.default;
+        ryubing = ryubing.packages.${system}.default;
 
         noctalia-hm = noctalia.homeModules.default;
       };

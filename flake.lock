@@ -754,6 +754,7 @@
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
         "pwndbg": "pwndbg",
+        "ryubing": "ryubing",
         "stylix": "stylix",
         "systems": "systems"
       }
@@ -773,6 +774,27 @@
         "ref": "nightly",
         "repo": "rust-analyzer",
         "type": "github"
+      }
+    },
+    "ryubing": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1777131274,
+        "narHash": "sha256-WbDTlAQffFHvwR0i3sDnSDwnLLFVjaXS3MgkI8rseDc=",
+        "ref": "main",
+        "rev": "6274a7e6d054a426fd099b1c8618f1f78b8ae699",
+        "revCount": 4,
+        "type": "git",
+        "url": "ssh://git@github.com/hannahfluch/ryubing"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "ssh://git@github.com/hannahfluch/ryubing"
       }
     },
     "stylix": {

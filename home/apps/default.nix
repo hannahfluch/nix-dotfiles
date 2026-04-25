@@ -20,6 +20,7 @@
     ./pt.nix
     ./gimp.nix
     ./mysql-workbench.nix
+    ./ryubing.nix
   ];
   home.packages = [
     pkgs.baobab
