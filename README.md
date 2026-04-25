@@ -14,3 +14,4 @@ My NixOS configuration.
 - ~~msfvenom~~
 - ~~add python to prompt~~
 - rclone still cookaval ? (https://github.com/nix-community/home-manager/issues/7577)
+- fix honklet toggling (noctalia)
