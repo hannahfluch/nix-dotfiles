@@ -7,6 +7,7 @@
     ./rclone.nix
     ./podman.nix
     ./n.nix
+    ./s.nix
   ];
 
   home.packages =
