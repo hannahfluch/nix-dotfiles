@@ -783,18 +783,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1777131274,
-        "narHash": "sha256-WbDTlAQffFHvwR0i3sDnSDwnLLFVjaXS3MgkI8rseDc=",
-        "ref": "main",
-        "rev": "6274a7e6d054a426fd099b1c8618f1f78b8ae699",
-        "revCount": 4,
-        "type": "git",
-        "url": "ssh://git@github.com/hannahfluch/ryubing"
+        "lastModified": 1777279977,
+        "narHash": "sha256-DZpCtZFU3M1sSLKRfSKETaP8S6cId5E0KuZXmJCavBQ=",
+        "owner": "hannahfluch",
+        "repo": "ryubing",
+        "rev": "dc258eb73be820e1e5444841eea3f6da62696853",
+        "type": "github"
       },
       "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "ssh://git@github.com/hannahfluch/ryubing"
+        "owner": "hannahfluch",
+        "repo": "ryubing",
+        "type": "github"
       }
     },
     "stylix": {

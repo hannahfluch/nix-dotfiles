@@ -92,7 +92,7 @@
       inputs.noctalia-qs.inputs.systems.follows = "systems";
     };
     ryubing = {
-      url = "git+ssh://git@github.com/hannahfluch/ryubing?ref=main";
+      url = "github:hannahfluch/ryubing";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
