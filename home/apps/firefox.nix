@@ -1,8 +1,5 @@
 { extra, ... }:
 {
-  persist.session.contents = [
-    ".mozilla/"
-  ];
   stylix.targets.firefox = {
     profileNames = [ "default" ];
     colorTheme.enable = true;

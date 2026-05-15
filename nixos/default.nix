@@ -11,6 +11,9 @@
     ./virtualisation.nix
   ];
 
+  # atlas
+  persist.users = [ "hannah" ];
+
   # settings
   nix.settings.experimental-features = [
     "nix-command"

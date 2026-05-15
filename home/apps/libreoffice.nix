@@ -1,7 +1,5 @@
 { pkgs, ... }:
 {
   home.packages = [ pkgs.libreoffice ];
-  persist.session.contents = [
-    ".config/libreoffice/"
-  ];
+  atlas.libreoffice.enable = true;
 }

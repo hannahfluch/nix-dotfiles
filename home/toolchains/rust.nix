@@ -18,12 +18,5 @@ in
 {
   home.packages = [ toolchain ];
   programs.helix.extraPackages = [ toolchain ];
-
-  persist.caches.contents = [
-    ".cargo/registry/cache/"
-  ];
-
-  persist.session.contents = [
-    ".cargo/"
-  ];
+  atlas.cargo.enable = true;
 }

@@ -4,7 +4,4 @@
     pkgs.wineWowPackages.waylandFull
   ];
 
-  persist.caches.contents = [
-    ".wine/"
-  ];
 }

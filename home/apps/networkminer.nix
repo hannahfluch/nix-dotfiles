@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = [
-
     (pkgs.networkminer.overrideAttrs (
       finalAttrs: previousAttrs: {
         postPatch = ''
@@ -12,9 +11,5 @@
         '';
       }
     ))
-  ];
-
-  persist.caches.contents = [
-    ".local/share/NetworkMiner/AssembedFiles/cache/"
   ];
 }

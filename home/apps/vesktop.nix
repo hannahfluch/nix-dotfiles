@@ -31,5 +31,4 @@
 
     };
   };
-  persist.session.contents = [ ".config/vesktop/" ];
 }

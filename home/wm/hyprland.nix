@@ -174,8 +174,4 @@ in
     export NIXOS_OZONE_WL=1
     export ELECTRON_OZONE_PLATFORM_HINT=auto
   '';
-
-  persist.session.contents = [
-    ".local/share/hyprland/lastVersion"
-  ];
 }

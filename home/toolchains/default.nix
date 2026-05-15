@@ -4,7 +4,7 @@
     ./java.nix
     ./dotnet.nix
     ./python.nix
-    ./java-script.nix
+    ./javascript.nix
     ./r.nix
     ./go.nix
     ./rust.nix

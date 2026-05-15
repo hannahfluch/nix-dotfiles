@@ -18,10 +18,7 @@ in
     rstudio
   ];
 
-  persist.session.contents = [
-    ".local/share/rstudio/"
-    ".config/RStudio/"
-  ];
+  atlas.rstudio.enable = true;
 
   programs.helix.extraPackages = [ wrapper ];
 }

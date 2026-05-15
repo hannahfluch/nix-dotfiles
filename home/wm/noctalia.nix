@@ -9,11 +9,6 @@
     extra.noctalia-hm
   ];
 
-  # colors generated based on wallpaper
-  persist.session.contents = [
-    ".config/noctalia/colors.json"
-  ];
-
   stylix.targets.noctalia-shell.enable = false; # dont generate color symlinks
   programs.noctalia-shell =
     let

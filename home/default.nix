@@ -66,10 +66,6 @@ in
 
   persist.data.contents = [
     # user data
-    "music/"
-    "pictures/"
-    "documents/"
-    "videos/"
     "dev/"
     "screenshots/"
     ".secrets/"
@@ -82,15 +78,8 @@ in
   persist.session.contents = [
     # chromium certificates
     ".pki/"
-
-    # audio
-    ".config/pulse/"
-    ".local/state/wireplumber/"
   ];
 
-  persist.caches.contents = [
-    ".cache/"
-  ];
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

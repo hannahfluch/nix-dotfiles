@@ -5,8 +5,5 @@
     jetbrains.idea
   ];
 
-  persist.session.contents = [
-    ".local/share/JetBrains/"
-    ".config/JetBrains/"
-  ];
+  atlas.jetbrains.enable = true;
 }

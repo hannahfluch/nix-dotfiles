@@ -3,9 +3,6 @@
 
   programs.zsh = {
     enable = true;
-    completionInit = ''
-      autoload -U compinit && compinit -d /persistent/caches/home/hannah/.zcompdump
-    '';
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     initContent = ''
@@ -39,6 +36,7 @@
         diff = "diff --color=auto";
         yoink = "${lib.getExe pkgs.git} clone --depth 1";
         pwninit = "${lib.getExe pkgs.pwninit} --template-path ${path}/scripts/pwninit-template.py";
+        pdf = "${lib.getExe pkgs.libreoffice} --headless --convert-to pdf";
       };
 
     history = {
@@ -47,7 +45,6 @@
         "poweroff"
         "reboot"
       ];
-      path = "/persistent/data/home/hannah/.zsh_history";
       size = 100000;
     };
 

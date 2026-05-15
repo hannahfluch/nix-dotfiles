@@ -36,6 +36,8 @@ in
       py = pypath;
       venv = "uv venv --python ${pypath}";
     };
+  atlas.python.enable = true;
+  atlas.vagd.enable = true;
 
   programs.uv = {
     enable = true;
@@ -60,10 +62,4 @@ in
       ];
     };
   };
-
-  persist.session.contents = [
-    # vagd
-    ".local/share/vagd/"
-  ];
-
 }
