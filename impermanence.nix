@@ -1,27 +1,33 @@
 { lib, ... }:
 {
   boot.initrd.postResumeCommands = lib.mkAfter ''
-    mkdir /btrfs_tmp
-    mount /dev/disk/by-partlabel/disk-main-root /btrfs_tmp # TODO: this depends on diskos undocumented naming scheme :(
+     mkdir /btrfs_tmp
+     mount /dev/disk/by-partlabel/disk-main-root /btrfs_tmp # TODO: this depends on diskos undocumented naming scheme :(
 
-    if [[ -e /btrfs_tmp/rootfs ]]; then
-        timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/rootfs)" "+%Y-%m-%-d_%H:%M:%S")
-        mv /btrfs_tmp/rootfs "/btrfs_tmp/persistent/old_roots/$timestamp"
-    fi
+     delete_subvolume_recursively() {
+         IFS=$'\n'
+         for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
+             delete_subvolume_recursively "/btrfs_tmp/$i"
+         done
+         btrfs subvolume delete "$1"
+     }
 
-    delete_subvolume_recursively() {
-        IFS=$'\n'
-        for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
-            delete_subvolume_recursively "/btrfs_tmp/$i"
-        done
-        btrfs subvolume delete "$1"
-    }
+     for i in $(find /btrfs_tmp/persistent/old_roots/ -maxdepth 1 -mtime +30); do
+         delete_subvolume_recursively "$i"
+     done
 
-    for i in $(find /btrfs_tmp/persistent/old_roots/ -maxdepth 1 -mtime +30); do
-        delete_subvolume_recursively "$i"
-    done
+    # TODO: fix timezone
+     timestamp=$(date "+%Y-%m-%d_%H:%M:%S")
+     new_root="/btrfs_tmp/persistent/old_roots/$timestamp"
 
-    btrfs subvolume create /btrfs_tmp/rootfs
-    umount /btrfs_tmp
+     btrfs subvolume create "$new_root"
+     id="$(btrfs subvolume show "$new_root" | sed -n 's/.*Subvolume ID:[[:space:]]*//p')"
+
+     # TODO: use subvolume path instead of sed
+     btrfs subvolume set-default "$id" /btrfs_tmp
+
+     ln -sfn "$timestamp" /btrfs_tmp/persistent/old_roots/current
+
+     umount /btrfs_tmp
   '';
 }

@@ -7,6 +7,16 @@ let
   };
 in
 {
+  boot.tmp.useTmpfs = true;
+  fileSystems."/" = {
+    device = "/dev/disk/by-partlabel/disk-main-root";
+    enable = true;
+    fsType = "btrfs";
+    options = [
+      "noatime"
+      # Disko wants a subvol=? here, but we don't know this... its set in initrd
+    ];
+  };
   disko.devices = {
     disk = {
       main = {
@@ -36,27 +46,13 @@ in
                 # Subvolumes must set a mountpoint in order to be mounted,
                 # unless their parent is mounted
                 subvolumes = {
-                  # Subvolume name is different from mountpoint
-                  "/rootfs" = {
-                    mountpoint = "/";
-                    mountOptions = [ "noatime" ];
-                  };
-                  # Parent is not mounted so the mountpoint must be set
-                  "/nix" = {
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
-                    mountpoint = "/nix";
-                  };
-                  # This subvolume will be created but not mounted
-                  # "/test" = { };
                   # Subvolume for the swapfile
                   "/swap" = {
                     mountpoint = "/.swapvol";
                     swap.swapfile.size = "20G"; # no hibernation >:()
                   };
                 }
+                // (reasonable_subvolume "/nix" [ "compress=zstd" ])
                 // (reasonable_subvolume "/persistent" [ ])
                 // (reasonable_subvolume "/persistent/data" [ "compress=zstd" ])
                 // (reasonable_subvolume "/persistent/old_roots" [ "compress=zstd:15" ])
