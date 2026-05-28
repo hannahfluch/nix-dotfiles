@@ -6,6 +6,9 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     initContent = ''
+      bindkey "^H" backward-kill-word
+      WORDCHARS=''${WORDCHARS//[\/-]/}
+
       bindkey "^[[1;5D" backward-word
       bindkey "^[[1;5C" forward-word
 
