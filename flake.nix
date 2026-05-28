@@ -82,7 +82,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     leaves = {
-      url = "github:Luk-ESC/leaves";
+      # url = "github:Luk-ESC/leaves";
+      url = "path:/home/hannah/dev/rust/leaves";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.fenix.follows = "fenix";
       inputs.flake-utils.follows = "flake-utils";
