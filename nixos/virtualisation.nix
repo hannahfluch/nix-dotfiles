@@ -15,6 +15,13 @@
       docker.rootless = {
         enable = true;
         setSocketVariable = true;
+        # fix broken dns
+        daemon.settings = {
+          dns = [
+            "1.1.1.1"
+            "8.8.8.8"
+          ];
+        };
       };
     };
 }
