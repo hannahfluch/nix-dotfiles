@@ -16,7 +16,8 @@ let
     pythonPackages: with pythonPackages; [
       virtualenv
       requests
-      angr
+      # FIXME: Doesn't work since 26.05
+      # angr
       z3-solver
       libdebug
       ropper

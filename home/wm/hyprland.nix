@@ -12,150 +12,301 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
-    settings = {
-      exec-once = [
-        "uwsm app -- ${noctalia-shell}"
-        "uwsm app -- ${lib.getExe extra.honklet}"
-      ];
-      # keybinds
-      "$mod" = "SUPER";
-      bind =
-        let
-          ipc = "${noctalia-shell} ipc call";
-        in
-        [
-          "$mod, Q, exec,uwsm app -- alacritty" # bluetooth doesnt work without uwsm-specific launch
-          "$mod, B, exec,uwsm app -- firefox" # bluetooth doesnt work without uwsm-specific launch
-          "$mod, X, killactive"
-          "$mod, F, exec, fullscreen"
-          "$mod, W, exec, uwsm app -- ${ipc} launcher toggle"
-          "$mod, A, exec, uwsm app -- ${ipc} wallpaper toggle"
-          "$mod, D, exec, uwsm app -- ${ipc} controlCenter toggle"
-          "$mod, C, exec, uwsm app -- ${lib.getExe pkgs.hyprshot} -m region -s -o ${config.home.homeDirectory}/screenshots/"
-          "$mod, L, exec, uwsm app -- ${ipc} lockScreen lock"
-          "$mod, M, exec, uwsm stop"
-          "$mod, Space, togglefloating"
-          "$mod SHIFT, Space, centerwindow"
-          "$mod, F, fullscreen"
-          "$mod, V, exec, ${ipc} launcher clipboard"
-          "$mod, left, movefocus, l"
-          "$mod, right, movefocus, r"
-          "$mod, up, movefocus, u"
-          "$mod, down, movefocus, d"
+    configType = "lua"; # ;(
+    settings =
+      let
 
-          "$mod, mouse_down, workspace, e+1"
-          "$mod, mouse_up, workspace, e-1"
+        # soooooo goooooffffyyyy why lua
+        lua = lib.generators.mkLuaInline;
+        dsp = {
+          exec = cmd: lua ''hl.dsp.exec_cmd("${cmd}")'';
+          close = lua "hl.dsp.window.close()";
+          exit = lua "hl.dsp.exit()";
+          float = lua ''hl.dsp.window.float({ action = "toggle" })'';
+          center = lua "hl.dsp.window.center()";
+          fullscreen = lua "hl.dsp.window.fullscreen()";
+          focus = dir: lua ''hl.dsp.focus({ direction = "${dir}" })'';
+          toggleSpecial = name: lua ''hl.dsp.workspace.toggle_special("${name}")'';
+          moveToSpecial = name: lua ''hl.dsp.window.move({ workspace = "special:${name}" })'';
+          focusWorkspace = ws: lua ''hl.dsp.focus({ workspace = "${toString ws}" })'';
+          moveToWorkspace = ws: lua ''hl.dsp.window.move({ workspace = "${toString ws}" })'';
+          drag = lua "hl.dsp.window.drag()";
+          resize = lua "hl.dsp.window.resize()";
+        };
+        bind = keys: dispatcher: {
+          _args = [
+            keys
+            dispatcher
+          ];
+        };
+        bindOpts = keys: dispatcher: opts: {
+          _args = [
+            keys
+            dispatcher
+            opts
+          ];
+        };
+        autostart =
+          cmds:
+          let
+            execStr = cmd: ''hl.exec_cmd("${cmd}")'';
+          in
+          {
+            _args = [
+              "hyprland.start"
+              (lua ''
+                function()
+                  ${lib.concatMapStringsSep "\n    " execStr cmds}
+                end
+              '')
+            ];
+          };
+        amixer = lib.getExe' pkgs.alsa-utils "amixer";
+        brightnessctl = lib.getExe pkgs.brightnessctl;
+        mod = "SUPER";
 
-          "$mod, S, togglespecialworkspace, magic"
-          "$mod SHIFT, S, movetoworkspace, special:magic"
-        ]
-        ++ (
-          # workspaces
-          # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-          builtins.concatLists (
-            builtins.genList (
+      in
+      {
+        on = autostart [
+          "uwsm app -- ${noctalia-shell}"
+          "uwsm app -- ${lib.getExe extra.honklet}"
+        ];
+
+        # move between workspaces with touchpad
+        gesture = [
+          {
+            fingers = 3;
+            direction = "horizontal";
+            action = "workspace";
+          }
+        ];
+
+        # keybinds
+        bind =
+          let
+            ipc = "${noctalia-shell} ipc call";
+          in
+          [
+            (bind "${mod} + Q" (dsp.exec "uwsm app -- alacritty")) # bluetooth doesnt work without uwsm-specific launch
+            (bind "${mod} + B" (dsp.exec "uwsm app -- firefox")) # bluetooth doesnt work without uwsm-specific launch
+            (bind "${mod} + W" (dsp.exec "uwsm app -- ${ipc} launcher toggle"))
+            (bind "${mod} + A" (dsp.exec "uwsm app -- ${ipc} wallpaper toggle"))
+            (bind "${mod} + D" (dsp.exec "uwsm app -- ${ipc} controlCenter toggle"))
+            (bind "${mod} + C" (
+              dsp.exec "uwsm app -- ${lib.getExe pkgs.hyprshot} -m region -s -o ${config.home.homeDirectory}/screenshots/"
+            ))
+            (bind "${mod} + L" (dsp.exec "uwsm app -- ${ipc} lockScreen lock"))
+            (bind "${mod} + V" (dsp.exec "${ipc} launcher clipboard"))
+
+            (bind "${mod} + X" dsp.close)
+            (bind "${mod} + F" dsp.fullscreen)
+            (bind "${mod} + M" dsp.exit)
+            (bind "${mod} + Space" dsp.float)
+            (bind "${mod} + SHIFT + Space" dsp.center)
+
+            (bind "${mod} + left" (dsp.focus "left"))
+            (bind "${mod} + right" (dsp.focus "right"))
+            (bind "${mod} + up" (dsp.focus "up"))
+            (bind "${mod} + down" (dsp.focus "down"))
+
+            (bind "${mod} + mouse_down" (dsp.focusWorkspace "e+1"))
+            (bind "${mod} + mouse_up" (dsp.focusWorkspace "e-1"))
+
+            (bind "${mod} + S" (dsp.toggleSpecial "magic"))
+            (bind "${mod} + SHIFT + S" (dsp.moveToSpecial "magic"))
+            (bindOpts "XF86AudioRaiseVolume" (dsp.exec "${amixer} set Master 5%+") {
+              locked = true;
+              repeating = true;
+            })
+            (bindOpts "XF86AudioLowerVolume" (dsp.exec "${amixer} set Master 5%-") {
+              locked = true;
+              repeating = true;
+            })
+            (bindOpts "XF86AudioMute" (dsp.exec "${amixer} set Master toggle") { locked = true; })
+            (bindOpts "XF86AudioMicMute" (dsp.exec "${amixer} set Capture toggle") { locked = true; })
+
+            (bindOpts "XF86MonBrightnessUp" (dsp.exec "${brightnessctl} s 10%+") {
+              locked = true;
+              repeating = true;
+            })
+            (bindOpts "XF86MonBrightnessDown" (dsp.exec "${brightnessctl} s 10%-") {
+              locked = true;
+              repeating = true;
+            })
+
+            (bindOpts "SUPER + mouse:272" dsp.drag { mouse = true; })
+            (bindOpts "SUPER + mouse:273" dsp.resize { mouse = true; })
+
+          ]
+          ++ (
+            # workspaces
+            # binds $${mod} + [shift +] {1..9} to [move to] workspace {1..9}
+
+            lib.concatMap (
               i:
               let
-                ws = i + 1;
+                key = toString (lib.mod i 9);
               in
               [
-                "$mod, code:1${toString i}, workspace, ${toString ws}"
-                "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+                (bind "${mod} + ${key}" (dsp.focusWorkspace i))
+                (bind "${mod} + SHIFT + ${key}" (dsp.moveToWorkspace i))
               ]
-            ) 9
-          )
-        );
-      binde =
-        let
-          amixer = lib.getExe' pkgs.alsa-utils "amixer";
-          brightnessctl = lib.getExe pkgs.brightnessctl;
-        in
-        [
-          ", XF86AudioRaiseVolume, execr, ${amixer} set Master 5%+"
-          ", XF86AudioLowerVolume, execr, ${amixer} set Master 5%-"
-          ", XF86AudioMute,        execr, ${amixer} set Master toggle"
-          ", XF86AudioMicMute,     execr, ${amixer} set Capture toggle"
+            ) (lib.range 1 9)
 
-          ", XF86MonBrightnessUp,   execr, ${brightnessctl} s 10%+"
-          ", XF86MonBrightnessDown, execr, ${brightnessctl} s 10%-"
-        ];
-      bindm = [
-        "$mod, mouse:272, movewindow"
-        "$mod, mouse:273, resizewindow"
-      ];
+          );
 
-      # input
-      input = {
-        kb_layout = "at";
-        kb_variant = "nodeadkeys";
-        touchpad = {
-          natural_scroll = true;
+        config = {
+          # graphics
+          general = {
+            gaps_in = 5;
+            gaps_out = 10;
+            border_size = 3;
+            layout = "dwindle";
+            allow_tearing = false;
+          };
+          decoration = {
+            rounding = 10;
+            blur = {
+              enabled = false;
+            };
+          };
+
+          dwindle = {
+            preserve_split = true;
+          };
+
+          master.new_status = "master";
+
+          misc = {
+            force_default_wallpaper = 0;
+            disable_splash_rendering = true;
+          };
+          ecosystem.no_update_news = true;
+
+          animations.enabled = true;
+
+          # input
+          input = {
+            kb_layout = "at";
+            kb_variant = "nodeadkeys";
+            touchpad.natural_scroll = true;
+            follow_mouse = 1;
+          };
         };
-        follow_mouse = 1;
-      };
 
-      # graphics
-      dwindle = {
-        pseudotile = "yes";
-        preserve_split = "yes";
-      };
-      master.new_status = "master";
-      gesture = "3, horizontal, workspace";
-      misc = {
-        force_default_wallpaper = 0;
-        disable_splash_rendering = true;
-      };
-      ecosystem.no_update_news = true;
-      general = {
-        gaps_in = 5;
-        gaps_out = 10;
-        border_size = 3;
-        layout = "dwindle";
-        allow_tearing = false;
-      };
-      decoration = {
-        rounding = 10;
-        blur = {
-          enabled = false;
-        };
-      };
+        # monitors
+        monitor = [
+          {
+            output = "eDP-1";
+            mode = "preferred";
+            position = "auto";
+            scale = "1.333333";
+          }
+          {
+            output = "";
+            mode = "preferred";
+            position = "auto";
+            scale = "1";
+            mirror = "eDP-1";
 
-      # monitors
-      monitor = [
-        "eDP-1,preferred,auto,1.333333"
-        # ",preferred,auto,1,mirror,eDP-1" # ,prefered,auto,1
-        ",preferred,auto,1"
-      ];
-
-      # animations
-      layerrule = [ "noanim, gtk4-layer-shell" ];
-      windowrulev2 = [
-        "noanim, class:^(waybar)$"
-        "opacity 0.0 override, class:^(xwaylandvideobridge)$"
-        "noanim, class:^(xwaylandvideobridge)$"
-        "noinitialfocus, class:^(xwaylandvideobridge)$"
-        "maxsize 1 1, class:^(xwaylandvideobridge)$"
-        "noblur, class:^(xwaylandvideobridge)$"
-      ];
-      animations = {
-        enabled = true;
-        bezier = [
-          "easeInOutCirc, 0.85, 0, 0.15, 1"
-          "easeInOutQuart, 0.76, 0, 0.24, 1"
-          "easeInOutCubic, 0.65, 0, 0.35, 1"
+          }
         ];
+
+        # animations
+        curve = [
+          {
+            _args = [
+              "easeInOutCirc"
+              {
+                type = "bezier";
+                points = lua "{ {0.85, 0}, {0.15, 1} }";
+              }
+            ];
+          }
+          {
+            _args = [
+              "easeInOutQuart"
+              {
+                type = "bezier";
+                points = lua "{ {0.76, 0}, {0.24, 1} }";
+              }
+            ];
+          }
+          {
+            _args = [
+              "easeInOutCubic"
+              {
+                type = "bezier";
+                points = lua "{ {0.65, 0}, {0.35, 1} }";
+              }
+            ];
+          }
+        ];
+
         animation = [
-          "windows, 1, 5, easeInOutCubic"
-          "windowsOut, 1, 7, default, popin 80%"
-          "border, 1, 10, default"
-          "borderangle, 1, 8, default"
-          "fade, 1, 7, default"
-          "workspaces, 1, 5.25, easeInOutQuart"
+          {
+            leaf = "windows";
+            enabled = true;
+            speed = 5;
+            bezier = "easeInOutCubic";
+          }
+          {
+            leaf = "windowsOut";
+            enabled = true;
+            speed = 7;
+            bezier = "default";
+            style = "popin 80%";
+          }
+          {
+            leaf = "border";
+            enabled = true;
+            speed = 10;
+            bezier = "default";
+          }
+          {
+            leaf = "borderangle";
+            enabled = true;
+            speed = 8;
+            bezier = "default";
+          }
+          {
+            leaf = "fade";
+            enabled = true;
+            speed = 7;
+            bezier = "default";
+          }
+          {
+            leaf = "workspaces";
+            enabled = true;
+            speed = 5.25;
+            bezier = "easeInOutQuart";
+          }
         ];
-      };
-    };
-  };
 
+        layer_rule = [
+          {
+            match = {
+              namespace = "gtk4-layer-shell";
+            };
+            no_anim = true;
+          }
+        ];
+        window_rule = [
+          {
+            match = {
+              class = "xwaylandvideobridge";
+            };
+            opacity = 0.0;
+            no_initial_focus = true;
+            no_focus = true;
+            no_blur = true;
+            no_anim = true;
+            max_size = "1 1";
+          }
+        ];
+
+      };
+  };
   # wm env vars
   home.file."${config.xdg.configHome}/uwsm/env".text = ''
     # perfer wayland for qt apps

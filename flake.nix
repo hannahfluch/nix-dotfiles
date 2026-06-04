@@ -3,7 +3,7 @@
 
   inputs = {
     # NixOS official package source, using the nixos-25.11 branch here
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     systems.url = "github:nix-systems/x86_64-linux";
 
     disko = {
@@ -17,7 +17,7 @@
       inputs.home-manager.follows = "home-manager";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     fenix = {
@@ -46,7 +46,7 @@
       inputs.firefox-extensions.follows = "firefox-extensions";
     };
     stylix = {
-      url = "github:nix-community/stylix/release-25.11";
+      url = "github:nix-community/stylix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
     };
@@ -93,10 +93,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.noctalia-qs.inputs.systems.follows = "systems";
     };
-    ryubing = {
-      url = "github:hannahfluch/ryubing";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -121,7 +117,6 @@
       leaves,
       noctalia,
       honklet,
-      ryubing,
       ...
     }:
     let
@@ -158,7 +153,6 @@
         ida-pro = ida.packages.${system}.default;
         nix-alien = nix-alien.packages.${system}.nix-alien;
         honklet = honklet.packages.${system}.default;
-        ryubing = ryubing.packages.${system}.default;
 
         noctalia-hm = noctalia.homeModules.default;
       };
