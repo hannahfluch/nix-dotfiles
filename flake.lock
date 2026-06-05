@@ -516,14 +516,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1779130856,
-        "narHash": "sha256-Pw8JnmakjsnsNLOOU/lhdkeG8LNagC4ojx/vYhiGxHs=",
-        "path": "/home/hannah/dev/rust/leaves",
-        "type": "path"
+        "lastModified": 1779125857,
+        "narHash": "sha256-AH4+GuaYDDoGtDCyZBI0Iam46xw1F3aFIO3L0d1Z2GI=",
+        "owner": "Luk-ESC",
+        "repo": "leaves",
+        "rev": "c548ec8dd602af17cc7ced9db0bfd80fa4e7397c",
+        "type": "github"
       },
       "original": {
-        "path": "/home/hannah/dev/rust/leaves",
-        "type": "path"
+        "owner": "Luk-ESC",
+        "repo": "leaves",
+        "type": "github"
       }
     },
     "naersk": {
