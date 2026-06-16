@@ -98,6 +98,15 @@
             keyword = "@errno";
             url = "https://github.com/torvalds/linux/blob/master/include/uapi/asm-generic/errno-base.h";
           }
+          {
+            name = "syscall";
+            tags = [
+              "linux"
+              "syscall"
+            ];
+            keyword = "@syscall";
+            url = "https://filippo.io/linux-syscall-table/";
+          }
         ];
       };
 
