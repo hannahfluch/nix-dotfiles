@@ -14,7 +14,7 @@
       # rootless docker
       docker.rootless = {
         enable = true;
-        setSocketVariable = true;
+        # setSocketVariable = true; <--- interferes with podman python client `from_env`
         # fix broken dns
         daemon.settings = {
           dns = [
