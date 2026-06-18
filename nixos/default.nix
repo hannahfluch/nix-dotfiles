@@ -118,10 +118,11 @@
   };
 
   # System-wide installation to make it recogizable by the display manager
-  programs.hyprland = {
+  programs.niri = {
     enable = true;
-    withUWSM = true;
+    package = pkgs.niri;
   };
+  niri-flake.cache.enable = false;
 
   # Install wireshark + adds wireshark group
   programs.wireshark = {

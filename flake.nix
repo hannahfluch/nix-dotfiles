@@ -93,6 +93,24 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.noctalia-qs.inputs.systems.follows = "systems";
     };
+    niri = {
+      # FIXME(sodiboo/niri-flake #1731): merges this
+      # url = "github:sodiboo/niri-flake";
+      url = "github:myume/niri-flake?ref=blur";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+      inputs.niri-stable.follows = "";
+      inputs.niri-unstable.follows = "";
+      inputs.xwayland-satellite-stable.follows = "";
+      inputs.xwayland-satellite-unstable.follows = "";
+    };
+
+    miri = {
+      url = "path:/home/hannah/dev/rust/miri/";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.fenix.follows = "fenix";
+      inputs.flake-utils.follows = "flake-utils";
+    };
   };
 
   outputs =
@@ -117,6 +135,8 @@
       leaves,
       noctalia,
       honklet,
+      niri,
+      miri,
       ...
     }:
     let
@@ -155,6 +175,7 @@
         honklet = honklet.packages.${system}.default;
 
         noctalia-hm = noctalia.homeModules.default;
+        miri = miri.packages.${system}.default;
       };
     in
     {
@@ -187,6 +208,7 @@
                     exchequer.homeManagerModules.default
                     stylix.homeModules.stylix
                     binary-ninja.hmModules.binaryninja
+                    niri.homeModules.stylix
                   ];
                 };
             };
@@ -202,6 +224,8 @@
 
           agenix.nixosModules.default
           exchequer.nixosModules.default
+
+          niri.nixosModules.niri
         ];
       };
       nixosConfigurations.hatcher = nixpkgs.lib.nixosSystem {

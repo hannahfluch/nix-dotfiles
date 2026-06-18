@@ -19,7 +19,6 @@
         projects = "${base}/dev";
         setSessionVariables = true;
       };
-    # hyprland portal is added automatically, gtk for file-chooser
     portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 }

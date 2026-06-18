@@ -529,6 +529,30 @@
         "type": "github"
       }
     },
+    "miri": {
+      "inputs": {
+        "fenix": [
+          "fenix"
+        ],
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "naersk": "naersk_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1781689347,
+        "narHash": "sha256-muIDUl1Go914EaHjArFEkQcN/nly/Zf+NgtVt1FNZnc=",
+        "path": "/home/hannah/dev/rust/miri/",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/hannah/dev/rust/miri/",
+        "type": "path"
+      }
+    },
     "naersk": {
       "inputs": {
         "fenix": [
@@ -551,6 +575,59 @@
       "original": {
         "owner": "nix-community",
         "repo": "naersk",
+        "type": "github"
+      }
+    },
+    "naersk_2": {
+      "inputs": {
+        "fenix": [
+          "miri",
+          "fenix"
+        ],
+        "nixpkgs": [
+          "miri",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1781258734,
+        "narHash": "sha256-rfZT1gFztHDqA4gcFLO/Qv74bulhW/mXYqIHYTmc1lA=",
+        "owner": "nix-community",
+        "repo": "naersk",
+        "rev": "3ddafa67a4c7d06483995c85c66a2d285b738833",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "naersk",
+        "type": "github"
+      }
+    },
+    "niri": {
+      "inputs": {
+        "niri-stable": [],
+        "niri-unstable": [],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nixpkgs-stable": [
+          "nixpkgs"
+        ],
+        "xwayland-satellite-stable": [],
+        "xwayland-satellite-unstable": []
+      },
+      "locked": {
+        "lastModified": 1777182467,
+        "narHash": "sha256-riAI7gTdNnLaUFuvFVc38gPoi+EXwGzNh6Z8RdlZFxg=",
+        "owner": "myume",
+        "repo": "niri-flake",
+        "rev": "a2eb6a3475ecdb110d448537efb8b2ae43786bc6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "myume",
+        "ref": "blur",
+        "repo": "niri-flake",
         "type": "github"
       }
     },
@@ -774,6 +851,8 @@
         "honklet": "honklet",
         "ida": "ida",
         "leaves": "leaves",
+        "miri": "miri",
+        "niri": "niri",
         "nix-alien": "nix-alien",
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
