@@ -1,14 +1,15 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }:
 {
   boot.initrd.systemd.extraBin.sed = lib.getExe pkgs.gnused;
   boot.initrd.systemd.services.impermanence-setup =
     let
-      # TODO: this depends on diskos undocumented naming scheme :(
-      disk = "/dev/disk/by-partlabel/disk-main-root";
+      subvol = "/persistent/old_roots";
+      disk = config.fileSystems.${subvol}.device;
     in
     {
       # Specify dependencies explicitly
@@ -39,7 +40,7 @@
         mkdir /btrfs_tmp
         export PATH="/bin:$PATH"
 
-        mount -t btrfs -o subvol=/persistent/old_roots ${disk} /btrfs_tmp
+        mount -t btrfs -o subvol=${subvol} ${disk} /btrfs_tmp
 
         for i in $(find /btrfs_tmp/ -maxdepth 1 -mtime +30); do
             btrfs subvolume delete --recursive "$i"
