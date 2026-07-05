@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  extra,
+  ...
+}:
 {
 
   programs.zsh = {
@@ -40,6 +45,7 @@
         yoink = "${lib.getExe pkgs.git} clone --depth 1";
         pwninit = "${lib.getExe pkgs.pwninit} --template-path ${path}/scripts/pwninit-template.py";
         pdf = "${lib.getExe pkgs.libreoffice} --headless --convert-to pdf";
+        nmiri = "${lib.getExe' extra.miri "miri"}";
       };
 
     history = {

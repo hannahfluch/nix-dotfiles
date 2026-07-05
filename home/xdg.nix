@@ -19,6 +19,5 @@
         projects = "${base}/dev";
         setSessionVariables = true;
       };
-    portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 }

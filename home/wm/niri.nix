@@ -46,7 +46,7 @@ in
           repeat-delay = 500;
           repeat-rate = 25;
         };
-        focus-follows-mouse.enable = true;
+        focus-follows-mouse.enable = false;
 
         touchpad = {
           natural-scroll = true;
