@@ -64,6 +64,10 @@
       url = "github:pwndbg/pwndbg";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    gef = {
+      url = "github:bata24/gef";
+      flake = false;
+    };
     flake-utils = {
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
@@ -137,6 +141,7 @@
       honklet,
       niri,
       miri,
+      gef,
       ...
     }:
     let
@@ -176,6 +181,8 @@
 
         noctalia-hm = noctalia.homeModules.default;
         miri = miri.packages.${system}.default;
+
+        gef = "${gef.outPath}/gef.py";
       };
     in
     {

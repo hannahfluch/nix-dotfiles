@@ -395,6 +395,22 @@
         "type": "github"
       }
     },
+    "gef": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1782999967,
+        "narHash": "sha256-4DmY2Ngqj/OGSHljcn/5XkgzsLjiTHJ1Lmrh3vu0zio=",
+        "owner": "bata24",
+        "repo": "gef",
+        "rev": "119a6eca85e38505acdc2976bc01560e73b5acb4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bata24",
+        "repo": "gef",
+        "type": "github"
+      }
+    },
     "gnome-shell": {
       "flake": false,
       "locked": {
@@ -847,6 +863,7 @@
         "fenix": "fenix",
         "firefox-extensions": "firefox-extensions",
         "flake-utils": "flake-utils",
+        "gef": "gef",
         "home-manager": "home-manager",
         "honklet": "honklet",
         "ida": "ida",

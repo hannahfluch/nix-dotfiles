@@ -46,6 +46,7 @@
         pwninit = "${lib.getExe pkgs.pwninit} --template-path ${path}/scripts/pwninit-template.py";
         pdf = "${lib.getExe pkgs.libreoffice} --headless --convert-to pdf";
         nmiri = "${lib.getExe' extra.miri "miri"}";
+        gef = "${lib.getExe pkgs.gdb} -x ${extra.gef}";
       };
 
     history = {
