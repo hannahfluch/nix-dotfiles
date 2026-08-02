@@ -124,6 +124,10 @@
   };
   niri-flake.cache.enable = false;
 
+  xdg.portal.extraPortals = lib.mkForce [
+    pkgs.xdg-desktop-portal-gtk
+  ];
+
   # Install wireshark + adds wireshark group
   programs.wireshark = {
     enable = true;
