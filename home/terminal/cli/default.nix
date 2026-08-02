@@ -49,6 +49,7 @@
       patchelf
       dsniff
       musl.dev
+      wireguard-tools
     ]
     ++ [
       extra.pwndbg
