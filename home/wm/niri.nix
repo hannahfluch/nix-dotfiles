@@ -190,6 +190,11 @@ in
           "Mod+F".action = maximize-column;
           "Mod+Shift+F".action = fullscreen-window;
           "Mod+Space".action = toggle-window-floating;
+
+          "Mod+P" = {
+            repeat = false;
+            action.spawn-sh = "${lib.getExe pkgs.wl-mirror} $(niri msg --json focused-output | ${lib.getExe pkgs.jq} -r .name)";
+          };
         };
 
       overview.workspace-shadow.enable = false;
