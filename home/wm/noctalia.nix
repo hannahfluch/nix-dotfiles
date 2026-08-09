@@ -438,7 +438,7 @@
         };
         hooks = {
           enabled = true;
-          wallpaperChange = "wallpaper $1";
+          wallpaperChange = "theme $1";
           darkModeChange = "";
           screenLock = "";
           screenUnlock = "";

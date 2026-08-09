@@ -30,11 +30,11 @@
     "assets": {
       "flake": false,
       "locked": {
-        "lastModified": 1780562840,
-        "narHash": "sha256-nmAnYlEGExI6zlagiGSa+DP+0/sTUOspUW0Ws+48PzQ=",
+        "lastModified": 1786263757,
+        "narHash": "sha256-z6wq5wPaCPF1hH6MNeZLtUsEh7kM9Bdcw8PO3fnvxzE=",
         "owner": "hannahfluch",
         "repo": "dotfile-assets",
-        "rev": "47e63a29c98b2470cb8f9881960137dc5dce1fb8",
+        "rev": "2eac28488f5ae658aca45d23576bfa6da2da50ad",
         "type": "github"
       },
       "original": {
@@ -479,11 +479,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764586022,
-        "narHash": "sha256-R3eK7VRj7Am3Jt7ATmmelRjq3yqv1WHj3BgAEVfJghI=",
+        "lastModified": 1786271598,
+        "narHash": "sha256-EY9j4L9QrKxKC00Bd5sSaRz8splYnBvv6ep3zTuX2WY=",
         "ref": "main",
-        "rev": "136397502e2ddb0a03f46518be3f0530b798e2f4",
-        "revCount": 2,
+        "rev": "ddb052ae1e1636066a0e928a1bae6c367ea420fd",
+        "revCount": 4,
         "type": "git",
         "url": "ssh://git@github.com/hannahfluch/ida"
       },
