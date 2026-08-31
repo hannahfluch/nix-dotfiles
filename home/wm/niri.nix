@@ -219,6 +219,9 @@ in
         QT_AUTO_SCREEN_SCALE_FACTOR = "1";
         NIXOS_OZONE_WL = "1";
         ELECTRON_OZONE_PLATFORM_HINT = "auto";
+        # Some Java apps like Ghidra can show up blank under xwayland-satellite.
+        _JAVA_AWT_WM_NONREPARENTING = "1";
+
       };
 
       prefer-no-csd = true;
