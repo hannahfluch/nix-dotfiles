@@ -166,6 +166,9 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
+  # Enable USB multiplexing daemon. (for IOS device interaction)
+  services.usbmuxd.enable = true;
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # Or disable the firewall altogether.
