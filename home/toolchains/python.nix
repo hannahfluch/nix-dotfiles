@@ -22,6 +22,9 @@ let
       libdebug
       ropper
       pwn
+      capstone
+      lief
+      keystone-engine
       (vagd.override { pwntools = pwn; })
     ]
   );
