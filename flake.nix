@@ -3,7 +3,7 @@
 
   inputs = {
     # NixOS official package source, using the nixos-25.11 branch here
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     systems.url = "github:nix-systems/x86_64-linux";
 
     disko = {
@@ -17,7 +17,7 @@
       inputs.home-manager.follows = "home-manager";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     fenix = {
@@ -46,7 +46,7 @@
       inputs.firefox-extensions.follows = "firefox-extensions";
     };
     stylix = {
-      url = "github:nix-community/stylix/release-25.11";
+      url = "github:nix-community/stylix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
     };
@@ -63,6 +63,10 @@
     pwndbg = {
       url = "github:pwndbg/pwndbg";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    gef = {
+      url = "github:bata24/gef";
+      flake = false;
     };
     flake-utils = {
       url = "github:numtide/flake-utils";
@@ -82,8 +86,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     leaves = {
-      # url = "github:Luk-ESC/leaves";
-      url = "path:/home/hannah/dev/rust/leaves";
+      url = "github:Luk-ESC/leaves";
+      # url = "path:/home/hannah/dev/rust/leaves";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.fenix.follows = "fenix";
       inputs.flake-utils.follows = "flake-utils";
@@ -93,9 +97,23 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.noctalia-qs.inputs.systems.follows = "systems";
     };
-    ryubing = {
-      url = "github:hannahfluch/ryubing";
+    niri = {
+      # FIXME(sodiboo/niri-flake #1731): merges this
+      # url = "github:sodiboo/niri-flake";
+      url = "github:myume/niri-flake?ref=blur";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+      inputs.niri-stable.follows = "";
+      inputs.niri-unstable.follows = "";
+      inputs.xwayland-satellite-stable.follows = "";
+      inputs.xwayland-satellite-unstable.follows = "";
+    };
+
+    miri = {
+      url = "path:/home/hannah/dev/rust/miri/";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.fenix.follows = "fenix";
+      inputs.flake-utils.follows = "flake-utils";
     };
   };
 
@@ -121,7 +139,9 @@
       leaves,
       noctalia,
       honklet,
-      ryubing,
+      niri,
+      miri,
+      gef,
       ...
     }:
     let
@@ -158,9 +178,11 @@
         ida-pro = ida.packages.${system}.default;
         nix-alien = nix-alien.packages.${system}.nix-alien;
         honklet = honklet.packages.${system}.default;
-        ryubing = ryubing.packages.${system}.default;
 
         noctalia-hm = noctalia.homeModules.default;
+        miri = miri.packages.${system}.default;
+
+        gef = "${gef.outPath}/gef.py";
       };
     in
     {
@@ -193,6 +215,7 @@
                     exchequer.homeManagerModules.default
                     stylix.homeModules.stylix
                     binary-ninja.hmModules.binaryninja
+                    niri.homeModules.stylix
                   ];
                 };
             };
@@ -208,6 +231,8 @@
 
           agenix.nixosModules.default
           exchequer.nixosModules.default
+
+          niri.nixosModules.niri
         ];
       };
       nixosConfigurations.hatcher = nixpkgs.lib.nixosSystem {

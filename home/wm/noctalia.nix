@@ -47,7 +47,7 @@
               {
                 id = "CustomButton";
                 enable = true;
-                leftClickExec = "uwsm app -- ${lib.getExe extra.honklet} ipc call goose toggle";
+                leftClickExec = "WAYLAND_DISPLAY=wayland-1 ${lib.getExe extra.honklet} ipc call goose toggle";
                 icon = "hyprland";
               }
             ]
@@ -56,8 +56,11 @@
               "ActiveWindow"
               "MediaMini"
             ];
-            center = widgetArray [
-              "Workspace"
+            center = [
+              {
+                id = "Workspace";
+                hideUnoccupied = true;
+              }
             ];
             right = widgetArray [
               "Clock"
@@ -435,7 +438,7 @@
         };
         hooks = {
           enabled = true;
-          wallpaperChange = "wallpaper $1";
+          wallpaperChange = "theme $1";
           darkModeChange = "";
           screenLock = "";
           screenUnlock = "";

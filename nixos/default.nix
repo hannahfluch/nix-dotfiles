@@ -11,17 +11,11 @@
     ./virtualisation.nix
   ];
 
-  # atlas
-  persist.users = [ "hannah" ];
-
   # settings
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
-
-  # new generation
-  system.rebuild.enableNg = true;
 
   # disable nix channels
   nix.channel.enable = false;
@@ -121,10 +115,15 @@
   };
 
   # System-wide installation to make it recogizable by the display manager
-  programs.hyprland = {
+  programs.niri = {
     enable = true;
-    withUWSM = true;
+    package = pkgs.niri;
   };
+  niri-flake.cache.enable = false;
+
+  xdg.portal.extraPortals = lib.mkForce [
+    pkgs.xdg-desktop-portal-gtk
+  ];
 
   # Install wireshark + adds wireshark group
   programs.wireshark = {
@@ -150,6 +149,10 @@
   programs.bash.enable = false;
   programs.zsh.enable = true;
 
+  # Fingerprint
+  services.fprintd.enable = true;
+  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -162,6 +165,9 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+
+  # Enable USB multiplexing daemon. (for IOS device interaction)
+  services.usbmuxd.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

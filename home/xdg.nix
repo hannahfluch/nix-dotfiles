@@ -16,8 +16,8 @@
         music = "${base}/music";
         pictures = "${base}/pictures";
         videos = "${base}/videos";
+        projects = "${base}/dev";
+        setSessionVariables = true;
       };
-    # hyprland portal is added automatically, gtk for file-chooser
-    portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 }

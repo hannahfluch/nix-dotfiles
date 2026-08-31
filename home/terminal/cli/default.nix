@@ -8,6 +8,8 @@
     ./podman.nix
     ./n.nix
     ./s.nix
+    ./quickemu.nix
+    ./distrobox.nix
   ];
 
   home.packages =
@@ -49,6 +51,7 @@
       patchelf
       dsniff
       musl.dev
+      wireguard-tools
     ]
     ++ [
       extra.pwndbg
