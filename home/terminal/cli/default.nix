@@ -8,6 +8,7 @@
     ./podman.nix
     ./n.nix
     ./s.nix
+    ./quickemu.nix
   ];
 
   home.packages =
