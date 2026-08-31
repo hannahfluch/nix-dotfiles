@@ -9,6 +9,7 @@
     ./n.nix
     ./s.nix
     ./quickemu.nix
+    ./distrobox.nix
   ];
 
   home.packages =
