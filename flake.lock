@@ -54,11 +54,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780492482,
-        "narHash": "sha256-vbgV6HyGptd9t77wCUtuPIF7mGAsyhYM3vv2Mb5Xvkk=",
+        "lastModified": 1788129954,
+        "narHash": "sha256-bYKW2Gvuh2xBcZC0wUyZjlXyuPxbtKBfqrZJlLy9I+4=",
         "owner": "luk-esc",
         "repo": "atlas",
-        "rev": "2157f0e1981cf5408c6ffc65e4c45e4ad07c211f",
+        "rev": "d30b15c34d8188186f1c77009b45b8c44d594e69",
         "type": "github"
       },
       "original": {
