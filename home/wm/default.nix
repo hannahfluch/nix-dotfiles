@@ -6,5 +6,6 @@
     ./quickshell.nix
     ./stylix.nix
     ./noctalia.nix
+    ./obs-studio.nix
   ];
 }
