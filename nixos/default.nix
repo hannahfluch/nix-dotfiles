@@ -123,6 +123,7 @@
 
   xdg.portal.extraPortals = lib.mkForce [
     pkgs.xdg-desktop-portal-gtk
+    pkgs.xdg-desktop-portal-gnome
   ];
 
   # Install wireshark + adds wireshark group
