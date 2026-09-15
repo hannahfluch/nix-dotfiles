@@ -25,6 +25,7 @@ let
       capstone
       lief
       keystone-engine
+      numpy
       (vagd.override { pwntools = pwn; })
     ]
   );
