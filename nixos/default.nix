@@ -122,7 +122,6 @@
   niri-flake.cache.enable = false;
 
   xdg.portal.extraPortals = lib.mkForce [
-    pkgs.xdg-desktop-portal-gtk
     pkgs.xdg-desktop-portal-gnome
   ];
 
