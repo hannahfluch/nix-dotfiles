@@ -44,9 +44,9 @@ in
   home.activation.writeGenerationPath = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
     run dirname "$0" >> ~/.local/share/hm_generations
   '';
-  # wallpaper chaning script (accepts name of spec or path to wallpaper)
+  # wallpaper theme script (accepts name of spec or path to wallpaper)
   home.packages = [
-    (pkgs.writeShellScriptBin "wallpaper" ''
+    (pkgs.writeShellScriptBin "theme" ''
       #!/usr/bin/env bash
       set -eo pipefail
 
@@ -74,7 +74,7 @@ in
           echo
 
           if [[ -z "$name" ]]; then
-            echo "Usage: wallpaper <specialisation-name>"
+            echo "Usage: theme <specialisation-name>"
             exit 0
           fi
 

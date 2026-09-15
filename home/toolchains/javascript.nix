@@ -3,7 +3,11 @@
   home.packages = with pkgs; [
     bun
     typescript
-    nodejs-slim
   ];
   atlas.npm.enable = true;
+
+  programs.helix.extraPackages = with pkgs; [
+    typescript-language-server
+    prettier
+  ];
 }

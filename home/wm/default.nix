@@ -2,10 +2,10 @@
 {
 
   imports = [
-    ./hyprcursor.nix
+    ./niri.nix
     ./quickshell.nix
     ./stylix.nix
-    ./hyprland.nix
     ./noctalia.nix
+    ./obs-studio.nix
   ];
 }

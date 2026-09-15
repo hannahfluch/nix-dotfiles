@@ -62,7 +62,7 @@
               "package"
             ];
             keyword = "@np";
-            url = "https://search.nixos.org/packages?channel=25.11&query=%s";
+            url = "https://search.nixos.org/packages?channel=26.05&query=%s";
           }
           {
             name = "home-manager options";
@@ -72,7 +72,7 @@
               "options"
             ];
             keyword = "@ho";
-            url = "https://home-manager-options.extranix.com/?channel=25.11&query=%s";
+            url = "https://home-manager-options.extranix.com/?channel=26.05&query=%s";
           }
           {
             name = "nixos options";
@@ -81,7 +81,7 @@
               "options"
             ];
             keyword = "@no";
-            url = "https://search.nixos.org/options?channel=25.11&query=%s";
+            url = "https://search.nixos.org/options?channel=26.05&query=%s";
           }
           {
             name = "duckle";
@@ -97,6 +97,15 @@
             ];
             keyword = "@errno";
             url = "https://github.com/torvalds/linux/blob/master/include/uapi/asm-generic/errno-base.h";
+          }
+          {
+            name = "syscall";
+            tags = [
+              "linux"
+              "syscall"
+            ];
+            keyword = "@syscall";
+            url = "https://filippo.io/linux-syscall-table/";
           }
         ];
       };

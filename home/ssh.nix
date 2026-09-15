@@ -4,7 +4,7 @@ let
 in
 {
   programs.ssh.enableDefaultConfig = false;
-  programs.ssh.matchBlocks."*" = {
+  programs.ssh.settings."*" = {
     identityFile = authKey;
     compression = true;
   };

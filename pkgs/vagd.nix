@@ -12,12 +12,12 @@
 
 buildPythonPackage rec {
   pname = "vagd";
-  version = "1.7.1";
+  version = "1.8.0";
   pyproject = true;
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-6SDZWpzWBiZsR8yMBcoTFfZtzfPy9Q7J/wLGMoMdPyE=";
+    hash = "sha256-fRzy9/emtyxiRPSyJ91gJezafks+eZpOH2NP9Z/jPGs=";
   };
 
   build-system = [ setuptools ];
