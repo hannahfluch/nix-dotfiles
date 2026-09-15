@@ -60,6 +60,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
     };
+    catlock = {
+      url = "github:hannahfluch/catlock";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     pwndbg = {
       url = "github:pwndbg/pwndbg";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -139,6 +143,7 @@
       leaves,
       noctalia,
       honklet,
+      catlock,
       niri,
       miri,
       gef,
@@ -178,6 +183,7 @@
         ida-pro = ida.packages.${system}.default;
         nix-alien = nix-alien.packages.${system}.nix-alien;
         honklet = honklet.packages.${system}.default;
+        catlock = catlock.packages.${system}.default;
 
         noctalia-hm = noctalia.homeModules.default;
         miri = miri.packages.${system}.default;
@@ -233,6 +239,7 @@
           exchequer.nixosModules.default
 
           niri.nixosModules.niri
+          catlock.nixosModules.default
         ];
       };
       nixosConfigurations.hatcher = nixpkgs.lib.nixosSystem {

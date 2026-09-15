@@ -132,6 +132,9 @@
     usbmon.enable = true;
   };
 
+  # Enable catlock
+  programs.catlock.enable = true;
+
   programs.nix-ld.enable = true;
 
   hardware.bluetooth = {

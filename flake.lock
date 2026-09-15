@@ -158,6 +158,26 @@
         "type": "github"
       }
     },
+    "catlock": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789460225,
+        "narHash": "sha256-B1SGdmoCqACrbQbfyBSH7R86nCZ4/WSo831ObIB87K0=",
+        "owner": "hannahfluch",
+        "repo": "catlock",
+        "rev": "958e881b28c7c545cb38e036609d260db0eb9d42",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hannahfluch",
+        "repo": "catlock",
+        "type": "github"
+      }
+    },
     "ccnace": {
       "inputs": {
         "firefox-extensions": [
@@ -856,6 +876,7 @@
         "assets": "assets",
         "atlas": "atlas",
         "binary-ninja": "binary-ninja",
+        "catlock": "catlock",
         "ccnace": "ccnace",
         "copai": "copai",
         "disko": "disko",

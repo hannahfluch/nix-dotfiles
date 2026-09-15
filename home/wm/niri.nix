@@ -99,6 +99,7 @@ in
           "Mod+M".action = quit;
 
           "Mod+L".action = spawnIpc "lockScreen lock";
+          "Mod+S".action.spawn = [ (lib.getExe extra.catlock) ];
           "Mod+V".action = spawnIpc "launcher clipboard";
 
           # Audio
