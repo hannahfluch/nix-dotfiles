@@ -1,4 +1,4 @@
-{ extra, ... }:
+{ lib, extra, ... }:
 {
   stylix.targets.firefox = {
     profileNames = [ "default" ];
@@ -33,81 +33,34 @@
       };
       bookmarks = {
         force = true;
-        settings = [
-          {
-            name = "wikipedia";
-            tags = [ "wiki" ];
-            keyword = "@wiki";
-            url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
-          }
-          {
-            name = "docs.rs";
-            tags = [
-              "rust"
-              "docs"
-            ];
-            keyword = "@rd";
-            url = "https://docs.rs/%s";
-          }
-          {
-            name = "ghithub";
-            tags = [ "github" ];
-            keyword = "@git";
-            url = "https://github.com/%s";
-          }
-          {
-            name = "nixpkgs";
-            tags = [
-              "nixpkgs"
-              "package"
-            ];
-            keyword = "@np";
-            url = "https://search.nixos.org/packages?channel=26.05&query=%s";
-          }
-          {
-            name = "home-manager options";
-            tags = [
-              "nixos"
-              "home-manager"
-              "options"
-            ];
-            keyword = "@ho";
-            url = "https://home-manager-options.extranix.com/?channel=26.05&query=%s";
-          }
-          {
-            name = "nixos options";
-            tags = [
-              "nixos"
-              "options"
-            ];
-            keyword = "@no";
-            url = "https://search.nixos.org/options?channel=26.05&query=%s";
-          }
-          {
-            name = "duckle";
-            tags = [ "game" ];
-            keyword = "@duckle";
-            url = "https://duckle.crouchkick.com/";
-          }
-          {
-            name = "errno";
-            tags = [
-              "linux"
-              "errno"
-            ];
-            keyword = "@errno";
-            url = "https://github.com/torvalds/linux/blob/master/include/uapi/asm-generic/errno-base.h";
-          }
-          {
-            name = "syscall";
-            tags = [
-              "linux"
-              "syscall"
-            ];
-            keyword = "@syscall";
-            url = "https://filippo.io/linux-syscall-table/";
-          }
-        ];
+        settings =
+          let
+            search = d: "${d}?channel=${lib.trivial.release}&query=%s";
+            bookmarks = lib.mapAttrsToList (
+              k: u: {
+                name = lib.removePrefix "@" k;
+                keyword = k;
+                url = "https://" + lib.removePrefix "https://" u;
+              }
+            );
+          in
+          [
+            {
+              toolbar = true;
+              bookmarks = bookmarks {
+                "@np" = search "search.nixos.org/packages";
+                "@no" = search "search.nixos.org/options";
+                "@ho" = search "search.nixos.org/options" + "&source=home_manager";
+                "@wiki" = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
+                "@duckle" = "https://duckle.crouchkick.com/";
+                # ctf stuff:
+                "@syscall" = "https://filippo.io/linux-syscall-table/";
+                "@errno" = "https://github.com/torvalds/linux/blob/master/include/uapi/asm-generic/errno-base.h";
+                # enter version like 2.42
+                "@libc" = "https://elixir.bootlin.com/glibc/glibc-%s/source";
+              };
+            }
+          ];
       };
 
       containersForce = true;
