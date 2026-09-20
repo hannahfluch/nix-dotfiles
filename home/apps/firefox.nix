@@ -80,7 +80,18 @@
             violentmonkey
           ];
       };
-      search.force = true;
+      search = {
+        force = true;
+        default = "google-web";
+        engines.google.metaData.alias = "@ai"; # show ai summary
+        engines.google-web = {
+          name = "Google (Web)";
+          urls = [
+            # udm 14 disables ai results
+            { template = "https://www.google.com/search?udm=14&q={searchTerms}"; }
+          ];
+        };
+      };
     };
   };
 }
