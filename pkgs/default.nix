@@ -4,9 +4,12 @@ prev:
 })
 // {
   python3 = prev.python3.override {
-    packageOverrides = python-self: python-super: {
-      libdebug = prev.python3Packages.callPackage ./libdebug.nix { };
-      vagd = prev.python3Packages.callPackage ./vagd.nix { };
-    };
+    packageOverrides =
+      python-self: python-super:
+      {
+        libdebug = prev.python3Packages.callPackage ./libdebug.nix { };
+        vagd = prev.python3Packages.callPackage ./vagd.nix { };
+      }
+      // import ./angr.nix prev python-self python-super;
   };
 }
