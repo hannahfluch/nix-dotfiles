@@ -10,6 +10,7 @@
     ./s.nix
     ./quickemu.nix
     ./distrobox.nix
+    ./gdb.nix
   ];
 
   home.packages =
@@ -38,7 +39,6 @@
       # ctf
       hash_extender
       qemu
-      gdb
       volatility3
       rubyPackages_4_0.seccomp-tools
       nmap
@@ -54,7 +54,6 @@
       wireguard-tools
     ]
     ++ [
-      extra.pwndbg
       extra.nix-alien
     ];
 
