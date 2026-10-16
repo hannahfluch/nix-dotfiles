@@ -27,9 +27,15 @@
     profiles.default = {
       settings = {
         "sidebar.verticalTabs" = true;
+
         # mouse selection
         "ui.highlight" = "white";
         "ui.highlighttext" = "#002d75";
+
+        # dsable sponsored suggestions
+        "browser.newtabpage.activity-stream.showSponsored" = false;
+        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+        "browser.urlbar.suggest.quicksuggest.sponsored" = false;
       };
       bookmarks = {
         force = true;
