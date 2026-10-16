@@ -499,11 +499,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1786271598,
-        "narHash": "sha256-EY9j4L9QrKxKC00Bd5sSaRz8splYnBvv6ep3zTuX2WY=",
+        "lastModified": 1791824819,
+        "narHash": "sha256-5aQzPT+tINBcJTk9s6XbvdczIN4y42k4YkGbu86o6AU=",
         "ref": "main",
-        "rev": "ddb052ae1e1636066a0e928a1bae6c367ea420fd",
-        "revCount": 4,
+        "rev": "4a183053011987bc022e0c851578927c87a204f7",
+        "revCount": 5,
         "type": "git",
         "url": "ssh://git@github.com/hannahfluch/ida"
       },
