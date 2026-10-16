@@ -25,6 +25,7 @@ let
       lief
       keystone-engine
       numpy
+      qiling
       (vagd.override { pwntools = pwn; })
     ]
   );
