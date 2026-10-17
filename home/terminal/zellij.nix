@@ -6,6 +6,7 @@
       # copy_on_select = false;
       show_startup_tips = false;
       on_force_close = "quit";
+      session_serialization = false;
       scroll_buffer_size = 100000;
       # mouse_mode = false;
       # reconfigure keybinds that conflict with helix
