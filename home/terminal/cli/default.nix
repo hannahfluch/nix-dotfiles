@@ -35,6 +35,7 @@
       zip
       imagemagick
       sshfs
+      nettools
 
       # ctf
       hash_extender
