@@ -26,6 +26,7 @@ let
       keystone-engine
       numpy
       qiling
+      pandas
       (vagd.override { pwntools = pwn; })
     ]
   );
