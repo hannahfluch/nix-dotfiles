@@ -192,10 +192,13 @@ in
           "Mod+Shift+F".action = fullscreen-window;
           "Mod+Space".action = toggle-window-floating;
 
+          # mirror screen & enable DND
           "Mod+P" = {
             repeat = false;
-            action.spawn-sh = "${lib.getExe pkgs.wl-mirror} $(niri msg --json focused-output | ${lib.getExe pkgs.jq} -r .name)";
+            action.spawn-sh = "noctalia-shell ipc call notifications enableDND ; ${lib.getExe pkgs.wl-mirror} $(niri msg --json focused-output | ${lib.getExe pkgs.jq} -r .name)";
           };
+          # toggle DND
+          "Mod+Shift+P".action = spawnIpc "notifications toggleDND";
         };
 
       overview.workspace-shadow.enable = false;
