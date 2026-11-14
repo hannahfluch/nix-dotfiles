@@ -6,7 +6,7 @@
   ...
 }:
 let
-  noctalia-shell = config.programs.noctalia-shell.package;
+  noctalia = config.programs.noctalia.package;
 in
 {
   home.packages = [
@@ -17,7 +17,7 @@ in
     package = pkgs.niri;
     settings = {
       spawn-at-startup = [
-        { argv = [ (lib.getExe noctalia-shell) ]; }
+        { argv = [ (lib.getExe noctalia) ]; }
         { argv = [ (lib.getExe extra.honklet) ]; }
         {
           argv = [
@@ -33,7 +33,7 @@ in
 
       layer-rules = [
         {
-          matches = [ { namespace = "^noctalia-wallpaper*"; } ];
+          matches = [ { namespace = "^noctalia-wallpaper"; } ];
           place-within-backdrop = true;
         }
       ];
@@ -79,9 +79,8 @@ in
           alacritty = lib.getExe pkgs.alacritty;
           spawnIpc = a: {
             spawn = [
-              (lib.getExe noctalia-shell)
-              "ipc"
-              "call"
+              (lib.getExe noctalia)
+              "msg"
             ]
             ++ (lib.splitString " " a);
           };
@@ -92,15 +91,15 @@ in
           # Apps
           "Mod+Q".action = spawn alacritty;
           "Mod+B".action = spawn (lib.getExe pkgs.firefox);
-          "Mod+W".action = spawnIpc "launcher toggle";
-          "Mod+A".action = spawnIpc "wallpaper toggle";
-          "Mod+D".action = spawnIpc "controlCenter toggle";
+          "Mod+W".action = spawnIpc "panel-toggle launcher";
+          "Mod+A".action = spawnIpc "panel-toggle wallpaper";
+          "Mod+D".action = spawnIpc "panel-toggle control-center";
           "Mod+X".action = close-window;
           "Mod+M".action = quit;
 
-          "Mod+L".action = spawnIpc "lockScreen lock";
+          "Mod+L".action = spawnIpc "session lock";
           "Mod+S".action.spawn = [ (lib.getExe extra.catlock) ];
-          "Mod+V".action = spawnIpc "launcher clipboard";
+          "Mod+V".action = spawnIpc "panel-toggle clipboard";
 
           # Audio
           XF86AudioRaiseVolume.action.spawn = [
@@ -164,7 +163,15 @@ in
 
           # Screenshots (FIXME: sodiboo/niri-flake#1380)
           "Mod+C".action.screenshot = [ ];
-          # "Mod+Shift+C".action.screenshot-window = [ ];
+          # Window screenshot to clipboard only (toast hidden via noctalia notification filter)
+          "Mod+Shift+C".action.spawn = [
+            (lib.getExe pkgs.niri)
+            "msg"
+            "action"
+            "screenshot-window"
+            "--write-to-disk"
+            "false"
+          ];
 
           # Workspaces
           "Mod+1".action = focus-workspace "1";
@@ -195,10 +202,10 @@ in
           # mirror screen & enable DND
           "Mod+P" = {
             repeat = false;
-            action.spawn-sh = "noctalia-shell ipc call notifications enableDND ; ${lib.getExe pkgs.wl-mirror} $(niri msg --json focused-output | ${lib.getExe pkgs.jq} -r .name)";
+            action.spawn-sh = "${lib.getExe noctalia} msg notification-dnd-set on ; ${lib.getExe pkgs.wl-mirror} $(niri msg --json focused-output | ${lib.getExe pkgs.jq} -r .name)";
           };
           # toggle DND
-          "Mod+Shift+P".action = spawnIpc "notifications toggleDND";
+          "Mod+Shift+P".action = spawnIpc "notification-dnd-toggle";
         };
 
       overview.workspace-shadow.enable = false;

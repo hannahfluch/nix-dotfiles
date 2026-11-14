@@ -55,6 +55,11 @@
       # url = "path:/home/hannah/assets";
       flake = false;
     };
+    copai-shell = {
+      url = "github:inet4/copai-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+    };
     honklet = {
       url = "github:hannahfluch/honklet";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -97,9 +102,8 @@
       inputs.flake-utils.follows = "flake-utils";
     };
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell/legacy-v4";
+      url = "github:noctalia-dev/noctalia/v5.4.1";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.noctalia-qs.inputs.systems.follows = "systems";
     };
     niri = {
       # FIXME(sodiboo/niri-flake #1731): merges this
@@ -143,6 +147,7 @@
       leaves,
       noctalia,
       honklet,
+      copai-shell,
       catlock,
       niri,
       miri,
@@ -185,6 +190,7 @@
         honklet = honklet.packages.${system}.default;
         catlock = catlock.packages.${system}.default;
 
+        copai-shell-hm = copai-shell.homeManagerModules.default;
         noctalia-hm = noctalia.homeModules.default;
         miri = miri.packages.${system}.default;
 

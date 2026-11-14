@@ -224,6 +224,29 @@
         "type": "github"
       }
     },
+    "copai-shell": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794404987,
+        "narHash": "sha256-7JvL+jFjM4TGg3aw2cmPsl1MEquMVW5Te6JvbWtQoxg=",
+        "owner": "inet4",
+        "repo": "copai-shell",
+        "rev": "8bdee8c4c68e5f59c0af69276e7319dff7a9fae0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "inet4",
+        "repo": "copai-shell",
+        "type": "github"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -269,11 +292,11 @@
     },
     "exchequer": {
       "locked": {
-        "lastModified": 1759049171,
-        "narHash": "sha256-t87ReQ48tlEpQIwVRQMjHIbXl1j3nj05vatZ3PgTdT4=",
+        "lastModified": 1794661898,
+        "narHash": "sha256-NGj6t0HsKGztPgIdcHLkCmXRjr3t0XsjMS3vM1LSKLA=",
         "ref": "main",
-        "rev": "0007ec15739e9d46e70887890e757ad7ba0c6e6f",
-        "revCount": 6,
+        "rev": "b488085b54cfbaf93283896f4a0a876d5d27017c",
+        "revCount": 7,
         "type": "git",
         "url": "ssh://git@github.com/hannahfluch/exchequer"
       },
@@ -730,46 +753,20 @@
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
-        ],
-        "noctalia-qs": "noctalia-qs"
+        ]
       },
       "locked": {
-        "lastModified": 1788016978,
-        "narHash": "sha256-kq3bbBPa5803bLv55bNFztx2YryJl5a/VfUWvvdaZjI=",
+        "lastModified": 1793300732,
+        "narHash": "sha256-j6EccQtLK45fYjA5uyUHXW8jxz0gYVxW2SE+pn5UA0Y=",
         "owner": "noctalia-dev",
-        "repo": "noctalia-shell",
-        "rev": "a08ff3619ed4c1e1cd8b7691438cea34ccecd6c5",
+        "repo": "noctalia",
+        "rev": "815aebe1cfd79c9a18197441eea92f0b275035fc",
         "type": "github"
       },
       "original": {
         "owner": "noctalia-dev",
-        "ref": "legacy-v4",
-        "repo": "noctalia-shell",
-        "type": "github"
-      }
-    },
-    "noctalia-qs": {
-      "inputs": {
-        "nixpkgs": [
-          "noctalia",
-          "nixpkgs"
-        ],
-        "systems": [
-          "systems"
-        ],
-        "treefmt-nix": "treefmt-nix"
-      },
-      "locked": {
-        "lastModified": 1780799499,
-        "narHash": "sha256-YloRtLqJabzYUWvdLyh67zH4DZrR3kQj+dlQJwLPmPM=",
-        "owner": "noctalia-dev",
-        "repo": "noctalia-qs",
-        "rev": "f308426239665e3bc3d624014e9295b2ae2f58ff",
-        "type": "github"
-      },
-      "original": {
-        "owner": "noctalia-dev",
-        "repo": "noctalia-qs",
+        "ref": "v5.4.1",
+        "repo": "noctalia",
         "type": "github"
       }
     },
@@ -880,6 +877,7 @@
         "catlock": "catlock",
         "ccnace": "ccnace",
         "copai": "copai",
+        "copai-shell": "copai-shell",
         "disko": "disko",
         "exchequer": "exchequer",
         "fenix": "fenix",
@@ -1029,28 +1027,6 @@
       "original": {
         "owner": "tinted-theming",
         "repo": "base16-zed",
-        "type": "github"
-      }
-    },
-    "treefmt-nix": {
-      "inputs": {
-        "nixpkgs": [
-          "noctalia",
-          "noctalia-qs",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1780220602,
-        "narHash": "sha256-eynAfOmbmxJnkp7YewvCEbShNnnYJ9gLLqkzsYtBPeM=",
-        "owner": "numtide",
-        "repo": "treefmt-nix",
-        "rev": "db947814a175b7ca6ded66e21383d938df01c227",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "treefmt-nix",
         "type": "github"
       }
     },
