@@ -19,16 +19,6 @@ in
       spawn-at-startup = [
         { argv = [ (lib.getExe noctalia) ]; }
         { argv = [ (lib.getExe extra.honklet) ]; }
-        {
-          argv = [
-            (lib.getExe (
-              pkgs.writeShellScriptBin "tmp" ''
-                #!/bin/sh
-                while :; do ${lib.getExe' extra.miri "miri"} service start; sleep 0.5; done
-              ''
-            ))
-          ];
-        }
       ];
 
       layer-rules = [

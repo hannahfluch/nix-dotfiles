@@ -116,13 +116,6 @@
       inputs.xwayland-satellite-stable.follows = "";
       inputs.xwayland-satellite-unstable.follows = "";
     };
-
-    miri = {
-      url = "path:/home/hannah/dev/rust/miri/";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.fenix.follows = "fenix";
-      inputs.flake-utils.follows = "flake-utils";
-    };
   };
 
   outputs =
@@ -150,7 +143,6 @@
       copai-shell,
       catlock,
       niri,
-      miri,
       gef,
       ...
     }:
@@ -192,7 +184,6 @@
 
         copai-shell-hm = copai-shell.homeManagerModules.default;
         noctalia-hm = noctalia.homeModules.default;
-        miri = miri.packages.${system}.default;
 
         gef = "${gef.outPath}/gef.py";
       };
